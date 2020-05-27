@@ -1,0 +1,7 @@
+package poly.service;
+
+public interface IEmpathyService {
+	
+	int getEmpathyFromWEB() throws Exception;
+
+}

@@ -1,0 +1,13 @@
+package poly.dto;
+
+public class UserInfoDTO {
+
+	private String user_name;
+	private String user_gender;
+	private String user_mail;
+	private String user_range;
+	
+
+
+
+}
