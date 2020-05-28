@@ -37,13 +37,21 @@ public class KakaoController {
         
         System.out.println("kakaologin controller : " + userInfo);
         
-        if (userInfo.get("nickname") != null) {
+        if (userInfo.get("nickname")==null ||
+        		userInfo.get("email")==null ||
+        			userInfo.get("age_range")==null) {
+        	
+        	model.addAttribute("msg", "로그인에 실패하였습니다. kakao에서 개인정보활용에 동의해주세요.");
+           	model.addAttribute("url", "/DExellent/index.do");
+           	
+            
+        } else if (userInfo.get("nickname") != null) {
         session.setAttribute("user_name", userInfo.get("nickname"));
         session.setAttribute("user_mail", userInfo.get("email"));
         session.setAttribute("user_range", userInfo.get("age_range"));
         session.setAttribute("user_profile_image", userInfo.get("profile_image"));
         session.setAttribute("user_thumbnail_image", userInfo.get("thumbnail_image"));
-        }
+        
         System.out.println("카카오에서 받아온 userInfo 값");
         System.out.println("user_name : " + session.getAttribute("nickname"));
         System.out.println("user_mail : " + session.getAttribute("email"));
@@ -59,9 +67,11 @@ public class KakaoController {
         System.out.println("user_thumbnail_image : " + session.getAttribute("user_thumbnail_image"));
         System.out.println(this.getClass().getName() + ".kakaologin end!");
 
+
         model.addAttribute("msg", "로그인 되었습니다!  \"" + session.getAttribute("user_name") + "\"님 환영합니다.");
-       	model.addAttribute("url", "/DExellent/index.do");
-        
+       	model.addAttribute("url", "/DExellent/index.do"); 
+        }
+       	
         return "/Redirect";
     }
     

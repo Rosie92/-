@@ -20,8 +20,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import poly.dto.UserInfoDTO;
-
 @Service
 public class KakaoService {
 
@@ -112,55 +110,30 @@ public class KakaoService {
             JSONObject kakao_account = element.getJSONObject("kakao_account");
 
             
-            if (properties.getString("nickname")==null) {
-            	String nickname = "비공개 설정";
-            } else if (properties.getString("nickname")!=null) {
+            if (properties.getString("nickname")!=null) {
             	String nickname = properties.getString("nickname");
             	userInfo.put("nickname", nickname);
-            } else {
-            	String nickname = "비공개 설정";
-            }
+            } 
             //------------------------------------------------------
-            if (kakao_account.getString("email")==null) {
-            	String email = "비공개 설정";
-            } else if (kakao_account.getString("email")!=null) {
+            if (kakao_account.getString("email")!=null) {
             	String email = kakao_account.getString("email");
             	userInfo.put("email", email);
-            } else {
-            	String email = "비공개 설정";
-            }
+            } 
             //------------------------------------------------------
-            if (kakao_account.getString("age_range")==null) {
-            	String age_range = "비공개 설정";
-            } else if (kakao_account.getString("age_range")!=null) {
+            if (kakao_account.getString("age_range")!=null) {
             	String age_range = kakao_account.getString("age_range");
-            	userInfo.put("age_range", age_range);
-            } else {
-            	String age_range = "비공개 설정";
+            	userInfo.put("age_range", age_range); 
             }
-            
-//            } else if  (kakao_account.getString("age_range").length()==0 ){
-//            	String age_range = "비공개 설정";
-//            }
             //------------------------------------------------------
-            if (properties.getString("profile_image")==null) {
-            	String profile_image = "비공개 설정";
-            } else if (properties.getString("profile_image")!=null) {
+            if (properties.getString("profile_image")!=null) {
             	String profile_image = properties.getString("profile_image");
             	userInfo.put("profile_image", profile_image);
-            } else {
-            	String profile_image = "비공개 설정";
             }
             //------------------------------------------------------
-            if (properties.getString("thumbnail_image")==null) {
-            	String thumbnail_image = "비공개 설정";
-            } else if (properties.getString("thumbnail_image")!=null) {
+            if (properties.getString("thumbnail_image")!=null) {
             	String thumbnail_image = properties.getString("thumbnail_image");
             	userInfo.put("thumbnail_image", thumbnail_image);
-            } else {
-            	String thumbnail_image = "비공개 설정";
-            }
-
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         }

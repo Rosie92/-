@@ -1,0 +1,5 @@
+package poly.persistance.mapper.impl;
+
+public class EmpathyMapper {
+
+}

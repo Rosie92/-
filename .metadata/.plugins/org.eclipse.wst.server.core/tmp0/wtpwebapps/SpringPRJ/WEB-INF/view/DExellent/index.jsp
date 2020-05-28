@@ -269,7 +269,7 @@
                     <h2 class="section-heading text-uppercase">EMPATHY</h2>
                     <h3 class="section-subheading text-muted">Animal empathy for dog owners.</h3>
                 </div>
-              	<div src="">
+              	<div src="/empathy.do">
               	</div>
             </div>
         </section>
@@ -525,7 +525,7 @@
                     <h2 class="section-heading text-uppercase">MYPAGE</h2>
                     <h3 class="section-subheading text-muted">Displays Kakao member information.</h3>
                 </div>
-                <iframe src="/DExellent/mypage.do" width="100%" height="550px" name="mypage1" id="mypage1"></iframe> 
+                <iframe src="/DExellent/mypage.do" width="100%" height="750px" name="mypage1" id="mypage1"></iframe> 
             </div>
         </section>
         <!-- Footer-->

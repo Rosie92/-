@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="iframe"/>
+		<item key="selection" value="mysql"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="mysql"/>
+			<item value="empa"/>
+			<item value="src"/>
+			<item value="empathy"/>
+			<item value="mongo"/>
+			<item value="1.8"/>
 			<item value="iframe"/>
+			<item value="mypage"/>
 			<item value="masthead"/>
 			<item value="header.mas"/>
 			<item value="header."/>
 			<item value="header.mast"/>
-			<item value="mypage"/>
 			<item value="contact"/>
 			<item value="board"/>
 			<item value="footer"/>
-			<item value="BOARD"/>
-			<item value="id=&quot;contact"/>
-			<item value="contect"/>
-			<item value="Excel"/>
-			<item value="Exc"/>
-			<item value="client"/>
 		</list>
 		<list key="replacehistory">
 			<item value="masthead2"/>
@@ -32,7 +32,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="-26"/>
+		<item key="DIALOG_X_ORIGIN" value="8"/>
 		<item key="DIALOG_Y_ORIGIN" value="203"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

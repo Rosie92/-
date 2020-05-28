@@ -1,6 +1,8 @@
 package poly.service.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -12,69 +14,62 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.EmpathyDTO;
-import poly.persistance.mapper.IEmpathyMapper;
-import poly.service.IEmpathyService;
-import poly.util.CmmUtil;
+import poly.service.IEmpathyMapper;
 import poly.util.DateUtil;
 
 @Service("EmpathyService")
-public class EmpathyService implements IEmpathyService {
+public class EmpathyService implements IEmapthyService {
 	
 	@Resource(name="EmpathyMapper")
-	private IEmpathyMapper empathyMapper;
+	private IEmpathyMapper empathyMapper; // MongoDB에 저장할 Mapper
 	
 	//로그 파일 생성 및 로그 출력을 위한 log4j 프레임워크의 자바 객체
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	/* JSOUP 라이브러리를 통한 크롤링하기 */
-
 	@Override
-	public int getEmpathyFromWEB(EmpathyDTO bDTO) throws Exception {
+	public int collectEmpathyCrawling() throws Exception {
 		
-		log.info(this.getClass().getName() + "get동물공갑FromWEB START");
+		//로그 찍기(추후 찍은 로그를 통해 이 함수에 접근했는지 파악하기 용이하다.)
+		log.info(this.getClass().getName() + ".collectEmpathyCrawling Start!");
 		
-		int res = 0; //크롤링 겨로가 (0보다 크면 크롤링 성공)
+		int res = 0;
 		
-		// 크롤링할 정보를 가져올 사이트 주소
-		String url = "https://www.naver.com/";
+		List<EmpathyDTO> pList = new ArrayList<EmpathyDTO>();
 		
-		// JSOUP 라이브러리를 통해 사이트에 접속되면, 그 사이트 전체 HTML 소스 저장할 변수
-		Document doc = null; 
+		// 크롤링 하는 페이지
+		String url = "https://blog.naver.com/PostList.nhn?blogId=animalandhuman&from=postList&categoryNo=32";
 		
-		// 사이트 접속 (http프로토콜만 가능, https 프로토콜은 보안상 안됨)
+		//JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
+		Document doc = null;
+		
 		doc = Jsoup.connect(url).get();
 		
-		// 크롤링할 웹페이지의 전체 소스 중 일부 태그를 선택하기 위해 사용
-		// <div class=" "> 이 태그 내에서 있는 HTML소스만 element에 저장됨
-		Elements element = doc.select("data-panel-code=\"ANIMAL\"");
+		Elements element = doc.select("div.clearfix");
 		
-		// Iterator를 사용하여 크롤링해오기
-		// 기본적으로 1개 이상의 정보가 존재하기에 태그의 반복이 존재할 수 밖에 없음
-		Iterator<Element> empathy_topstory = element.select("Strong.topStory").iterator();//탑스토리
-		Iterator<Element> empathy_theme1 = element.select("PC-THEME-ANIMAL-MOBILE-RANKING-DEFAULT-0").iterator();
-		Iterator<Element> empathy_theme2 = element.select("PC-THEME-ANIMAL-MOBILE-RANKING-DEFAULT-1").iterator();
+		Iterator<Element> CrawlingData1 = element.iterator(); 
+		// 크롤링을 통해 데이터 저장하기
+		String CrawlingData2 = CrawlingData1.toString();
 		
-		EmpathyDTO pDTO = null;
+		CrawlingData1 = null;
 		
-		// 수집된 데이터 DB에 저장하기
-		while(empathy_topstory.hasNext()) {
-			pDTO = new EmpathyDTO(); // 수집된 정보를 DTO에 저장하기 위해 메모리에 올리기
-			
-			// 수집 시간을 기본키(PK)로 사용
-			pDTO.setCheck_time(DateUtil.getDateTime("yyyyMMdd"));
-			
-			// 탑스토리
-			pDTO.setEmpathy_topstory(CmmUtil.nvl(empathy_topstory.next().text()).trim());
-			// 테마 1
-			pDTO.setEmpathy_theme1(CmmUtil.nvl(empathy_theme1.next().text()).trim());
-			// 테마 2
-			pDTO.setEmpathy_theme2(CmmUtil.nvl(empathy_theme2.next().text()).trim());
-			// 한개씩 추가
-			res += empathyMapper.InsertEmpathy(pDTO);
-		}
+		// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
+		EmpathyDTO pDTO = new EmpathyDTO();
+		pDTO.setEmpathy(CrawlingData2);
 		
-		log.info(this.getClass().getName() + "get동물공감FromWEB END");
-		
-		return res;
+	/*
+		//한번에 여러개의 데이터를 MongoDB에 저장할 List 형태의 데이터 저장하기 
+		pList.add(pDTO);
+		 */
 	}
+	
+	String colNm = "Empathy" + DateUtil.getDateTime("yyyyMMdd"); //생성할 컬렉션명
+	
+	// MongoDB Collection 생성하기
+	EmpathyMapper.createCollection(colNm);
+	
+	// MongoDB에 데이터 저장하기
+	EmpathyMapper.insertEmpathy(pDTO, colNm);
+	
+	return res;
+
 }

@@ -31,14 +31,15 @@
             <div class="container">
                 <div class="masthead2-heading text-uppercase">&emsp;&emsp;&nbsp;Kakao<br>Member&emsp;&emsp;<br>Information </div>
                 <div>
-                    <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px; margin-top: 40px;"><%=session.getAttribute("user_name") %></div>
+                	<img src="<%=session.getAttribute("user_thumbnail_image") %>" width="70px" height="70px">
+                    <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px; margin-top: 20px;"><%=session.getAttribute("user_name") %></div>
                     <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px;"><%=session.getAttribute("user_mail") %></div>
                     <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px;"><%=session.getAttribute("user_range") %></div>
-                    <img src="<%=session.getAttribute("user_profile_image") %>">
-                    <img src="<%=session.getAttribute("user_thumbnail_image") %>">
+                    <img src="<%=session.getAttribute("user_profile_image") %>" width="200px" height="200px">
+                    
                 </div>
                 <div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="https://accounts.kakao.com/weblogin/account/info">카&nbsp카&nbsp오&nbsp&nbsp계&nbsp정&nbsp&nbsp관&nbsp리</a>
+                <a class="btn btn-primary btn-xl2 text-uppercase js-scroll-trigger" href="https://accounts.kakao.com/weblogin/account/info">카&nbsp카&nbsp오&nbsp&nbsp계&nbsp정&nbsp&nbsp관&nbsp리</a>
                 </div>
             </div>
         </header>

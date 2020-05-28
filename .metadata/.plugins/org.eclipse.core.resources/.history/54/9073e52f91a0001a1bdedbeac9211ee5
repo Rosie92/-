@@ -1,0 +1,50 @@
+package poly.service.impl;
+
+import java.util.Iterator;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
+
+import poly.persistance.mapper.IEmpathyMapper;
+import poly.service.IEmpathyService;
+import poly.util.CmmUtil;
+import poly.util.DateUtil;
+
+@Service("EmpathyService")
+public class EmpathyService implements IEmpathyService {
+	
+	@Resource(name="EmpathyMapper")
+	private IEmpathyMapper EmpathyMapper;
+	
+	//로그 파일 생성 및 로그 출력을 위한 log4j 프레임워크의 자바 객체
+	private Logger log = Logger.getLogger(this.getClass());
+	
+	/* JSOUP 라이브러리를 통한 크롤링하기 */
+
+	@Override
+	public int getEmpathyFromWEB() throws Exception {
+		
+		log.info(this.getClass().getName() + "get동물공갑FromWEB START");
+		
+		int res = 0; //크롤링 겨로가 (0보다 크면 크롤링 성공)
+		
+		// 크롤링할 정보를 가져올 사이트 주소
+		String url = "https://www.naver.com/";
+		
+		// JSOUP 라이브러리를 통해 사이트에 접속되면, 그 사이트 전체 HTML 소스 저장할 변수
+		Document doc = null;
+		
+		// 사이트 접속 (http프로토콜만 가능, https 프로토콜은 보안상 안됨)
+		doc = Jsoup.connect(url).get();
+		
+		log.info(this.getClass().getName() + "get동물공감FromWEB END");
+		
+		return res;
+	}
+}

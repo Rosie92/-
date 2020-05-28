@@ -1,0 +1,47 @@
+package Crawling;
+
+import java.io.IOException;
+
+import java.util.Iterator;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Crawling {
+
+	public static void main(String[] args) throws IOException {
+		// 교보문고 크롤링
+		String url = "http://www.naver.com";
+
+		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트 전체 HTML소스 저장할 변수
+		Document doc = null;
+		doc = Jsoup.connect(url).get();
+
+		// 
+		Elements element = doc.select("div.PC-THEME-ANIMAL-EDIT-AREA");
+
+		// 
+		Iterator<Element> Empathy = element.iterator();
+		
+		System.out.println(Empathy);
+
+		/*
+		 * // 순위는 1위부터 50위까지 반복문 while (bookList.hasNext()) {
+		 * 
+		 * Element bookInfo = bookList.next();
+		 * 
+		 * // 크롤링을 통해 데이터 저장하기 String title =
+		 * bookInfo.select("div.cont_area > div.title").text();
+		 * 
+		 * System.out.println(title);
+		 * 
+		 * bookInfo = null;
+		 * 
+		 * }
+		 */
+
+	}
+
+}
