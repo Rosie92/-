@@ -68,7 +68,7 @@ public class EmpathyService implements IEmpathyService {
 	// MongoDB Collection 생성하기
 	EmpathyMapper.createCollection(colNm);
 	
-	EmpathyMapper.insertEmpathy(pDTO);
+	EmpathyMapper.insertEmpathy(pList, colNm);
 	
 	return res;
 	}

@@ -19,5 +19,5 @@ public interface IEmpathyMapper {
 	 * 
 	 * @param pDTO 저장될 정보
 	 */
-	public int insertEmpathy(List<EmpathyDTO> pList, String colNm) throws Exception;
+	public int insertRank(List<EmpathyDTO> pList, String colNm) throws Exception;
 }
