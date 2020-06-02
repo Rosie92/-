@@ -14,8 +14,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.EmpathyDTO;
-import poly.persistance.mongo.impl.EmpathyMapper;
-import poly.service.IEmpathyMapper;
+import poly.persistance.mongo.IEmpathyMapper;
 import poly.service.IEmpathyService;
 import poly.util.DateUtil;
 
@@ -57,18 +56,16 @@ public class EmpathyService implements IEmpathyService {
 		// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
 		EmpathyDTO pDTO = new EmpathyDTO();
 		pDTO.setEmpathy(CrawlingData2);
-		
-	
 		/*
 		 * //한번에 여러개의 데이터를 MongoDB에 저장할 List 형태의 데이터 저장하기 pList.add(pDTO);
 		 */
 		
-	String colNm = "Empathy" + DateUtil.getDateTime("yyyyMMdd"); //생성할 컬렉션명
+	String colNm = "Empathy"; //생성할 컬렉션명
 	
 	// MongoDB Collection 생성하기
-	EmpathyMapper.createCollection(colNm);
+	empathyMapper.createCollection(colNm);
 	
-	EmpathyMapper.insertEmpathy(pDTO);
+	empathyMapper.insertEmpathy(pDTO,colNm);
 	
 	return res;
 	}
