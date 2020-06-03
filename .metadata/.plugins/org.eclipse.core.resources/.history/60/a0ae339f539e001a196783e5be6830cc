@@ -1,9 +1,0 @@
-package poly.dto;
-
-public class EmpathyDTO {
-
-	private String empathy_topstory;
-	private String empathy_theme1;
-	private String empathy_theme2;
-
-}

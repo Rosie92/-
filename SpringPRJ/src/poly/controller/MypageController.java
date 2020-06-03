@@ -2,12 +2,9 @@ package poly.controller;
 
 import java.util.logging.Logger;
 
-import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import poly.service.IDEService;
 
 @Controller
 public class MypageController {

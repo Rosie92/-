@@ -1,0 +1,11 @@
+package poly.dto;
+
+public class EmDTO {
+
+	private String empathy1111;
+	
+	
+
+
+
+}

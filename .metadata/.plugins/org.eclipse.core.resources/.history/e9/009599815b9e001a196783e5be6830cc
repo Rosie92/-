@@ -1,7 +1,0 @@
-package poly.service;
-
-public interface IEmpathyService {
-	
-	int getEmpathyFromWEB(EmpathyDTO bDTO) throws Exception;
-
-}
