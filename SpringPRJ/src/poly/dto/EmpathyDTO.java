@@ -8,8 +8,8 @@ public class EmpathyDTO {
 		return empathy;
 	}
 
-	public void setEmpathy(String empathy) {
-		this.empathy = empathy;
+	public void setEmpathy(String str) {
+		this.empathy = str;
 	}
 
 }

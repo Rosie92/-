@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="colNm"/>
+		<item key="selection" value="javax.servlet"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="javax.servlet"/>
+			<item value="redis"/>
+			<item value="필터"/>
+			<item value="gson"/>
+			<item value="jackson"/>
+			<item value="json"/>
+			<item value="com.google.code.gson"/>
+			<item value="com.googlecode.json-simple"/>
+			<item value="collectEmpathyCrawling"/>
+			<item value="insertEmpathy"/>
+			<item value="EmpathyService"/>
+			<item value="DEService"/>
 			<item value="colNm"/>
 			<item value="userInfo"/>
 			<item value="org.mongodb"/>
-			<item value="release&lt;/org"/>
-			<item value="release"/>
-			<item value="jackson"/>
-			<item value="session"/>
-			<item value="pList"/>
-			<item value="mysql"/>
-			<item value="empa"/>
-			<item value="src"/>
-			<item value="empathy"/>
-			<item value="mongo"/>
-			<item value="1.8"/>
-			<item value="iframe"/>
 		</list>
 		<list key="replacehistory">
 			<item value="collectionName"/>
@@ -33,8 +33,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="519"/>
-		<item key="DIALOG_Y_ORIGIN" value="241"/>
+		<item key="DIALOG_X_ORIGIN" value="679"/>
+		<item key="DIALOG_Y_ORIGIN" value="186"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

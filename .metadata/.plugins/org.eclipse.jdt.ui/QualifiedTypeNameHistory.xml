@@ -15,7 +15,6 @@
 <fullyQualifiedTypeName name="org.codehaus.jackson.JsonParser"/>
 <fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
 <fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
-<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
@@ -49,5 +48,7 @@
 <fullyQualifiedTypeName name="poly.util.CmmUtil"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="org.apache.commons.collections.map.HashedMap"/>
 <fullyQualifiedTypeName name="poly.dto.EmpathyDTO"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
 </qualifiedTypeNameHistroy>

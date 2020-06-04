@@ -101,7 +101,4 @@
 		<error-code>500</error-code>
 		<location>/common/error.jsp</location>
 	</error-page>
-	
-	<absolute-ordering />
-	
 </web-app>

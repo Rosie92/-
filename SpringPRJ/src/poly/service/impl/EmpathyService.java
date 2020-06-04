@@ -1,8 +1,6 @@
 package poly.service.impl;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -44,21 +42,27 @@ public class EmpathyService implements IEmpathyService {
 
 		doc = Jsoup.connect(url).get();
 
-		Elements element = doc.select("div.clearfix");
+		log.info(doc);
+		
+		Elements element = doc.select("div.twocols");
 
-		Iterator<Element> CrawlingData1 = element.iterator();
-		// 크롤링을 통해 데이터 저장하기
-		String CrawlingData2 = CrawlingData1.toString();
-
-		CrawlingData1 = null;
-
-		// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
+		log.info(element);
+	
+		String str = element.attr/*text*/("str");
+		
+		doc = Jsoup.connect("https://blog.naver.com" + doc).get();
+		
+		String blognum[] = doc.split("&");
+		String num[] = blognum[1].split("=");
+		Elements blog_body = doc.select("div.twocols" + num[1]);
+		
+		log.info(blog_body.text());
+				
 		EmpathyDTO pDTO = new EmpathyDTO();
-//		pDTO.setEmpathy(CrawlingData2);
-		pDTO.setEmpathy("test!!!");
-		
-		log.info(this.getClass().getName() + " CrawlingData2 : "+ CrawlingData2);
-		
+		pDTO.setEmpathy(str);
+
+		/* log.info(this.getClass().getName() + " CrawlingData2 : " + CrawlingData2); */
+
 		/*
 		 * //한번에 여러개의 데이터를 MongoDB에 저장할 List 형태의 데이터 저장하기 pList.add(pDTO);
 		 */
@@ -70,8 +74,6 @@ public class EmpathyService implements IEmpathyService {
 
 		log.info(this.getClass().getName() + ".insertEmpathy Method Start!");
 
-	
-		
 		empathyMapper.insertEmpathy(pDTO, colNm);
 
 		log.info(this.getClass().getName() + ".insertEmpathy Method End!");
