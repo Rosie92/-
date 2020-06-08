@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+#post-area .post_adpost .itemSubjectfont {font-size:10pt !important;font-family:돋움, 굴림, seoul, verdana, arial;}
+
+#post-area .post {border-width:0px;border-style:solid;border-color:#FFFFFF;}
+#post-area .post-back {background:#ffffff;}
+#post-area .pcol1 {color:#557A74;font-size:18px;}
+#post-area .pcol2 {color:#557A74;}
+#post-area .pcol2b {background:#9DAFAA;}
+#post-area .cline {border-bottom-color:#9DAFAA;}
+#post-area .pcol3 {color:#FF4E00;}
+#post-area .dline {border-top-width:1px;border-top-style:dotted;border-top-color:#557A74;}
+#post-area .htl {background:transparent;width:15px;height:15px;}
+#post-area .htc {background:transparent;height:15px;}
+#post-area .htr {background:transparent;width:15px;height:15px;}
+#post-area .ftl {background:transparent;width:15px;height:15px;}
+#post-area .ftc {background:transparent;height:15px;}
+#post-area .ftr {background:transparent;width:15px;height:15px;}
+#post-area .bcl {background:transparent;width:15px;}
+#post-area .bcc {background:transparent;}
+#post-area .bcr {background:transparent;width:15px;}
+#post-area .ico1 {background:none;}
+#post-area .ico2 {background:none;}
+#post-area .ico3 {background:none;}
+#post-area .comment {background:transparent;}
+#post-area .btn {background:url(https://blogimgs.pstatic.net/nblog/skins/poststyle/0113_input.gif);}
+#post-area .btn-sympathy {background:url(https://blogimgs.pstatic.net/nblog/skins/poststyle/btn_sympathy_02.gif);}
+#post-area .btn_r {background:url(https://blogimgs.pstatic.net/nblog/skins/poststyle/btn_reply_0113.gif);}
+
+.post-back {background:#ffffff;}
+.pcol1 {color:#557A74;font-size:18px;}
+.pcol2 {color:#557A74;}
+.pcol2b {background:#9DAFAA;}
+.pcol3 {color:#FF4E00;}
+.bcc {background:transparent;}
+#post-area .sline {border-bottom-color:#557A74;}
+
+#post-area .u_cbox {background:rgba(0, 0, 0, 0) !important;}
+
+#post-area .u_cbox .u_cbox_name_area,
+#post-area .u_cbox .u_cbox_target_name,
+#post-area .u_cbox .u_cbox_comment .u_cbox_text_wrap,
+#post-area .u_cbox .u_cbox_date,
+#post-area .u_cbox .u_cbox_btn_report,
+#post-area .u_cbox .u_cbox_btn_unhide,
+#post-area .u_cbox .u_cbox_tool .u_cbox_btn_reply,
+#post-area .u_cbox .u_cbox_paginate .u_cbox_cnt_page,
+#post-area .u_cbox .u_cbox_paginate .u_cbox_num_page,
+#post-area .commentbox_header .btn_write_comment,
+#post-area .commentbox_header .commentbox_pagination .num,
+#post-area .commentbox_header .btn_pagination .icon,
+#post-area .post-btn .postre .u_likeit_list_module .u_likeit_list_btn,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_ico_recomm:before,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_cnt_recomm,
+#post-area .u_cbox .u_cbox_ico_stat_secret,
+#post-area .u_cbox .u_cbox_work_sub .u_cbox_ico_open {color:rgb(85, 122, 116) !important;}
+
+#post-area .u_cbox .u_cbox_info_base .u_cbox_ico_bar {background-color:rgb(85, 122, 116) !important;}
+
+#post-area .u_cbox .u_cbox_tool .u_cbox_btn_reply:before,
+#post-area .u_cbox .u_cbox_work_sub .u_cbox_work_box:before,
+#post-area .u_cbox .u_cbox_comment_box:before,
+#post-area .u_cbox .u_cbox_ico_reply,
+#post-area .u_cbox .u_cbox_paginate strong.u_cbox_page:before,
+#post-area .commentbox_header:before,
+#post-area .commentbox_header .btn_pagination a:before,
+#post-area .post-btn .postre .u_likeit_list_module .u_likeit_list_btn:before,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_btn_recomm:before {border-color:rgb(85, 122, 116) !important;}
+
+#post-area .u_cbox .u_cbox_mine .u_cbox_name_area,
+#post-area .u_cbox .u_cbox_paginate strong.u_cbox_page .u_cbox_num_page,
+#post-area .commentbox_header .commentbox_pagination .num strong,
+#post-area .post-btn .postre .u_likeit_list_module .u_likeit_list_btn.on,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_btn_recomm_on .u_cbox_ico_recomm:before,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_btn_recomm_on .u_cbox_cnt_recomm,
+#post-area .u_cbox .u_cbox_ico_editor .u_cbox_txt_editor {color:rgb(255, 78, 0) !important;}
+
+#post-area .post-btn .postre .u_likeit_list_module .u_likeit_list_btn.on:before,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_btn_recomm_on:before,
+#post-area .u_cbox .u_cbox_ico_editor {border-color:rgb(255, 78, 0) !important;}
+
+#post-area .u_cbox .u_cbox_content_wrap:before,
+#post-area .u_cbox .u_cbox_comment_box:before,
+#post-area .u_cbox .u_cbox_comment .u_cbox_write_wrap:before,
+#post-area .u_cbox .u_cbox_tool .u_cbox_btn_reply:before,
+#post-area .u_cbox .u_cbox_work_sub .u_cbox_work_box:before,
+#post-area .u_cbox .u_cbox_ico_reply,
+#post-area .u_cbox .u_cbox_paginate strong.u_cbox_page:before,
+#post-area .commentbox_header:before,
+#post-area .commentbox_header .btn_pagination a:before,
+#post-area .post-btn .postre .u_likeit_list_module .u_likeit_list_btn:before,
+#post-area .u_cbox .u_cbox_recomm_set .u_cbox_btn_recomm:before
+{border-color:rgb(85, 122, 116);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

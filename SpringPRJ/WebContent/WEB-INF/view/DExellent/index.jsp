@@ -259,7 +259,6 @@
         <script src="/assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
-
 	<% } else { %>
 		<!-- Services-->
         <hr style="margin-top: 50px;">
@@ -269,8 +268,8 @@
                     <h2 class="section-heading text-uppercase">EMPATHY</h2>
                     <h3 class="section-subheading text-muted">Animal empathy for dog owners.</h3>
                 </div>
-              	<div src="/empathy.do">
-              	</div>
+              	<iframe src="/DExellent/empathy.do" width="100%" height="600px" name="empathy" id="empathy"
+              	frameborder="1" scrolling="yes" style="overflow-x:hidden"/></iframe>
             </div>
         </section>
         <!-- Portfolio Grid-->

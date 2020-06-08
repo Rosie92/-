@@ -51,14 +51,7 @@ public class KakaoController {
         session.setAttribute("user_profile_image", userInfo.get("profile_image"));
         session.setAttribute("user_thumbnail_image", userInfo.get("thumbnail_image"));
         
-        System.out.println("카카오에서 받아온 userInfo 값");
-        System.out.println("user_name : " + session.getAttribute("nickname"));
-        System.out.println("user_mail : " + session.getAttribute("email"));
-        System.out.println("user_range : " + session.getAttribute("age_range"));
-        System.out.println("user_profile_image : " + session.getAttribute("profile_image"));
-        System.out.println("user_thumbnail : " + session.getAttribute("thumbnail_image"));
- 
-        System.out.println("세션에 넣은 값");
+        System.out.println("카카오에서 받아온 정보 세션에 넣은 값");
         System.out.println("user_name : " + session.getAttribute("user_name"));
         System.out.println("user_mail : " + session.getAttribute("user_mail"));
         System.out.println("user_range : " + session.getAttribute("user_range"));

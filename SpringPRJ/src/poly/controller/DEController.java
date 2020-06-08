@@ -8,22 +8,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import poly.service.IEmpathyService;
+import poly.service.ICrawlingService;
 import poly.util.CmmUtil;
 
 @Controller
 public class DEController {
 	private Logger log = Logger.getLogger(this.getClass().getName());
 
-	@Resource(name = "EmpathyService")
-	private IEmpathyService empathyService;
+	@Resource(name = "CrawlingService")
+	private ICrawlingService crawlingService;
 	
 	@RequestMapping(value = "/DExellent/index")
 	public String index(HttpSession session) throws Exception {
 		log.info(this.getClass().getName() + "########인덱스 화면 실행########");
 		
 		if (!CmmUtil.nvl((String)session.getAttribute("user_name")).equals("")) {
-			empathyService.collectEmpathyCrawling();
+			crawlingService.collectEmpathyCrawling();
 		}
 		return "/DExellent/index";
 	}

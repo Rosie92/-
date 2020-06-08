@@ -41,3 +41,7 @@
 1591258593783	Delete element
 1591258618991	Rename compilation unit 'UserInfoMapper.java'
 1591274951556	Delete element
+1591333007742	Rename type 'EmpathyService'
+1591333017898	Rename type 'IEmpathyService'
+1591333030324	Rename type 'EmpathyMapper'
+1591333043939	Rename type 'IEmpathyMapper'
