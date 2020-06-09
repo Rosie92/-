@@ -13,12 +13,12 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
-import poly.dto.EmpathyDTO;
-import poly.persistance.mongo.ICrawlingMapper;
+import poly.dto.TitleDTO;
+import poly.persistance.mongo.IContentCrawlingMapper;
 import poly.util.CmmUtil;
 
-@Component("CrawlingMapper")
-public class CrawlingMapper implements ICrawlingMapper {
+@Component("ContentCrawlingMapper")
+public class ContentCrawlingMapper implements IContentCrawlingMapper {
 
 	@Autowired
 	private MongoTemplate mongodb;
@@ -38,8 +38,8 @@ public class CrawlingMapper implements ICrawlingMapper {
 
 		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
 		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
-		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Empathy", 1),
-				"Empathy1");
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Content", 1),
+				"Content");
 
 		res = true;
 
@@ -49,21 +49,17 @@ public class CrawlingMapper implements ICrawlingMapper {
 	}
 
 	@Override
-	public int insertEmpathy(EmpathyDTO pDTO, String colNm) throws Exception {
-		log.info(this.getClass().getName() + ".insertEmpathy Start!");
+	public int insertContent(List<TitleDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertContent Start!");
 
-		if (pDTO == null) {
-			log.info("pDTO 값 안들어옴");
-			pDTO = new EmpathyDTO();
-		}
 		log.info("colNm : " + colNm);
-		log.info("pDTO : " + pDTO);
+		log.info("pList : " + pList);
 		
-		log.info("몽고디비 인서트 실행 시작");
+		log.info("몽고디비 콘텐트 인서트 실행 시작");
 		
-		mongodb.insert(pDTO, colNm);
+		mongodb.insert(pList, colNm);
 		
-		log.info("몽고디비 인서트 실행 완료");
+		log.info("몽고디비 콘텐트 인서트 실행 완료");
 		
 		return 1;
 	}
@@ -71,42 +67,45 @@ public class CrawlingMapper implements ICrawlingMapper {
 	
 	
 	@Override
-	public List<EmpathyDTO> getEmpathy(String colNm) throws Exception {
-		
-		log.info(this.getClass().getName() + ".getEmpathyDTO Select Mapper Start");
-		
+	public List<TitleDTO> getContent(String colNm) throws Exception {
+
+		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 매퍼 시작");
+
 		// 데이터를 가져올 컬렉션 선택
 		DBCollection rCol = mongodb.getCollection(colNm);
-		
+
 		// 컬렉션으로부터 전체 데이터 가져오기
 		Iterator<DBObject> cursor = rCol.find();
-		
+
 		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
-		List<EmpathyDTO> rList = new ArrayList<EmpathyDTO>();
-		
-		EmpathyDTO rDTO = null;
-		
-		rDTO = new EmpathyDTO();
-		
-		final DBObject current = cursor.next();
+		List<TitleDTO> rList = new ArrayList<TitleDTO>();
 
-		String Crawling_Data = CmmUtil.nvl((String) current.get("empathy")); // 크롤링데이터
+		TitleDTO rDTO = null;
 
-		/* System.out.println("Crawling_data : " + Crawling_Data.substring(0, 100)); */
-		
-		rDTO.setEmpathy(Crawling_Data);
-		
-		System.out.println("rDTO : " + rDTO);
-		
-		rList.add(rDTO); // List에 저장
-		
-		System.out.println("rList : " + rList);
-		
-		rDTO = null;
-		
-		log.info(this.getClass().getName() + ".getEmpathyDTO Select Mapper End");
-		
+		while (cursor.hasNext()) {
+
+			rDTO = new TitleDTO();
+
+			final DBObject current = cursor.next();
+
+			String Crawling_Data = CmmUtil.nvl((String) current.get("content")); // 크롤링데이터
+
+			rDTO.setContent(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			rList.add(rDTO); // List에 저장
+
+			System.out.println("rList에 저장완료");
+
+			rDTO = null;
+
+		}
+
+		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 매퍼 종료");
+
 		return rList;
 
 	}
+
 }

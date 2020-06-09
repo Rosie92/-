@@ -12,47 +12,68 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import poly.dto.EmpathyDTO;
-import poly.service.ICrawlingService;
+import poly.dto.TitleDTO;
+import poly.service.IContentCrawlingService;
+import poly.service.ITitleCrawlingService;
 
 @Controller
 public class EmpathyController {
 	private Logger log = Logger.getLogger(this.getClass().getName());
 
-	@Resource(name = "CrawlingService")
-	private ICrawlingService CrawlingService;
+	@Resource(name = "TitleCrawlingService")
+	private ITitleCrawlingService TitleCrawlingService;
+
+	@Resource(name = "ContentCrawlingService")
+	private IContentCrawlingService ContentCrawlingService;
 
 	// 데이터 가져오기
-	@RequestMapping(value = "/DExellent/getEmpathy")
+	@RequestMapping(value = "/DExellent/getTitle")
 	@ResponseBody
-	public List<EmpathyDTO> getEmpathy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public List<TitleDTO> getTitle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		log.info(this.getClass().getName() + ".getEmpathy Select Controller Start");
+		log.info(this.getClass().getName() + ".뉴스타이틀 셀렉트 컨트롤러 시작");
 
-		List<EmpathyDTO> rList = CrawlingService.getEmpathy();
+		List<TitleDTO> rList = TitleCrawlingService.getTitle();
 
-		System.out.println("List<EmpathyDTO> rList = CrawlingService.getEmpathy(); 실행됨");
-
-		System.out.println("rList : " + rList);
+		System.out.println("List<TitleDTO> rList = TitleCrawlingService.getTitle(); 실행됨");
 
 		if (rList == null) {
-			rList = new ArrayList<EmpathyDTO>();
+			rList = new ArrayList<TitleDTO>();
 		}
-		System.out.println("IF문 실행됨");
 
-		log.info(this.getClass().getName() + ".getEmpathy Select controller End");
+		log.info(this.getClass().getName() + ".뉴스타이틀 셀렉트 컨트롤러 종료");
+
+		return rList;
+	}
+
+	// 데이터 가져오기
+	@RequestMapping(value = "/DExellent/getContent")
+	@ResponseBody
+	public List<TitleDTO> getContent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 컨트롤러 시작");
+
+		List<TitleDTO> rList = ContentCrawlingService.getContent();
+
+		System.out.println("List<TitleDTO> rList = ContentCrawlingService.getContent(); 실행됨");
+
+		if (rList == null) {
+			rList = new ArrayList<TitleDTO>();
+		}
+
+		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 컨트롤러 종료");
 
 		return rList;
 	}
 
 	// 데이터 가져와 jsp와 연결
-	@RequestMapping(value = "/DExellent/empathy")
-	public String empathy(HttpServletRequest requset, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/DExellent/Title")
+	public String Title(HttpServletRequest requset, HttpServletResponse response) throws Exception {
 
-		log.info(this.getClass().getName() + ".Empathy JSP Controller Start");
+		log.info(this.getClass().getName() + ".뉴스 셀렉트 컨트롤러 (JSP출력) 시작");
 
-		log.info(this.getClass().getName() + ".Empathy JSP Controller End");
+		log.info(this.getClass().getName() + ".뉴스 셀렉트 컨트롤러 (JSP출력) 종료");
 
-		return "/DExellent/empathy";
+		return "/DExellent/Title";
 	}
 }

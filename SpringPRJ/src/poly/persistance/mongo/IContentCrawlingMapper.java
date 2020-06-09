@@ -2,9 +2,9 @@ package poly.persistance.mongo;
 
 import java.util.List;
 
-import poly.dto.EmpathyDTO;
+import poly.dto.TitleDTO;
 
-public interface ICrawlingMapper {
+public interface IContentCrawlingMapper {
 
 	/*
 	 * MongoDB 컬렉션 생성
@@ -19,11 +19,11 @@ public interface ICrawlingMapper {
 	 * 
 	 * @param pDTO 저장될 정보
 	 */
-	public int insertEmpathy(EmpathyDTO pDTO, String colNm) throws Exception;
+	public int insertContent(List<TitleDTO> pList, String colNm) throws Exception;
 	/*
 	MongoDB 데이터 가져오기
 	
 	@param colNm 가져올 컬렉션 이름
 	*/
-	public List<EmpathyDTO> getEmpathy(String colNm) throws Exception;
+	public List<TitleDTO> getContent(String colNm) throws Exception;
 }
