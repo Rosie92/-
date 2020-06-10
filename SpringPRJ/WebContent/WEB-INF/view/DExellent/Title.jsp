@@ -4,7 +4,6 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(window).on("load", function() {
@@ -35,11 +34,14 @@
 						var content = "";
 
 						for (var i = 0; i < json.length; i++) { // 이미지 더 구하거나 10개까지 제한으로 변경 필요함
-							title += "<div>";
+							title += "<div style='display: inline-block;'>";
 							title += "<img src='../../assets/img/DEIMG/PP" + i + ".jpg' width='60px' height='60px'></div>"; 
-							title += "<div  style='display:inline-block'><a href='" + data[i].content + " ' target='_black'>";
-							title += (json[i].title + "<br><hr>");
-							title += "</a></div>";
+							title += "<div style='display: inline-block; width: 260px; line-height: 30px; margin-left: 8px;'>";
+							title += "<a href='" + data[i].content + " ' target='_black'";
+ 							title += "style='text-decoration: none; font-weight: 500;'>";  
+							title += "<span style='font-size: 17px; color: black;'>";
+							title += (json[i].title);
+							title += "</span></a></div><br><hr>";
 						}
 						$('#title').html(title);
 					}
@@ -49,7 +51,7 @@
 	}
 </script>
  
-<title>동물공감</title>
+<title>동물뉴스</title>
 
 </head>
 <body style="overflow-x: hidden">
@@ -57,6 +59,9 @@
 	<div id="title"></div>
 	<br />
 	<hr />
+
+
+
 
 </body>
 

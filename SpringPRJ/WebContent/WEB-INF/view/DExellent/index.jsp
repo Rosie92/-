@@ -11,6 +11,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>강아지는 훌륭하다</title>
+<style type="text/css">
+</style>
 <link rel="icon" type="image/x-icon" href="/assets/img/DEIMG/title.png" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"
@@ -31,6 +33,7 @@
 	rel="stylesheet" type="text/css">
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 
 </head>
 <body id="page-top">
@@ -69,7 +72,7 @@
 						} else {
 					%>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#services">EMPATHY</a></li>
+						href="#services">NEWS</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#portfolio">YOUTUBE</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -394,20 +397,23 @@
 	<section class="page-section" id="services">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase">EMPATHY</h2>
-				<h3 class="section-subheading text-muted">Animal empathy for
-					dog owners.</h3>
+				<h2 class="section-heading text-uppercase">NEWS</h2>
+				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
 			</div>
-			<div>
-				<iframe src="/DExellent/Title.do" width="100%" height="600px"
-					name="Title" id="Title" frameborder="1" scrolling="yes"
-					style="overflow-x: hidden"/>
-				<div>
-					<input type="button" value="BACK" onClick="history.go(-1)">
-				</div>
-				</iframe>
+			
+			<p style="text-align: center">
+			<img class="img-fluid" src="../../assets/img/DEIMG/news.jpg" style="width: 350px; height: 200px;">
+			</p>
+			<div class="portfolio-caption">
+				<h3 class="section-subheading text-muted" style="text-align: center; line-height: 30px;">
+					동물전문매체 Happy Pet에서 <br>강아지와 관련된 뉴스를 제공합니다.
+				</h3>
 			</div>
 
+
+			<iframe src="/DExellent/Title.do" width="100%" height="600px"
+				name="Title" id="Title" frameborder="1" scrolling="yes"
+				style="overflow-x: hidden" /></iframe>
 		</div>
 	</section>
 	<!-- Portfolio Grid-->
@@ -415,102 +421,19 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">YOUTUBE</h2>
-				<h3 class="section-subheading text-muted">YouTube Related to
-					Puppies.</h3>
+				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
+			<p style="text-align: center">
+			<img class="img-fluid" src="../../assets/img/DEIMG/youtubeimg.jpg" style="width: 350px; height: 210px;">
+			</p>
+			<div class="portfolio-caption">
+				<h3 class="section-subheading text-muted" style="text-align: center; line-height: 30px;">
+					Youtube에서 <br>강아지와 관련된 영상을 제공받습니다.
+				</h3>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal1"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/01-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Threads</div>
-							<div class="portfolio-caption-subheading text-muted">Illustration</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal2"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/02-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Explore</div>
-							<div class="portfolio-caption-subheading text-muted">Graphic
-								Design</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal3"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/03-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Finish</div>
-							<div class="portfolio-caption-subheading text-muted">Identity</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal4"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/04-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Lines</div>
-							<div class="portfolio-caption-subheading text-muted">Branding</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal5"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/05-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Southwest</div>
-							<div class="portfolio-caption-subheading text-muted">Website
-								Design</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal6"><div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/assets/img/portfolio/06-thumbnail.jpg" alt="" /></a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Window</div>
-							<div class="portfolio-caption-subheading text-muted">Photography</div>
-						</div>
-					</div>
-				</div>
+			
+				<iframe src="/DExellent/Youtube.do" width="100%" height="600px"
+					name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+					style="overflow-x: hidden" /></iframe>
 			</div>
 		</div>
 	</section>
@@ -744,7 +667,7 @@
 				<h3 class="section-subheading text-muted">Displays Kakao member
 					information.</h3>
 			</div>
-			<iframe src="/DExellent/mypage.do" width="100%" height="750px"
+			<iframe src="/DExellent/mypage.do" width="330px" height="750px"
 				name="mypage1" id="mypage1"></iframe>
 		</div>
 	</section>
@@ -977,24 +900,10 @@
 						<div class="col-lg-8">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-								<img class="img-fluid d-block mx-auto"
-									src="/assets/img/portfolio/06-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Window</li>
-									<li>Category: Photography</li>
-								</ul>
+
 								<button class="btn btn-primary" data-dismiss="modal"
 									type="button">
-									<i class="fas fa-times mr-1"></i>Close Project
+									<i class="fas fa-times mr-1"></i>Close
 								</button>
 							</div>
 						</div>
@@ -1003,6 +912,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -4,6 +4,15 @@ public class TitleDTO {
 
 	private String title;
 	private String content;
+	private String test;
+
+	public String getTest() {
+		return test;
+	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
 
 	public String getContent() {
 		return content;
