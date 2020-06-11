@@ -1,7 +1,6 @@
 package poly.service.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,8 +8,6 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.YoutubeDTO;
@@ -44,27 +41,15 @@ public class YoutubeCrawlingService implements IYoutubeCrawlingService {
 
 		doc = Jsoup.connect(url).get();
 
-		Elements element = doc.select("html");// or article-list-content
+		String YoutubeCrawlingData = doc.toString();// or article-list-content
 		/* post-area */
 		/* System.out.println("element : " + element); */
-		
-		Iterator<Element> Crawling = element.select("body").iterator();
-		 
 
-		while (Crawling.hasNext()) {
+		YoutubeDTO pDTO = new YoutubeDTO();
 
-			Element Youtube = Crawling.next();
+		pDTO.setYoutube(YoutubeCrawlingData);
 
-			String Youtube_url = Youtube.text();
-
-			Youtube = null;
-
-			YoutubeDTO pDTO = new YoutubeDTO();
-
-			pDTO.setYoutube(Youtube_url);
-
-			pList.add(pDTO);
-		}
+		pList.add(pDTO);
 
 		String colNm = "Youtube"; // 생성할 컬렉션명
 

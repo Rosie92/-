@@ -54,7 +54,7 @@
 <title>동물뉴스</title>
 
 </head>
-<body style="overflow-x: hidden">
+<section style="overflow-x: hidden">
 
 	<div id="title"></div>
 	<br />
@@ -63,6 +63,6 @@
 
 
 
-</body>
+</section>
 
 </html>

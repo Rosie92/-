@@ -70,13 +70,13 @@ public class YoutubeCrawlingMapper implements IYoutubeCrawlingMapper {
 
 		// 데이터를 가져올 컬렉션 선택
 		DBCollection rCol = mongodb.getCollection(colNm);
-
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
 		// 컬렉션으로부터 전체 데이터 가져오기
 		Iterator<DBObject> cursor = rCol.find();
-
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
 		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
 		List<YoutubeDTO> rList = new ArrayList<YoutubeDTO>();
-
+		
 		YoutubeDTO rDTO = null;
 
 		while (cursor.hasNext()) {
@@ -84,9 +84,9 @@ public class YoutubeCrawlingMapper implements IYoutubeCrawlingMapper {
 			rDTO = new YoutubeDTO();
 
 			final DBObject current = cursor.next();
-
+			System.out.println("#################### current에 cursor.next실행 #######################");
 			String Crawling_Data = CmmUtil.nvl((String) current.get("Youtube")); // 크롤링데이터
-
+			System.out.println("########### Crawling_data에 current.get('Youtube') 실행완료 ###############");
 			rDTO.setYoutube(Crawling_Data);
 
 			System.out.println("rDTO에 저장 완료");
