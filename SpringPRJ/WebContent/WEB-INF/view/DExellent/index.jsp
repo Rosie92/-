@@ -95,12 +95,12 @@
 	<!-- Masthead-->
 	<header class="masthead">
 		<div class="container">
-
+<%-- 
 			<div class="masthead-heading text-uppercase">
 				강아지는<%="&nbsp&nbsp&nbsp&nbsp&nbsp"%>
 				<br>
 				<%="&nbsp&nbsp&nbsp&nbsp&nbsp"%>훌륭하다
-			</div>
+			</div> --%>
 			<%
 				if (session.getAttribute("user_name") == null) {
 			%>
@@ -400,12 +400,14 @@
 				<h2 class="section-heading text-uppercase">NEWS</h2>
 				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
 			</div>
-			
+
 			<p style="text-align: center">
-			<img class="img-fluid" src="../../assets/img/DEIMG/news.jpg" style="width: 350px; height: 200px;">
+				<img class="img-fluid" src="../../assets/img/DEIMG/news.jpg"
+					style="width: 350px; height: 300px;">
 			</p>
 			<div class="portfolio-caption">
-				<h3 class="section-subheading text-muted" style="text-align: center; line-height: 30px;">
+				<h3 class="section-subheading text-muted"
+					style="text-align: center; line-height: 30px;">
 					동물전문매체 Happy Pet에서 <br>강아지와 관련된 뉴스를 제공합니다.
 				</h3>
 			</div>
@@ -422,15 +424,17 @@
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">YOUTUBE</h2>
 				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
-			<p style="text-align: center">
-			<img class="img-fluid" src="../../assets/img/DEIMG/youtubeimg.jpg" style="width: 350px; height: 210px;">
-			</p>
-			<div class="portfolio-caption">
-				<h3 class="section-subheading text-muted" style="text-align: center; line-height: 30px;">
-					Youtube에서 <br>강아지와 관련된 영상을 제공받습니다.
-				</h3>
-			</div>
-			
+				<p style="text-align: center">
+					<img class="img-fluid" src="../../assets/img/DEIMG/youtubeimg.jpg"
+						style="width: 350px; height: 210px;">
+				</p>
+				<div class="portfolio-caption">
+					<h3 class="section-subheading text-muted"
+						style="text-align: center; line-height: 30px;">
+						Youtube에서 <br>강아지와 관련된 영상을 제공받습니다.
+					</h3>
+				</div>
+
 				<iframe src="/DExellent/Youtube.do" width="100%" height="600px"
 					name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" /></iframe>
@@ -442,90 +446,22 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">INFORMATION</h2>
-				<h3 class="section-subheading text-muted">puppy-related
-					information.</h3>
+				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
+				<p style="text-align: center">
+					<img class="img-fluid" src="../../assets/img/DEIMG/qwerqwer.jpg"
+						style="width: 350px; height: 210px;">
+				</p>
+				<div class="portfolio-caption">
+					<h3 class="section-subheading text-muted"
+						style="text-align: center; line-height: 30px;">
+						BeMyPet에서 <br>강아지와 관련된 정보를 제공받습니다.
+					</h3>
+				</div>
+
+				<iframe src="/DExellent/Information.do" width="100%" height="600px"
+					name="Information" id="Information" frameborder="1" scrolling="yes"
+					style="overflow-x: hidden" target="" /></iframe>
 			</div>
-			<ul class="timeline">
-				<li>
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="/assets/img/about/1.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>2009-2011</h4>
-							<h4 class="subheading">Our Humble Beginnings</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="/assets/img/about/2.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>March 2011</h4>
-							<h4 class="subheading">An Agency is Born</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="/assets/img/about/3.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>December 2012</h4>
-							<h4 class="subheading">Transition to Full Service</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="/assets/img/about/4.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>July 2014</h4>
-							<h4 class="subheading">Phase Two Expansion</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<h4>
-							Be Part<br />Of Our<br />Story!
-						</h4>
-					</div>
-				</li>
-			</ul>
 		</div>
 	</section>
 	<!-- Team-->
@@ -533,82 +469,21 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">KINDERGARTEN</h2>
-				<h3 class="section-subheading text-muted">Provides location for
-					puppy kindergartens.</h3>
-			</div>
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/assets/img/team/1.jpg"
-							alt="" />
-						<h4>Kay Garland</h4>
-						<p class="text-muted">Lead Designer</p>
-						<a class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-twitter"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-facebook-f"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-linkedin-in"></i></a>
-					</div>
+				<hr style="width: 60%; margin-top: 30px; margin-bottom: 30px;">
+				<p style="text-align: center">
+					<img class="img-fluid" src="../../assets/img/DEIMG/kinder.jpg"
+						style="width: 350px; height: 210px;">
+				</p>
+				<div class="portfolio-caption">
+					<h3 class="section-subheading text-muted"
+						style="text-align: center; line-height: 30px;">
+						KakaoMap에서 <br>강아지 유치원 위치 정보를 제공받습니다.
+					</h3>
 				</div>
-				<div class="col-lg-4">
-					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/assets/img/team/2.jpg"
-							alt="" />
-						<h4>Larry Parker</h4>
-						<p class="text-muted">Lead Marketer</p>
-						<a class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-twitter"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-facebook-f"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-linkedin-in"></i></a>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/assets/img/team/3.jpg"
-							alt="" />
-						<h4>Diana Petersen</h4>
-						<p class="text-muted">Lead Developer</p>
-						<a class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-twitter"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-facebook-f"></i></a><a
-							class="btn btn-dark btn-social mx-2" href="#!"><i
-							class="fab fa-linkedin-in"></i></a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-8 mx-auto text-center">
-					<p class="large text-muted">Lorem ipsum dolor sit amet,
-						consectetur adipisicing elit. Aut eaque, laboriosam veritatis,
-						quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Clients-->
-	<section class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="/assets/img/logos/envato.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="/assets/img/logos/designmodo.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="/assets/img/logos/themeforest.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="/assets/img/logos/creative-market.jpg" alt="" /></a>
-				</div>
+
+				<iframe src="/DExellent/Kindergarten.do" width="100%" height="600px"
+					name="Kindergarten" id="Kindergarten" frameborder="1" scrolling="yes"
+					style="overflow-x: hidden" target="" /></iframe>
 			</div>
 		</div>
 	</section>

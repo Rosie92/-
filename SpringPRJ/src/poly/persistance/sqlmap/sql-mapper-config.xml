@@ -6,5 +6,6 @@
     	<!-- 사용할 DTO 등록  -->
 		<typeAlias type="poly.dto.TitleDTO" alias="TitleDTO"/>
 		<typeAlias type="poly.dto.YoutubeDTO" alias="YoutubeDTO"/>
+		<typeAlias type="poly.dto.InformationDTO" alias="InformationDTO"/>
     </typeAliases>
 </configuration>

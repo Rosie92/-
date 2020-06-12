@@ -67,7 +67,6 @@ public class ContentCrawlingSerivce implements IContentCrawlingService {
 		}
 
 		String colNm = "Content"; // 생성할 컬렉션명
-		String colNm2 = "test";
 
 		// MongoDB Collection 생성하기
 		ContentCrawlingMapper.createCollection(colNm);

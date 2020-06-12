@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import poly.service.IContentCrawlingService;
+import poly.service.IInformationCrawlingService;
 import poly.service.ITitleCrawlingService;
 import poly.service.IYoutubeCrawlingService;
 import poly.util.CmmUtil;
@@ -26,6 +27,9 @@ public class DEController {
 	@Resource(name = "YoutubeCrawlingService")
 	private IYoutubeCrawlingService youtubecrawlingService;
 	
+	@Resource(name = "InformationCrawlingService")
+	private IInformationCrawlingService informationcrawlingService;
+	
 	@RequestMapping(value = "/DExellent/index")
 	public String index(HttpSession session) throws Exception {
 		log.info(this.getClass().getName() + "########인덱스 화면 실행########");
@@ -34,6 +38,7 @@ public class DEController {
 			titlecrawlingService.collectTitleCrawling();
 			contentcrawlingService.collectContentCrawling();
 			youtubecrawlingService.collectYoutubeCrawling();
+			informationcrawlingService.collectInformationCrawling();
 		}
 		return "/DExellent/index";
 	}

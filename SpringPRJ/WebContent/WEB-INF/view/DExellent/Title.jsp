@@ -37,7 +37,7 @@
 							title += "<div style='display: inline-block;'>";
 							title += "<img src='../../assets/img/DEIMG/PP" + i + ".jpg' width='60px' height='60px'></div>"; 
 							title += "<div style='display: inline-block; width: 260px; line-height: 30px; margin-left: 8px;'>";
-							title += "<a href='" + data[i].content + " ' target='_black'";
+							title += "<a href='" + data[i].content + " ' target='_self'";
  							title += "style='text-decoration: none; font-weight: 500;'>";  
 							title += "<span style='font-size: 17px; color: black;'>";
 							title += (json[i].title);

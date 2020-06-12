@@ -21,13 +21,15 @@
 			dataType : "JSON",
 			contentType : "application/json; charset=UTF-8",
 			success : function(json) {
+				
+				console.log(json.length);
 
-				var youtube = "";
+				var Youtube = "";
 
 				for (var i = 0; i < json.length; i++) {
-					youtube += (json.youtube);
+					Youtube += (json[i].youtube);
 				}
-				$('#youtube').html(youtube);
+				$('#Youtube').html(Youtube);
 			}
 		})
 	}
@@ -36,13 +38,13 @@
 <title>Youtube</title>
 
 </head>
-<section style="overflow-x: hidden">
+<body style="overflow-x: hidden">
 
-	<div id="youtube"></div>
+	<div id="Youtube"></div>
 	<br />
 	<hr />
 
 
-</section>
+</body>
 
 </html>

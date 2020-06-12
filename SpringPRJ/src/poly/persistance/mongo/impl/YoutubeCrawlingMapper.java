@@ -85,10 +85,10 @@ public class YoutubeCrawlingMapper implements IYoutubeCrawlingMapper {
 
 			final DBObject current = cursor.next();
 			System.out.println("#################### current에 cursor.next실행 #######################");
-			String Crawling_Data = CmmUtil.nvl((String) current.get("Youtube")); // 크롤링데이터
+			String Crawling_Data = CmmUtil.nvl((String) current.get("youtube")); // 크롤링데이터
 			System.out.println("########### Crawling_data에 current.get('Youtube') 실행완료 ###############");
 			rDTO.setYoutube(Crawling_Data);
-
+			
 			System.out.println("rDTO에 저장 완료");
 
 			rList.add(rDTO); // List에 저장

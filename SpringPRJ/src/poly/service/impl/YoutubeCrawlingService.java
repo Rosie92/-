@@ -1,6 +1,7 @@
 package poly.service.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,6 +9,8 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.YoutubeDTO;
@@ -38,18 +41,41 @@ public class YoutubeCrawlingService implements IYoutubeCrawlingService {
 
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
-
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
 		doc = Jsoup.connect(url).get();
+		
+		Elements element = doc.select("ytd-search.style-scope ytd-page-manager");
+		
+		Iterator<Element> Crawling = element.select("div#container").iterator();
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Crawling : " + Crawling);
+		/*
+		 * 
+		 * div 지정한 크롤링이 막혀있어서 API써야하는데 ㅈㄴ 어려움 ㅅㅂ;;;
+		 * 
+		 */
+		
+		
+		while (Crawling.hasNext()) {
 
-		String YoutubeCrawlingData = doc.toString();// or article-list-content
-		/* post-area */
-		/* System.out.println("element : " + element); */
+			Element CrawlingData = Crawling.next();
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CrawlingData : " + CrawlingData);
+			
+			String Youtube = CrawlingData.select("div#container").text();
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Youtube : " + Youtube);
+			
+			CrawlingData = null;
 
-		YoutubeDTO pDTO = new YoutubeDTO();
+			YoutubeDTO pDTO = new YoutubeDTO();
 
-		pDTO.setYoutube(YoutubeCrawlingData);
+			pDTO.setYoutube(Youtube);
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ pDTO : " + pDTO);
 
-		pList.add(pDTO);
+			pList.add(pDTO);
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ pList : " + pList);
+			
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		}
 
 		String colNm = "Youtube"; // 생성할 컬렉션명
 
