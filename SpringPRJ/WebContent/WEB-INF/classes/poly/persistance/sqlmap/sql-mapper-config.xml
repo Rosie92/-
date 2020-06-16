@@ -9,5 +9,6 @@
 		<typeAlias type="poly.dto.InformationDTO" alias="InformationDTO"/>
 		<typeAlias type="poly.dto.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="poly.dto.PagingDTO" alias="PagingDTO"/>
+		<typeAlias type="poly.dto.CommentDTO" alias="CommentDTO"/>
     </typeAliases>
 </configuration>

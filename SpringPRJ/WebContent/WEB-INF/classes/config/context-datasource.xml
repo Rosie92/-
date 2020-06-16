@@ -12,8 +12,8 @@
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://192.168.136.130:3306/MyDB?useSSL=false&amp;serverTimezone=Asia/Seoul" />
-		<property name="username" value="web_user" />
-		<property name="password" value="WebUser01#" />
+		<property name="username" value="root" />
+		<property name="password" value="data16" />
 
 	</bean>
 </beans>

@@ -504,6 +504,10 @@
 					</h3>
 				</div>
 				
+				<iframe src="/DExellent/board/BoardList.do" width="100%" height="600px"
+				name="Board" id="Board" frameborder="1" scrolling="yes"
+				style="overflow-x: hidden" /></iframe>
+				
 	</section>
 	<!-- mypage-->
 	<section class="page-section" id="mypage">

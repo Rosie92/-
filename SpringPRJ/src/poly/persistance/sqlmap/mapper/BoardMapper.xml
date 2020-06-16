@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poly.persistance.mapper.BMMapper">
+
+	<select id="TotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		board
+	</select>
+	
+		<select id="getBoardList" resultType="BoardDTO"><!-- BMFreeB -->
+<![CDATA[
+	SELECT
+		TITLE AS title,
+		UPD_DATE AS upd_date,
+		BOARD_SEQ AS board_seq
+	FROM
+		(SELECT
+			A.*, ROWNUM AS RNUM
+		FROM
+			(SELECT * FROM board ORDER BY BOARD_SEQ DESC) A
+		WHERE
+			ROWNUM <= #{listsize}
+		)
+	WHERE
+		RNUM > #{startlist}
+]]>
+	</select>
+	
+<!-- 
+
+	<insert id="insertBMFreeBR" parameterType="BoardDTO">
+		INSERT INTO board (
+		BOARD_SEQ,
+		TITLE,
+		CONTENT,
+		UPD_DATE,
+		) VALUES (
+		(SELECT
+		NVL(MAX(FBTABLE.BOARD_SEQ),0)+1 FROM FBTABLE),
+		#{title},
+		#{content},
+		SYSDATE,
+		)
+	</insert>
+
+
+
+
+
+	<select id="getBMFreeBD" parameterType="BMFBDTO"
+		resultType="BMFBDTO">
+		SELECT
+		TITLE AS title,
+		CONTENT AS content,
+		UPD_DATE AS
+		upd_Date,
+		USER_ID AS user_id,
+		BOARD_SEQ AS Seq,
+		BOARD_PW AS board_pw
+		FROM
+		FBTABLE
+		WHERE
+		BOARD_SEQ = #{Seq}
+	</select>
+
+
+	<select id="ModifyCertify" parameterType="BMFBDTO"
+		resultType="BMFBDTO">
+		SELECT
+		BOARD_SEQ AS board_seq
+		FROM FBTABLE
+		WHERE
+		BOARD_SEQ =
+		#{board_seq}
+	</select>
+
+
+
+	<select id="ModifyCertify2" parameterType="BMFBDTO"
+		resultType="BMFBDTO">
+		SELECT
+		BOARD_PW AS board_pw
+		FROM FBTABLE
+		WHERE
+		BOARD_PW =
+		#{board_pw}
+		AND BOARD_SEQ = #{board_seq}
+	</select>
+	
+	<select id="GUI2" parameterType="BMFBDTO" resultType="BMFBDTO">
+		SELECT
+		TITLE AS title,
+		CONTENT AS content,
+		UPD_DATE AS upd_date,
+		USER_ID AS
+		user_id,
+		BOARD_PW AS board_pw,
+		BOARD_SEQ AS board_seq
+		FROM FBTABLE
+		WHERE
+		BOARD_PW = #{board_pw}
+		AND BOARD_SEQ = #{board_seq}
+	</select>
+
+	<select id="GUI3" parameterType="BMFBDTO" resultType="BMFBDTO">
+		SELECT
+		TITLE AS title,
+		CONTENT AS content,
+		UPD_DATE AS upd_date,
+		USER_ID AS
+		user_id,
+		BOARD_PW AS board_pw,
+		BOARD_SEQ AS board_seq
+		FROM FBTABLE
+		WHERE
+		BOARD_SEQ = #{board_seq}
+	</select>
+
+
+
+	<select id="GUI4" parameterType="BMFBDTO" resultType="BMFBDTO">
+		SELECT
+		TITLE AS title,
+		CONTENT AS content,
+		UPD_DATE AS upd_date,
+		BOARD_PW AS
+		board_pw,
+		BOARD_SEQ AS board_seq
+		FROM FBTABLE
+		WHERE
+		BOARD_SEQ =
+		#{board_seq}
+	</select>
+
+
+	<select id="BMFreeBDModify" parameterType="BMFBDTO"
+		resultType="BMFBDTO">
+		SELECT
+		TITLE AS title,
+		CONTENT AS content,
+		UPD_DATE AS
+		upd_date,
+		USER_ID AS user_id,
+		BOARD_PW AS board_pw,
+		BOARD_SEQ AS seq
+		FROM
+		FBTABLE
+		WHERE
+		BOARD_SEQ = #{seq}
+	</select>
+
+
+	<update id="updateFB" parameterType="BMFBDTO">
+		UPDATE FBTABLE SET
+		TITLE =
+		#{title},
+		CONTENT = #{content},
+		BOARD_PW = #{board_pw},
+		UPD_DATE =
+		SYSDATE
+		WHERE
+		BOARD_SEQ = #{board_seq}
+	</update>
+
+
+	<delete id="deleteFB" parameterType="BMFBDTO">
+		DELETE
+		FROM
+		FBTABLE
+		WHERE
+		BOARD_SEQ = #{board_seq}
+	</delete>
+
+
+
+
+	
+	<select id="TotalCountUserInfo" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		USERTABLE
+	</select>
+
+
+
+
+	<select id="ModifyCertify3" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		USERTABLE
+		WHERE
+		USER_PW = #{user_pw}
+		AND USER_ID = #{user_id}
+	</select>
+	
+	
+	 <select id="readReply" resultType="COMMENTDTO">
+  		SELECT
+  		BOARD_SEQ AS board_seq,
+  		RNO AS rno,
+  		CONTENT AS content,
+  		WRITER AS writer,
+  		PW AS pw
+  		FROM
+  			(SELECT * FROM MYREPLY ORDER BY RNO ASC)
+  		WHERE 
+  		BOARD_SEQ = #{seq}
+ 	 </select>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <insert id="insertComment" parameterType="COMMENTDTO">
+		INSERT INTO MYREPLY (
+		RNO,
+		BOARD_SEQ,
+		CONTENT,
+		WRITER,
+		PW
+		) VALUES (
+		(SELECT
+		NVL(MAX(MYREPLY.RNO),0)+1 FROM MYREPLY),
+		#{board_seq},
+		#{content},
+		#{writer},
+		#{pw}
+		)
+	</insert>
+	
+	
+	<select id="CommentModifyTry" parameterType="COMMENTDTO"
+		resultType="COMMENTDTO">
+		SELECT
+		RNO AS rno
+		FROM MYREPLY
+		WHERE
+		RNO =
+		#{rno}
+	</select>
+	
+	
+	
+	<select id="CommentCertify" parameterType="COMMENTDTO" resultType="int">
+		SELECT COUNT(*)
+		FROM MYREPLY
+		WHERE
+			RNO = #{rno}
+		AND PW = #{pw}
+	</select>
+	
+	
+	<select id="CommentCertify2" parameterType="COMMENTDTO" resultType="COMMENTDTO">
+		SELECT
+			BOARD_SEQ AS board_seq,
+			RNO AS rno,
+			CONTENT AS content,
+			WRITER AS writer,
+			PW AS pw
+		FROM MYREPLY
+		WHERE
+			RNO = #{rno}
+		AND PW = #{pw}
+	</select>
+	
+	
+	<update id="CommentUpdate" parameterType="COMMENTDTO">
+		UPDATE MYREPLY SET
+		CONTENT = #{content},
+		PW = #{pw},
+		WRITER = #{writer}
+		WHERE
+		RNO = #{rno}
+	</update>
+	
+	
+	<delete id="CommentDelete" parameterType="COMMENTDTO">
+		DELETE
+		FROM
+		MYREPLY
+		WHERE
+		RNO = #{rno}
+	</delete>
+	
+	
+	<select id="selectRe" parameterType="COMMENTDTO" resultType="COMMENTDTO">
+		SELECT
+			BOARD_SEQ AS board_seq,
+			CONTENT AS content,
+			WRITER AS writer
+		FROM MYREPLY
+		WHERE
+			RNO = #{rno}
+	</select> -->
+</mapper>

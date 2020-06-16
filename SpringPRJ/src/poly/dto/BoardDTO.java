@@ -6,8 +6,15 @@ public class BoardDTO {
 	private String title;
 	private String user_name;
 	private String upd_date;
+	private String content;
 	
 
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getBoard_seq() {
 		return board_seq;
 	}
