@@ -18229,3 +18229,6 @@ org.eclipse.core.runtime.CoreException: Launch configuration Crawling references
 2020-06-15 14:01:44,986 [Worker-75: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-06-15 14:01:44,988 [Worker-75: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Project\SpringPRJ\src\main\resources
 2020-06-15 14:01:44,989 [Worker-75: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-06-15 14:01:44,991 [Worker-75: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Project\SpringPRJ\src\test\resources
+2020-06-17 09:02:33,783 [Worker-131: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-06-17 09:02:33,785 [Worker-131: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Project\SpringPRJ\src\main\resources
