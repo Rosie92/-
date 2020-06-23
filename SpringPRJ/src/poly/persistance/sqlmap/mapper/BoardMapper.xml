@@ -1,68 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="poly.persistance.mapper.BMMapper">
+<mapper namespace="poly.persistance.mapper.BoardMapper">
 
+
+<!-- //////////////////////// 게시판  ////////////////////////////-->
 	<select id="TotalCount" resultType="int">
 		SELECT COUNT(*)
 		FROM
 		board
 	</select>
 	
-		<select id="getBoardList" resultType="BoardDTO"><!-- BMFreeB -->
-<![CDATA[
-	SELECT
-		TITLE AS title,
-		UPD_DATE AS upd_date,
-		BOARD_SEQ AS board_seq
-	FROM
-		(SELECT
-			A.*, ROWNUM AS RNUM
-		FROM
-			(SELECT * FROM board ORDER BY BOARD_SEQ DESC) A
-		WHERE
-			ROWNUM <= #{listsize}
-		)
-	WHERE
-		RNUM > #{startlist}
-]]>
-	</select>
-	
-<!-- 
+		<select id="getBoardList" resultType="BoardDTO">
 
-	<insert id="insertBMFreeBR" parameterType="BoardDTO">
-		INSERT INTO board (
+
+ 	SELECT
 		BOARD_SEQ,
 		TITLE,
+		USER_NAME,
+		UPD_DATE
+	FROM
+		BOARD
+	ORDER BY BOARD_SEQ DESC
+	LIMIT #{startlist}, #{listsize} 
+	
+	</select>
+	
+	
+	<insert id="InsertBoardWriteProc" parameterType="BoardDTO">
+		INSERT
+		INTO
+		board
+		(
+		TITLE,
 		CONTENT,
-		UPD_DATE,
-		) VALUES (
-		(SELECT
-		NVL(MAX(FBTABLE.BOARD_SEQ),0)+1 FROM FBTABLE),
+		USER_NAME,
+		UPD_DATE
+		) 
+		VALUES
+		(
 		#{title},
 		#{content},
-		SYSDATE,
+		#{user_name},
+		SYSDATE()
+		)
+	</insert>
+	
+	<select id="getBoardDetail" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT
+		TITLE,
+		CONTEN,
+		UPD_DATE,
+		USER_NAME,
+		BOARD_SEQ
+		FROM
+		BOARD
+		WHERE
+		BOARD_SEQ = #{Seq}
+	</select>
+
+
+
+<!-- //////////////////////// 댓글 ////////////////////////////-->
+
+	
+	 <select id="readReply" resultType="CommentDTO">
+  		SELECT
+  		BOARD_SEQ,
+  		RNO,
+  		CONTENT,
+  		WRITER,
+  		FROM
+  		MYREPLY
+  		WHERE 
+  		BOARD_SEQ = #{seq}
+ 	 </select>
+ 	 
+ 	 <insert id="InsertComment" parameterType="CommentDTO">
+		INSERT INTO MYREPLY (
+		BOARD_SEQ,
+		CONTENT,
+		WRITER
+		) VALUES (
+		(SELECT
+		#{board_seq},
+		#{content},
+		#{writer}
 		)
 	</insert>
 
 
+<!-- 
 
 
-
-	<select id="getBMFreeBD" parameterType="BMFBDTO"
-		resultType="BMFBDTO">
-		SELECT
-		TITLE AS title,
-		CONTENT AS content,
-		UPD_DATE AS
-		upd_Date,
-		USER_ID AS user_id,
-		BOARD_SEQ AS Seq,
-		BOARD_PW AS board_pw
-		FROM
-		FBTABLE
-		WHERE
-		BOARD_SEQ = #{Seq}
-	</select>
 
 
 	<select id="ModifyCertify" parameterType="BMFBDTO"
@@ -194,39 +223,12 @@
 		AND USER_ID = #{user_id}
 	</select>
 	
-	
-	 <select id="readReply" resultType="COMMENTDTO">
-  		SELECT
-  		BOARD_SEQ AS board_seq,
-  		RNO AS rno,
-  		CONTENT AS content,
-  		WRITER AS writer,
-  		PW AS pw
-  		FROM
-  			(SELECT * FROM MYREPLY ORDER BY RNO ASC)
-  		WHERE 
-  		BOARD_SEQ = #{seq}
- 	 </select>
+
  	 
  	 
  	 
  	 
- 	 <insert id="insertComment" parameterType="COMMENTDTO">
-		INSERT INTO MYREPLY (
-		RNO,
-		BOARD_SEQ,
-		CONTENT,
-		WRITER,
-		PW
-		) VALUES (
-		(SELECT
-		NVL(MAX(MYREPLY.RNO),0)+1 FROM MYREPLY),
-		#{board_seq},
-		#{content},
-		#{writer},
-		#{pw}
-		)
-	</insert>
+
 	
 	
 	<select id="CommentModifyTry" parameterType="COMMENTDTO"

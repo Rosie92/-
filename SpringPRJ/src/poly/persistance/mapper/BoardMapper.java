@@ -5,16 +5,29 @@ import java.util.List;
 
 import config.Mapper;
 import poly.dto.BoardDTO;
+import poly.dto.CommentDTO;
 
-@Mapper("IBoardMapper")
+@Mapper("BoardMapper")
 public interface BoardMapper {
 
-	/*
-	 * BoardDTO getBoardList(String seq) throws Exception;
-	 */
+	//----------------------------게시판-----------------------------
 	int TotalCount() throws Exception;
 
 	List<BoardDTO> getBoardList(HashMap<String, Integer> hMap);
+
+	int InsertBoardWriteProc(BoardDTO bDTO) throws Exception;
+
+	BoardDTO getBoardDetail(String seq) throws Exception;
+	
+	
+	
+	
+	
+	//-----------------------------댓글-----------------------------------
+	List<CommentDTO> readReply(String seq) throws Exception;
+	int InsertComment(CommentDTO bDTO) throws Exception;
+	
+	
 	
 	/*
 	
@@ -53,9 +66,9 @@ public interface BoardMapper {
 	 * 
 	 * BoardDTO GUI4(BoardDTO pDTO) throws Exception;
 	 * 
-	 * List<COMMENTDTO> readReply(String seq) throws Exception;
 	 * 
-	 * int insertComment(COMMENTDTO bDTO) throws Exception;
+	 * 
+	 * 
 	 * 
 	 * COMMENTDTO CommentModifyTry(COMMENTDTO pDTO) throws Exception;
 	 * 

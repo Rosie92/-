@@ -4,22 +4,36 @@ import java.util.HashMap;
 import java.util.List;
 
 import poly.dto.BoardDTO;
+import poly.dto.CommentDTO;
 
 public interface IBoardService {
 
 	
-	
+	//---------------------------게시판-------------------------
 	int TotalCount() throws Exception;
 	
 	List<BoardDTO> getBoardList/*BMFreeB*/(HashMap<String, Integer> hMap) throws Exception;
+
+	int InsertBoardWriteProc(BoardDTO bDTO) throws Exception;
+	
+	BoardDTO getBoardDetail(String seq) throws Exception;
+	
+	
+	
+	
+	//-----------------------------댓글--------------------------
+	List<CommentDTO> readReply(String seq) throws Exception;
+	int InsertComment(CommentDTO bDTO) throws Exception;
+	
+	
 	
 	
 	
 	
 	/*
-	BoardDTO getBoardDetail(String seq) throws Exception;
+	
 
-	int BoardWrite(BoardDTO bDTO) throws Exception;
+
 	
 	BoardDTO BoardModifyCertify(BoardDTO pDTO) throws Exception;
 	
@@ -47,12 +61,9 @@ public interface IBoardService {
 	
 	
 	/*
-	 * List<COMMENTDTO> readReply(String seq) throws Exception; List<COMMENTDTO>
-	 * readReplySR(String seq) throws Exception; List<COMMENTDTO> readReplyQT(String
-	 * seq) throws Exception; List<COMMENTDTO> readReplyM(String seq) throws
-	 * Exception;
 	 * 
-	 * int insertComment(COMMENTDTO bDTO) throws Exception; int
+	 * 
+	 * 
 	 * insertCommentSR(COMMENTDTO bDTO) throws Exception; int
 	 * insertCommentQT(COMMENTDTO bDTO) throws Exception; int
 	 * insertCommentM(COMMENTDTO bDTO) throws Exception;
