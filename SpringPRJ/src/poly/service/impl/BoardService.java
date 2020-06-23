@@ -20,37 +20,45 @@ public class BoardService implements IBoardService {
 
 	
 	//-------------------------게시판--------------------------------
+	
+	// 총 게시글 수 확인
 	@Override
 	public int TotalCount() throws Exception {
 		return BoardMapper.TotalCount();
 	}
-	
-
+	// 게시판 리스트 불러오기
 	@Override
 	public List<BoardDTO> getBoardList (HashMap<String, Integer> hMap) throws Exception { 
 		return BoardMapper.getBoardList(hMap); 
 	}
-	
-	
+	// 게시판 글 작성 실행
 	@Override
 	public int InsertBoardWriteProc(BoardDTO bDTO) throws Exception {
 		return BoardMapper.InsertBoardWriteProc(bDTO);
 	}
-	
+	// 게시판 글 디테일 실행
 	@Override
 	public BoardDTO getBoardDetail(String seq) throws Exception {
 		return BoardMapper.getBoardDetail(seq);
 	}	
-	
-	
+	// 게시판 글 수정/삭제 이동 전 권한 확인
+	@Override
+	public String UserCheck(String board_seq) throws Exception {
+			return BoardMapper.UserCheck(board_seq);
+	}
+	// 게시판 글 수정/삭제 창으로 이동
+	@Override
+	public BoardDTO BoardReWrite(BoardDTO pDTO) throws Exception {
+			return BoardMapper.BoardReWrite(pDTO);
+	}
 	
 	//------------------------댓글--------------------------
 	
-	
+	// 댓글 리스트 불러오기
 	@Override public List<CommentDTO> readReply(String seq) throws Exception {
 		 return BoardMapper.readReply(seq); 
 	}
-	
+	// 댓글 등록하기
 	@Override public int InsertComment(CommentDTO bDTO) throws Exception { 
 		return BoardMapper.InsertComment(bDTO); 
 	}
@@ -61,10 +69,7 @@ public class BoardService implements IBoardService {
 	
 	/*
 
-	@Override
-	public BoardDTO BoardModifyCertify(BoardDTO pDTO) throws Exception {
-			return BoardMapper.BoardModifyCertify(pDTO);
-		}
+
 	
 	@Override
 	public BoardDTO GUI2(BoardDTO pDTO) throws Exception {

@@ -134,8 +134,12 @@ public class BoardController {
 	String seq = request.getParameter("seq");
 	
 	BoardDTO bDTO = new BoardDTO();
-	
+
 	List<CommentDTO> cList = BoardService.readReply(seq);
+	
+	if (cList == null) {
+		cList = new ArrayList<CommentDTO>();
+	}
 	
 	try { 
 		bDTO = BoardService.getBoardDetail(seq);
@@ -151,13 +155,52 @@ public class BoardController {
 	
 	}
 
+	//--------------------------글 수정삭제 이동-------------------
+	@RequestMapping(value = "/DExellent/board/BoardReWrite") 
+	public String BoardReWrite(HttpSession session, HttpServletRequest request,
+							HttpServletResponse response, ModelMap model) throws Exception {
+	log.info(this.getClass().getName() + "자유게시판 글 수정/삭제창 이동 전 권한 확인 및 이동");
+	
+	String board_seq = request.getParameter("seq");
+	System.out.println("-----------1번-------------");
+	String User = (String)session.getAttribute("user_name");
+	System.out.println("-----------2번-------------");
+	/*
+	 * BoardDTO aDTO = new BoardDTO(); aDTO = new BoardDTO();
+	 * aDTO.setBoard_seq(board_seq);
+	 */
+	String UserCheck = BoardService.UserCheck(board_seq);
+	System.out.println("-----------3번-------------");
+	BoardDTO pDTO = new BoardDTO();
+	if (User.equals("조정규") || UserCheck == User) {	
+	try {
+		pDTO = new BoardDTO();
+		pDTO.setBoard_seq(board_seq);
+		pDTO = BoardService.BoardReWrite(pDTO);
+	} catch (Exception e) {
+	e.printStackTrace(); 
+	} 
+	model.addAttribute("pDTO", pDTO);
+	model.addAttribute("seq", board_seq);
+	
+	return "/DExellent/board/BoardReWrite"; 
+	
+	} else {
+		model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
+		model.addAttribute("msg", "권한이 없습니다. 게시판 리스트로 이동합니다.");
+	} 
+	return "/Redirect";
+	}
+	
+	
 	
 	
 	
 	
 	//-------------------------------------댓글---------------------------------------
 	
-	@RequestMapping(value = "/BandMoa/CommentProc")
+	//-------------------댓글작성------------------
+	@RequestMapping(value = "/DExellent/board/CommentProc")
 	public String CommentProc(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			ModelMap model) throws Exception {
 		log.info(this.getClass().getName() + "######## 댓글 작성Proc 실행########");
@@ -189,16 +232,15 @@ public class BoardController {
 			log.info("res : " + res);
 
 			if (res > 0) {
-				model.addAttribute("url", "/DExllent/board/BoardList.do?Pno=1");
+				model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
 				model.addAttribute("msg", "등록되었습니다.");
 			} else {
-				model.addAttribute("url", "/DExllent/board/BoardList.do?Pno=1");
+				model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
 				model.addAttribute("msg", "등록에 실패했습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// 이렇게 변경
 		return "/Redirect";
 	}
 	
@@ -209,24 +251,6 @@ public class BoardController {
 	/*
 	 * 
 	 * 
-	 * 
-	 * //--------------------------글 수정삭제 이동-------------------
-	 * 
-	 * @RequestMapping(value = "/DExellent/board/BoardModifyCertify") public String
-	 * BoardModifyCertify(HttpSession session, HttpServletRequest request,
-	 * HttpServletResponse response, ModelMap model) throws Exception {
-	 * log.info(this.getClass().getName() + "자유게시판 글 수정/삭제창으로 이동");
-	 * 
-	 * String seq = request.getParameter("seq");
-	 * 
-	 * BoardDTO pDTO = new BoardDTO();
-	 * 
-	 * try { pDTO = new BoardDTO(); pDTO.setBoard_seq(seq); pDTO =
-	 * BoardService.ModifyCertify(pDTO); } catch (Exception e) {
-	 * e.printStackTrace(); } model.addAttribute("pDTO", pDTO);
-	 * model.addAttribute("seq", seq);
-	 * 
-	 * return "/DExellent/board/BoardModifyCertify"; }
 	 * 
 	 * 
 	 * //--------------------------글 수정 실행---------------------------
