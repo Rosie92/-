@@ -5,46 +5,37 @@
 <html>
 <head>
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	$(window).on("load", function() {
-		//페이지 로딩 완료 후, 크롤링 정보 가져오기 함수 실행함
-		getYoutube();
-	});
-
-	// 크롤링 정보 가져오기
-	function getYoutube() {
-
-		//Ajax 호출
-		$.ajax({
-			url : "/DExellent/getYoutube.do",
-			type : "post",
-			dataType : "JSON",
-			contentType : "application/json; charset=UTF-8",
-			success : function(json) {
-				
-				console.log(json.length);
-
-				var Youtube = "";
-
-				for (var i = 0; i < json.length; i++) {
-					Youtube += (json[i].youtube);
-				}
-				$('#Youtube').html(Youtube);
-			}
-		})
-	}
-</script>
 
 <title>Youtube</title>
 
 </head>
 <body style="overflow-x: hidden">
-
-	<div id="Youtube"></div>
-	<br />
-	<hr />
-
-
+	<div>
+	<iframe src="https://youtu.be/82uA8WHCWmw" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/bfkGxCTYwDM" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/Q5BVmwWZkEk" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/K0CLi9m0ebA" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="	https://youtu.be/k74RYKGnHKA" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/hi__cxcLaKw" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/77Nw-J4qNIk" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	<iframe src="https://youtu.be/mKOOH3_xXj0" width="100%" height="600px"
+		name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
+		style="overflow-x: hidden" /></iframe>
+	</div>
 </body>
 
 </html>

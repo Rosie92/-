@@ -28,9 +28,7 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<link
-	href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css"
-	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css" rel="stylesheet" type="text/css">
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -43,8 +41,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="#page-top"
 				style="margin-left: 10px;"> <img
 				src="/assets/img/DEIMG/title.png" width="50" height="50" />
-				<div class="title"
-					style="display: inline; font-family: 'Nanum Brush Script', serif; margin-left: 5px;">
+				<div class="title" style="display: inline; font-family: 'Nanum Brush Script', serif; margin-left: 5px;">
 					강아지는 훌륭하다</div>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -435,7 +432,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Youtube.do" width="100%" height="600px"
+				<iframe src="/DExellent/Youtube" width="100%" height="600px"
 					name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" /></iframe>
 			</div>
@@ -504,7 +501,7 @@
 					</h3>
 				</div>
 				
-				<iframe src="/DExellent/board/BoardList.do" width="100%" height="600px"
+				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%" height="766px"
 				name="Board" id="Board" frameborder="1" scrolling="yes"
 				style="overflow-x: hidden" /></iframe>
 				

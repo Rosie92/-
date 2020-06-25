@@ -76,7 +76,25 @@
 		BOARD_SEQ =
 		#{board_seq}
 	</select>
-
+	<!-- 게시판 글 수정하기 실행 -->
+	<update id="BoardReWriteTry" parameterType="BoardDTO">
+		UPDATE 
+		BOARD 
+		SET
+		TITLE = #{title},
+		CONTENT = #{content},
+		UPD_DATE = SYSDATE()
+		WHERE
+		BOARD_SEQ = #{board_seq}
+	</update>
+	<!-- 게시판 글 삭제 실행 -->
+	<delete id="BoardDelete" parameterType="BoardDTO">
+		DELETE
+		FROM
+		BOARD
+		WHERE
+		BOARD_SEQ = #{board_seq}
+	</delete>
 
 <!-- //////////////////////// 댓글 ////////////////////////////-->
 
@@ -106,10 +124,47 @@
 		#{writer}
 		)
 	</insert>
-
-
-
-
+	<!-- 댓글 삭제 이동 전 권한 확인하기 -->
+	<select id="UserCheck2" resultType="CommentDTO" parameterType="CommentDTO">
+		SELECT
+		WRITER
+		FROM
+		MYREPLY
+		WHERE
+		RNO = #{rno}
+	</select>
+	<!-- 댓글 삭제 실행하기 -->
+	<delete id="CommentDelete" parameterType="CommentDTO">
+		DELETE
+		FROM
+		MYREPLY
+		WHERE
+		RNO = #{rno}
+	</delete>
+	<!-- 댓글 수정창 이동을 위한 정보 불러오기 -->
+	<select id="CommentUpdate" parameterType="CommentDTO" resultType="CommentDTO">
+		SELECT
+		RNO,
+		BOARD_SEQ,
+		WRITER,
+		CONTENT
+		FROM
+		MYREPLY
+		WHERE
+		RNO = #{rno}
+	</select>
+	<!-- 댓글 수정 실행하기 -->
+	<update id="CommentUpdateTry" parameterType="CommentDTO">
+		UPDATE
+		MYREPLY
+		SET
+		CONTENT = #{content}
+		WHERE
+		BOARD_SEQ = #{board_seq} AND
+		RNO = #{rno} AND
+		WRITER = #{writer}
+	</update>
+	
 
 <!-- 
 
@@ -194,26 +249,9 @@
 	</select>
 
 
-	<update id="updateFB" parameterType="BMFBDTO">
-		UPDATE FBTABLE SET
-		TITLE =
-		#{title},
-		CONTENT = #{content},
-		BOARD_PW = #{board_pw},
-		UPD_DATE =
-		SYSDATE
-		WHERE
-		BOARD_SEQ = #{board_seq}
-	</update>
+	
 
 
-	<delete id="deleteFB" parameterType="BMFBDTO">
-		DELETE
-		FROM
-		FBTABLE
-		WHERE
-		BOARD_SEQ = #{board_seq}
-	</delete>
 
 
 
@@ -290,13 +328,7 @@
 	</update>
 	
 	
-	<delete id="CommentDelete" parameterType="COMMENTDTO">
-		DELETE
-		FROM
-		MYREPLY
-		WHERE
-		RNO = #{rno}
-	</delete>
+	
 	
 	
 	<select id="selectRe" parameterType="COMMENTDTO" resultType="COMMENTDTO">

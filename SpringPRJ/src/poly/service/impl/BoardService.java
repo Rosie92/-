@@ -43,14 +43,25 @@ public class BoardService implements IBoardService {
 	}	
 	// 게시판 글 수정/삭제 이동 전 권한 확인
 	@Override
-	public String UserCheck(String board_seq) throws Exception {
-			return BoardMapper.UserCheck(board_seq);
+	public List<BoardDTO> UserCheck(String board_seq) throws Exception {
+		return BoardMapper.UserCheck(board_seq);
 	}
 	// 게시판 글 수정/삭제 창으로 이동
 	@Override
 	public BoardDTO BoardReWrite(BoardDTO pDTO) throws Exception {
 			return BoardMapper.BoardReWrite(pDTO);
 	}
+	// 게시판 글 수정 실행
+	@Override
+	public int BoardReWriteTry(BoardDTO pDTO) throws Exception {
+		return BoardMapper.BoardReWriteTry(pDTO);
+	}
+	// 게시판 글 삭제 실행
+	@Override
+	public int BoardDelete(BoardDTO pDTO) throws Exception {
+		return BoardMapper.BoardDelete(pDTO);
+	}
+	
 	
 	//------------------------댓글--------------------------
 	
@@ -62,6 +73,27 @@ public class BoardService implements IBoardService {
 	@Override public int InsertComment(CommentDTO bDTO) throws Exception { 
 		return BoardMapper.InsertComment(bDTO); 
 	}
+	// 댓글 수정/삭제 이동 전 권한 확인
+	@Override
+	public List<CommentDTO> UserCheck2(String rno) throws Exception {
+		return BoardMapper.UserCheck2(rno);
+	}
+	// 댓글 삭제하기
+	@Override public int CommentDelete(CommentDTO pDTO) throws Exception { 
+		return BoardMapper.CommentDelete(pDTO); 
+	}
+	// 댓글 수정을 위해 정보 불러오기
+	@Override
+	public CommentDTO CommentUpdate(CommentDTO pDTO) throws Exception {
+		return BoardMapper.CommentUpdate(pDTO);
+	}
+	@Override
+	// 댓글 수정 실행하기
+	public int CommentUpdateTry(CommentDTO pDTO) throws Exception {
+		return BoardMapper.CommentUpdateTry(pDTO);
+	}
+
+
 	
 	
 	
@@ -104,17 +136,10 @@ public class BoardService implements IBoardService {
 	
 	
 	
-	@Override
-	public int BoardUpdate(BoardDTO pDTO) throws Exception {
-		return BoardMapper.BoardUpdate(pDTO);
-	}
+
 	
 
-	@Override
-	public int BoardDelete(BoardDTO pDTO) throws Exception {
-		return BoardMapper.BoardDeleteBoard(pDTO);
-	}
-	
+
 	
 		
 	@Override
@@ -191,8 +216,7 @@ public class BoardService implements IBoardService {
 	 return BMMapper.CommentUpdateM(pDTO); }
 	 
 	 
-	 @Override public int CommentDelete(COMMENTDTO pDTO) throws Exception { return
-	 BMMapper.CommentDelete(pDTO); }
+
 	 
 	 @Override public int CommentDeleteSR(COMMENTDTO pDTO) throws Exception {
 	 return BMMapper.CommentDeleteSR(pDTO); }

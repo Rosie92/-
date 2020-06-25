@@ -3,46 +3,35 @@
 <%@page import="java.util.List"%>
 <%@page import="poly.dto.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <%
-    BoardDTO pDTO = (BoardDTO) request.getAttribute("pDTO");
-        
-        if(pDTO ==null){
-        	pDTO = new BoardDTO();
-        }
-        
-    String content = CmmUtil.nvl(pDTO.getContent());
-	%>
+	pageEncoding="UTF-8"%>
+<%
+	BoardDTO pDTO = (BoardDTO) request.getAttribute("pDTO");
+
+if (pDTO == null) {
+	pDTO = new BoardDTO();
+}
+
+String content = CmmUtil.nvl(pDTO.getContent());
+%>
 <html>
 
 
 <head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="/bootstrap/Board/css/bootstrap.min.css">
-<link rel="stylesheet" href="/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="/css/Board/Forum---Thread-listing-1.css">
-<link rel="stylesheet" href="/css/Board/Forum---Thread-listing.css">
-<link rel="stylesheet" href="/css/Board/styles.css">
-
-
-    <title>자유게시판 수정</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <!-- include summernote css/js-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">    
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<title>자유게시판 수정</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<!-- include summernote css/js -->
+    <script src="/summernote/summernote-lite.js"></script>
+	<script src="/summernote/lang/summernote-ko-KR.js"></script>
+	<link rel="stylesheet" href="/summernote/summernote-lite.css">
     <!-- include summernote-ko-KR -->
     <script src="/summernote/js/summernote-ko-KR.js"></script>
     <script>
-	
+    
         $(document).ready(function () {
-        	document.querySelector('#summernote').value='<%=content%>';
             $('#summernote').summernote({
                 placeholder: '내용을 입력해 주세요.',
                 minHeight: 370,
@@ -71,46 +60,78 @@
             }
         });
 
-    </script>
+    </script> 
+<link href="/css/styles.css" rel="stylesheet" />
 </head>
 <header>
-<%
-	String seq = CmmUtil.nvl((String)request.getAttribute("seq"));
-	String user_name = CmmUtil.nvl((String)session.getAttribute("user_name"));
-/* 	String upd_date = CmmUtil.nvl((String)request.getAttribute("upd_date")); */
-%>
+	<%
+		String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
+	String user_name = CmmUtil.nvl((String) session.getAttribute("user_name"));
+	/* 	String upd_date = CmmUtil.nvl((String)request.getAttribute("upd_date")); */
+	%>
 
 </header>
 <body style="overflow-x: hidden">
-	<form method="post" action="/DExellent/board/BoardReWriteTry">
-	<input value="<%=seq %>" name="seq" hidden="hidden">
-	<div>
-	<div style="font-size: 20px; font-weight: 550; width:760px;">
-	<div style="text-align:center;display: inline-block; padding: 10px 50px 10px 50px;">제 목</div>
-	<div style="display: inline-block; padding: 10px 0px 10px 50px; width: 545px;">
-	<div><input type="text" name="title" id="title" maxlength="100" style="width: 521px" placeholder="제목을 입력해주세요" value='<%=CmmUtil.nvl(pDTO.getTitle()) %>'></div>
-	</div>
-	</div>
-	<div>
-	<textarea id="summernote" name="content" style="width: 748px; height: 520px; margin-left: 5px; resize:none;"></textarea>
-	</div>
-	
-	<div style="text-align:center;width:755px; padding-top: 5px;">
-	<div class="form-group" id="submit"> <!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
-        <input type="submit" id="subBtn" class="btn btn-primary btn-block" readonly="readonly" style="cursor:pointer;" value="작성완료"></div>
-        	<a class="forgot" href="/DExellent/board/BoardDelete.do?seq=<%=seq%>">이 게시글 삭제하기 /<font color="red"> (주의)클릭 시 즉시 삭제됩니다.</font></a><br>
-   			 <a class="forgot" href="/DExellent/board/BoardList.do?Pno=1" >게시판으로 돌아가기</a>
+	<form method="post"
+		action="/DExellent/board/BoardReWriteTry.do?seq=<%=seq%>">
+		<input value="<%=seq%>" name="seq" hidden="hidden">
+		<div>
+			<div style="font-size: 20px; font-weight: 550; width: 370px;">
+				<div
+					style="text-align: center; display: inline-block; padding: 10px 20px 10px 20px;">제
+					목</div>
+				<div
+					style="display: inline-block; padding: 20px 5px 10px 20px; width: 250px;">
+					<div>
+						<input type="text" name="title" id="title" maxlength="100"
+							style="width: 250px" placeholder="제목을 입력해주세요"
+							value='<%=CmmUtil.nvl(pDTO.getTitle())%>'>
+					</div>
+				</div>
+			</div>
+			<div>
+				<textarea id="summernote" name="content"
+					style="width: 360px; height: 520px; margin-left: 5px; resize: none;" value="<%=content%>"></textarea>
+			</div>
 
-	</div>
-	</div>
-  
+			<div
+				style="text-align: center; margin-left: 10px; width: 345px; padding-top: 5px;">
+				<div class="form-group" id="submit">
+					<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
+					<input type="submit" id="subBtn" class="btn btn-primary btn-block"
+						readonly="readonly" style="cursor: pointer;" value="작성완료">
+				</div>
+			</div>
+		</div>
+	</form>
+	<form name="DDelete" id="DDelete" method="post"
+		action="/DExellent/board/BoardDelete.do?Seq=<%=seq%>"
+		style="display: inline-block;">
+		<input value="<%=seq%>" name="seq" hidden="hidden">
+		<div
+			style="margin-left: 10px; text-align: center; display: inline-block;">
+			<input type="button" id="" value="게시글 삭제" onclick="removeCheck3()">
+		</div>
 	</form>
 
-<script>
+
+	<form name="BackMove" id="BackMove" method="post"
+		action="/DExellent/board/BoardList.do?Pno=1"
+		style="display: inline-block;">
+		<div
+			style="margin-left: 10px; text-align: center; display: inline-block;">
+			<input type="button" value="글 수정 종료" onclick="removeCheck2()">
+		</div>
+	</form>
+
+
+
+
+	<script>
     $('#subBtn').click(function () {
         var title = $('#title').val();
         var content = $('#summernote').val();
-  /*       var board_pw = $('#board_pw').val(); */
+
 
         if(title==""){
             alert("제목을 입력해 주세요.");
@@ -122,14 +143,26 @@
             return false;
             $('#content').focus();
         }
-/*         else if(board_pw==""){
-            alert("비밀번호를 입력해 주세요.");
-            return false;
-            $('#board_pw').focus();
-        } */
+
     });
 </script>
+	<script type="text/javascript">
+		function removeCheck3() {
+			if (confirm("이 게시글을 정말 삭제하시겠습니까??") == true) { //확인
+				$('#DDelete').submit()
+			} else { //취소
+				return false;
+			}
+		}
 
+		function removeCheck2() {
+			if (confirm("정말로 종료하시겠습니까? 작성중이던 내용은 저장되지 않으며, 게시판 리스트로 이동합니다.") == true) { //확인
+				$('#BackMove').submit()
+			} else { //취소
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>
 

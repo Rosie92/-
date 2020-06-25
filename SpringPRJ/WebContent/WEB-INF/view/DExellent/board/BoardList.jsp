@@ -23,11 +23,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>자유게시판</title>
+    <link href="/css/styles.css" rel="stylesheet" />
 </head>
 
 
-<body style="overflow-x: hidden">
-
+<body style="overflow-x: hidden;  background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
     <div style="width: 350px; margin: auto; text-align:center;">
 	<div>
     <hr>
@@ -38,13 +38,13 @@
     </div>                     
     <div>
          <% for(BoardDTO bDTO : bList) { %>
-    <div style=" padding:15px 0px 20px 0px; background-color: lightyellow;">
+    <div style=" padding:15px 0px 20px 0px;">
              <span style="margin-left:10px">
                 <%=CmmUtil.nvl(bDTO.getBoard_seq()) %>
             </span>
           
             <span>
-            <div style="width:220px; text-align:center; display:inline-block;"><a href="/DExellent/board/BoardDetail.do?seq=<%=bDTO.getBoard_seq()%>"><%=CmmUtil.nvl(bDTO.getTitle()).replaceAll("<","&lt;").replaceAll(">","&gt;") %></a></div>
+            <div style="width:210px; text-align:center; display:inline-block;"><a href="/DExellent/board/BoardDetail.do?seq=<%=bDTO.getBoard_seq()%>"><%=CmmUtil.nvl(bDTO.getTitle()).replaceAll("<","&lt;").replaceAll(">","&gt;") %></a></div>
             </span>
          
             <span>

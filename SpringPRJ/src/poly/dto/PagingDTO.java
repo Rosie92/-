@@ -17,7 +17,7 @@ public class PagingDTO {
     private int pageCnt;   // 총 페이지 범위의 개수
     private int page;   // 현재 페이지 (1, 2, 3 ,~, 31, 32, 33)
     private int range;   // 현재 페이지 범위 (1~10, 11~20, 21~30, 30~33)
-    private int listSize=7;   // 한 페이지 목록의 개수 (한 페이지에 출력되는 게시글 개수) 9
+    private int listSize=10;   // 한 페이지 목록의 개수 (한 페이지에 출력되는 게시글 개수) 9
     private int rangeSize=3;   // 한 페이지 범위의 개수 (한 페이지에 출력되는 범위 개수) 10
     private int startPage;   // 시작번호 (1, 11, 21, 31)
     private int endPage;   // 끝번호 (10, 20, 30, 33)
