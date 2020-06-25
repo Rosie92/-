@@ -410,7 +410,7 @@
 			</div>
 
 
-			<iframe src="/DExellent/Title.do" width="100%" height="600px"
+			<iframe src="/DExellent/Title.do" width="100%" height="680px"
 				name="Title" id="Title" frameborder="1" scrolling="yes"
 				style="overflow-x: hidden" /></iframe>
 		</div>
@@ -432,7 +432,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Youtube" width="100%" height="600px"
+				<iframe src="/DExellent/Youtube.do" width="100%" height="600px"
 					name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" /></iframe>
 			</div>
@@ -455,7 +455,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Information.do" width="100%" height="600px"
+				<iframe src="/DExellent/Information.do" width="100%" height="680px"
 					name="Information" id="Information" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" target="" /></iframe>
 			</div>
@@ -514,7 +514,7 @@
 				<h3 class="section-subheading text-muted">Displays Kakao member
 					information.</h3>
 			</div>
-			<iframe src="/DExellent/mypage.do" width="330px" height="750px"
+			<iframe src="/DExellent/mypage.do" width="100%" height="750px"
 				name="mypage1" id="mypage1"></iframe>
 		</div>
 	</section>

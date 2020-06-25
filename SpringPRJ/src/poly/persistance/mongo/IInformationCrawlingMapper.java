@@ -26,4 +26,10 @@ public interface IInformationCrawlingMapper {
 	@param colNm 가져올 컬렉션 이름
 	*/
 	public List<InformationDTO> getInformation(String colNm) throws Exception;
+
+	// 골든리트리버
+	public boolean createCollectionGoldenRetriever(String colNm) throws Exception;
+	public int insertInformationGoldenRetriever(List<InformationDTO> pList, String colNm) throws Exception;
+	public List<InformationDTO> getGoldenRetriever(String colNm) throws Exception;
+	
 }

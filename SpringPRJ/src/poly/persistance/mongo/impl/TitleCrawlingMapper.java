@@ -81,6 +81,7 @@ public class TitleCrawlingMapper implements ITitleCrawlingMapper {
 
 		while (cursor.hasNext()) {
 
+			int i = 0;
 			rDTO = new TitleDTO();
 
 			final DBObject current = cursor.next();
@@ -93,9 +94,11 @@ public class TitleCrawlingMapper implements ITitleCrawlingMapper {
 
 			rList.add(rDTO); // List에 저장
 
-			System.out.println("rList에 저장완료");
+			System.out.println("rList에 저장완료 : " + rList.get(i).getTitle());
 
 			rDTO = null;
+			
+			i++;
 
 		}
 

@@ -79,6 +79,7 @@ public class ContentCrawlingMapper implements IContentCrawlingMapper {
 		List<TitleDTO> rList = new ArrayList<TitleDTO>();
 
 		TitleDTO rDTO = null;
+		int i = 0;
 
 		while (cursor.hasNext()) {
 
@@ -90,13 +91,15 @@ public class ContentCrawlingMapper implements IContentCrawlingMapper {
 
 			rDTO.setContent(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
+			System.out.println("rDTO에 저장 완료 : " + rDTO);
 
 			rList.add(rDTO); // List에 저장
 
-			System.out.println("rList에 저장완료");
+			System.out.println("rList에 저장완료 : " + rList.get(i).getContent());
 
 			rDTO = null;
+			
+			i++;
 
 		}
 

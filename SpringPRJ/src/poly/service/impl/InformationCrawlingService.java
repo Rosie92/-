@@ -14,6 +14,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.InformationDTO;
+import poly.dto.TitleDTO;
 import poly.persistance.mongo.IInformationCrawlingMapper;
 import poly.service.IInformationCrawlingService;
 
@@ -58,13 +59,24 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 			
 			String Information = CrawlingData.html();
 			
-			// Iframe안에서의 링크 이동 허용을 위해.			
-			Information = Information.replaceAll("<a ","<a target='_blank' style='text-decoration: none; font-weight: 500; color: black;'");
-
+			
+			
+			/*font-family: 'Nanum Brush Script', serif;
+			 * @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+			 * 
+			 * font-family: 'Nanum Pen Script', serif;
+			 * @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+			 */
+			// Iframe안에서의 링크 이동 허용을 위해.						
+			/*
+			 * Information = Information.replaceAll("<a "
+			 * ,"<div style='display: inline-block; width: 100%; line-height: 10px;'><button data-toggle='modal' data-target='#intro' style='background-color: white; border: 0px'"
+			 * );
+			 */
 			int i = 0;
-			Information = Information.replaceAll("src", "<!-- src");
-			Information = Information.replaceAll("' class'", "' --> class'");
-			Information = Information.replaceAll("height='200'", "height='200' src='../../assets/img/DEIMG/dog/a" + i + ".jpg'");
+			/* nformation = Information.replaceAll("</a>","</button></div>"); */
+			Information = Information.replaceAll("<img width='300'", "<img width='330'");
+			Information = Information.replaceAll("height='200'", "height='230' src='../../assets/img/DEIMG/dog/a" + i + ".jpg'");
 			Information = Information.replaceAll("더 보기 » </a>", "더 보기 » </a><hr style='width: 70%; margin-top: 15px; margin-bottom: 25px;'>");
 			Information = Information.replaceAll("<h3", "<h3 style='font-weight: bolder;'");
 			
@@ -109,5 +121,80 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		log.info(this.getClass().getName() + ".Information 셀렉트 종료");
 
 		return rList;
+	}
+	
+	//======================견종백과 Content=============================
+	// 골든리트리버
+	@Override
+	public int GoldenRetriever() throws Exception {
+
+		// 로그 찍기(추후 찍은 로그를 통해 이 함수에 접근했는지 파악하기 용이하다.)
+		log.info(this.getClass().getName() + ".GoldenRetriever Start!");
+		int res = 0;
+		List<InformationDTO> pList = new ArrayList<InformationDTO>();
+
+		// 크롤링 하는 페이지
+		String url = "https://mypetlife.co.kr/wiki/%ea%b3%a8%eb%93%a0%eb%a6%ac%ed%8a%b8%eb%a6%ac%eb%b2%84/";
+
+		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
+		Document doc = null;
+		doc = Jsoup.connect(url).get();
+		
+		Elements element = doc.select("article#the-post");
+
+		Iterator<Element> Crawling = element. select("p").iterator();
+		
+		while (Crawling.hasNext()) {
+
+			Element CrawlingData = Crawling.next();
+			
+			String GoldenRetriever = CrawlingData.html();
+
+			GoldenRetriever = GoldenRetriever.replaceAll("1280","0");
+			GoldenRetriever = GoldenRetriever.replaceAll("853","0");
+			GoldenRetriever = GoldenRetriever.replaceAll("856","0");
+			GoldenRetriever = GoldenRetriever.replaceAll("960","0");
+			GoldenRetriever = GoldenRetriever.replaceAll("924","0");
+			GoldenRetriever = GoldenRetriever.replaceAll("844","0");
+			
+			CrawlingData = null;
+
+			InformationDTO pDTO = new InformationDTO();
+
+			pDTO.setInformation(GoldenRetriever);
+
+			pList.add(pDTO);
+
+		}
+
+		String colNm = "GoldenRetriever"; // 생성할 컬렉션명
+
+		// MongoDB Collection 생성하기
+		InformationCrawlingMapper.createCollectionGoldenRetriever(colNm);
+
+		log.info(this.getClass().getName() + ".insert GoldenRetriever Start!");
+
+		InformationCrawlingMapper.insertInformationGoldenRetriever(pList, colNm);
+
+		log.info(this.getClass().getName() + ".insert GoldenRetriever End!");
+
+		return res;
+	}
+	@Override
+	public List<InformationDTO> getGoldenRetrieverJspGo() throws Exception {
+		log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 서비스 시작");
+
+		// 조회할 컬렉션 이름
+		String colNm = "GoldenRetriever";
+
+		List<InformationDTO> aList = InformationCrawlingMapper.getGoldenRetriever(colNm);
+
+		if (aList == null) {
+			aList = new ArrayList<InformationDTO>();
+		}
+
+		log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 종료");
+
+		return aList;
 	}
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,15 +43,50 @@ public class InformationController {
 		return rList;
 	}
 
-	
 	// 데이터 가져와 jsp와 연결
 	@RequestMapping(value = "/DExellent/Information")
-	public String Information(HttpServletRequest requset, HttpServletResponse response) throws Exception {
-
+	public String Information(HttpServletRequest requset, HttpServletResponse response, ModelMap model) throws Exception {
 		log.info(this.getClass().getName() + ".Information 컨트롤러 (JSP출력) 시작");
-
+		
+		//골든리트리버
+		List<InformationDTO> aList = InformationCrawlingService.getGoldenRetrieverJspGo();
+		//골든리트리버
+		model.addAttribute("aList", aList);
+		
 		log.info(this.getClass().getName() + ".Information 컨트롤러 (JSP출력) 종료");
-
 		return "/DExellent/Information";
 	}
+	/*
+	 * //==================================견종백과================================== //
+	 * 골든리트리버
+	 * 
+	 * @RequestMapping(value = "/DExellent/getGoldenRetriever") public
+	 * List<InformationDTO> getGoldenRetriever(HttpServletRequest request,
+	 * HttpServletResponse response) throws Exception {
+	 * log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 컨트롤러 시작");
+	 * 
+	 * List<InformationDTO> aList =
+	 * InformationCrawlingService.getGoldenRetrieverJspGo();
+	 * 
+	 * System.out.
+	 * println("List<InformationDTO> rList = InformationCrawlingService.getInformation(); 실행됨"
+	 * );
+	 * 
+	 * if (aList == null) { aList = new ArrayList<InformationDTO>(); }
+	 * log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 컨트롤러 종료"); return
+	 * aList; }
+	 * 
+	 * // 데이터 가져와 jsp와 연결
+	 * 
+	 * @RequestMapping(value = "/DExellent/Information") public String
+	 * GoldenRetriever(HttpServletRequest requset, HttpServletResponse response,
+	 * ModelMap model) throws Exception { log.info(this.getClass().getName() +
+	 * ".GoldenRetriever 컨트롤러 (JSP출력) 시작"); List<InformationDTO> aList =
+	 * InformationCrawlingService.getGoldenRetrieverJspGo();
+	 * 
+	 * model.addAttribute("aList", aList);
+	 * 
+	 * log.info(this.getClass().getName() + ".GoldenRetriever 컨트롤러 (JSP출력) 종료");
+	 * return "/DExellent/Information"; }
+	 */
 }

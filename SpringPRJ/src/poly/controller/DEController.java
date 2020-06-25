@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import poly.service.IContentCrawlingService;
 import poly.service.IInformationCrawlingService;
 import poly.service.ITitleCrawlingService;
-import poly.service.IYoutubeCrawlingService;
 import poly.util.CmmUtil;
 
 @Controller
@@ -23,10 +22,7 @@ public class DEController {
 	
 	@Resource(name = "ContentCrawlingService")
 	private IContentCrawlingService contentcrawlingService;
-	
-	@Resource(name = "YoutubeCrawlingService")
-	private IYoutubeCrawlingService youtubecrawlingService;
-	
+
 	@Resource(name = "InformationCrawlingService")
 	private IInformationCrawlingService informationcrawlingService;
 	
@@ -37,8 +33,20 @@ public class DEController {
 		if (!CmmUtil.nvl((String)session.getAttribute("user_name")).equals("")) {
 			titlecrawlingService.collectTitleCrawling();
 			contentcrawlingService.collectContentCrawling();
-			youtubecrawlingService.collectYoutubeCrawling();
 			informationcrawlingService.collectInformationCrawling();
+			
+			informationcrawlingService.GoldenRetriever();
+			/*
+			 * informationcrawlingService.collectInformationCrawling2();
+			 * informationcrawlingService.collectInformationCrawling3();
+			 * informationcrawlingService.collectInformationCrawling4();
+			 * informationcrawlingService.collectInformationCrawling5();
+			 * informationcrawlingService.collectInformationCrawling6();
+			 * informationcrawlingService.collectInformationCrawling7();
+			 * informationcrawlingService.collectInformationCrawling8();
+			 * informationcrawlingService.collectInformationCrawling9();
+			 * informationcrawlingService.collectInformationCrawling10();
+			 */
 		}
 		return "/DExellent/index";
 	}

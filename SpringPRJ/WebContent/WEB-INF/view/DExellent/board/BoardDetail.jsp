@@ -19,6 +19,7 @@
 <title>게시판디테일</title>
 <head>
 <link href="/css/styles.css" rel="stylesheet" />
+
 <style>
 
 </style>
@@ -54,21 +55,21 @@
             <%=CmmUtil.nvl(cDTO.getWriter()) %>
             </div>            
             </span>
-            <span style="margin-left:10px">
-            <div style="width:200px; text-align:center; display:inline-block; word-break: break-all;">
+            <span>
+            <div style="width:170px; text-align:center; display:inline-block; word-break: break-all;">
             <%=CmmUtil.nvl(cDTO.getContent()).replaceAll("<","&lt;").replaceAll(">","&gt;") %>
             </div>
             </span>
             
             <form name="CommentUpdate" id="CommentUpdate" method="post" action="/DExellent/board/CommentUpdate.do?rno=<%=cDTO.getRno() %>" style="display: inline-block;">
-            <div style="margin-left:10px; text-align:center; display: inline-block;">
-            <input type="button" value="수정" onclick="removeCheck4()">
+            <div style="margin-left:2px; text-align:center; display: inline-block; width:45px;">
+            <input type="button" value="수정" onclick="removeCheck4()" style="background-color: #ecdc1d; border:0px;">
             </div>
             </form>
             
             <form name="CommentDelete" id="CommentDelete" method="post" action="/DExellent/board/CommentDelete.do?rno=<%=cDTO.getRno() %>" style="display: inline-block;">
-            <div style="margin-left:10px; text-align:center; display: inline-block;">
-            <input type="button" value="삭제" onclick="removeCheck()">
+            <div style="margin-left:2px; text-align:center; display: inline-block; width:45px;">
+            <input type="button" value="삭제" onclick="removeCheck()" style="background-color: #ecdc1d; border:0px;">
             </div>
             </form>
  <!--        	<div class="dropdown">

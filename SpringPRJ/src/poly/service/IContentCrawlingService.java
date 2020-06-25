@@ -8,10 +8,9 @@ public interface IContentCrawlingService {
 
 	// 크롤링 실행 후 저장
 	public int collectContentCrawling() throws Exception;
-	
-	
-	// DB에 있는 크롤링 Select
-	public List<TitleDTO> getContent() throws Exception;
+
+	// jsp로 넘길 값 가져오기
+	public List<TitleDTO> getContentJspGo() throws Exception;
 
 
 

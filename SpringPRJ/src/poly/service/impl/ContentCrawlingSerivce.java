@@ -81,7 +81,7 @@ public class ContentCrawlingSerivce implements IContentCrawlingService {
 	}
 
 	@Override
-	public List<TitleDTO> getContent() throws Exception {
+	public List<TitleDTO> getContentJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".뉴스 콘텐츠 셀렉트 서비스 시작");
 
 		// 조회할 컬렉션 이름
@@ -98,3 +98,5 @@ public class ContentCrawlingSerivce implements IContentCrawlingService {
 		return rList;
 	}
 }
+
+

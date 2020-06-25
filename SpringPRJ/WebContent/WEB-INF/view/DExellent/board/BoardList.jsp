@@ -24,8 +24,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>자유게시판</title>
     <link href="/css/styles.css" rel="stylesheet" />
+<style>
+.move{
+transition : 1s;
+}
+.move:hover{
+transform: scale(2,2);
+border-radius: 20% 20%
+}
+</style>
 </head>
-
 
 <body style="overflow-x: hidden;  background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
     <div style="width: 350px; margin: auto; text-align:center;">
@@ -44,7 +52,7 @@
             </span>
           
             <span>
-            <div style="width:210px; text-align:center; display:inline-block;"><a href="/DExellent/board/BoardDetail.do?seq=<%=bDTO.getBoard_seq()%>"><%=CmmUtil.nvl(bDTO.getTitle()).replaceAll("<","&lt;").replaceAll(">","&gt;") %></a></div>
+            <div id="move" style="width:210px; text-align:center; display:inline-block;"><a href="/DExellent/board/BoardDetail.do?seq=<%=bDTO.getBoard_seq()%>"><%=CmmUtil.nvl(bDTO.getTitle()).replaceAll("<","&lt;").replaceAll(">","&gt;") %></a></div>
             </span>
          
             <span>

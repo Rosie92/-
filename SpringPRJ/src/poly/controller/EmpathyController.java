@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,7 +34,7 @@ public class EmpathyController {
 
 		log.info(this.getClass().getName() + ".뉴스타이틀 셀렉트 컨트롤러 시작");
 
-		List<TitleDTO> rList = TitleCrawlingService.getTitle();
+		List<TitleDTO> rList = TitleCrawlingService.getTitleJspGo();
 
 		System.out.println("List<TitleDTO> rList = TitleCrawlingService.getTitle(); 실행됨");
 
@@ -46,34 +47,20 @@ public class EmpathyController {
 		return rList;
 	}
 
-	// 데이터 가져오기
-	@RequestMapping(value = "/DExellent/getContent")
-	@ResponseBody
-	public List<TitleDTO> getContent(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 컨트롤러 시작");
-
-		List<TitleDTO> rList = ContentCrawlingService.getContent();
-
-		System.out.println("List<TitleDTO> rList = ContentCrawlingService.getContent(); 실행됨");
-
-		if (rList == null) {
-			rList = new ArrayList<TitleDTO>();
-		}
-
-		log.info(this.getClass().getName() + ".뉴스콘텐츠 셀렉트 컨트롤러 종료");
-
-		return rList;
-	}
-
 	// 데이터 가져와 jsp와 연결
 	@RequestMapping(value = "/DExellent/Title")
-	public String Title(HttpServletRequest requset, HttpServletResponse response) throws Exception {
-
+	public String Title(HttpServletRequest requset, HttpServletResponse response, ModelMap model) throws Exception {
 		log.info(this.getClass().getName() + ".뉴스 셀렉트 컨트롤러 (JSP출력) 시작");
+
+		List<TitleDTO> eList = TitleCrawlingService.getTitleJspGo();
+		List<TitleDTO> rList = ContentCrawlingService.getContentJspGo();
+
+		model.addAttribute("eList", eList);
+		model.addAttribute("rList", rList);
 
 		log.info(this.getClass().getName() + ".뉴스 셀렉트 컨트롤러 (JSP출력) 종료");
 
 		return "/DExellent/Title";
 	}
+
 }

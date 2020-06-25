@@ -11,7 +11,7 @@ public interface ITitleCrawlingService {
 	
 	
 	// DB에 있는 크롤링 Select
-	public List<TitleDTO> getTitle() throws Exception;
+	public List<TitleDTO> getTitleJspGo() throws Exception;
 
 
 

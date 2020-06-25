@@ -28,7 +28,9 @@
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
     <!-- include summernote-ko-KR -->
     <script src="/summernote/lang/summernote-ko-KR.js"></script>
-   <!--  <script>
+    
+    
+  <script>
     
         $(document).ready(function () {
             $('#summernote').summernote({
@@ -58,7 +60,7 @@
                 });
             }
         });
-    </script>  -->
+    </script> 
 </head>
 
 <body style="overflow-x: hidden">

@@ -14,5 +14,12 @@ public interface IInformationCrawlingService {
 	public List<InformationDTO> getInformation() throws Exception;
 
 
+	// 골든리트리버
+	public int GoldenRetriever() throws Exception;
+
+
+	public List<InformationDTO> getGoldenRetrieverJspGo() throws Exception;
+
+
 
 }

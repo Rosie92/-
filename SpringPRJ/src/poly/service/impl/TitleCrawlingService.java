@@ -83,7 +83,7 @@ public class TitleCrawlingService implements ITitleCrawlingService {
 	}
 
 	@Override
-	public List<TitleDTO> getTitle() throws Exception {
+	public List<TitleDTO> getTitleJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".뉴스 타이틀 셀렉트 서비스 시작");
 
 		// 조회할 컬렉션 이름
