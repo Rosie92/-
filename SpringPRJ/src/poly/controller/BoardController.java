@@ -1,11 +1,8 @@
 package poly.controller;
 
-import java.io.File;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import poly.dto.BoardDTO;
 import poly.dto.CommentDTO;
@@ -33,8 +29,6 @@ public class BoardController {
 	private IBoardService BoardService;
 	
 	//---------------------------------게시판-------------------------------------
-	
-	
 
 	// --------------------------리스트-------------------------
 	@RequestMapping(value = "/DExellent/board/BoardList")
@@ -54,7 +48,7 @@ public class BoardController {
 		int i = paging.getStartList();
 		int j = paging.getListSize();
 		hMap.put("startlist", i);
-		hMap.put("listsize", i + j);
+		hMap.put("listsize", j);
 
 		List<BoardDTO> bList = new ArrayList<>();
 
@@ -67,6 +61,7 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 
 		model.addAttribute("bList", bList);
 		model.addAttribute("paging", paging);
@@ -101,7 +96,7 @@ public class BoardController {
 			bDTO.setTitle(title);
 			bDTO.setContent(content);
 			bDTO.setUser_name(user_name);
-
+			
 			log.info("========================");
 			log.info("title : " + title);
 			log.info("content : " + content);
@@ -114,7 +109,7 @@ public class BoardController {
 
 			res = BoardService.InsertBoardWriteProc(bDTO);
 			log.info("res : " + res);
-
+			
 			if (res > 0) {
 				model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
 				model.addAttribute("msg", "등록되었습니다.");
@@ -125,6 +120,8 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		return "/Redirect";
 	}
 	
@@ -145,12 +142,20 @@ public class BoardController {
 		cList = new ArrayList<CommentDTO>();
 	}
 	
+	
+	
 	try { 
 		bDTO = BoardService.getBoardDetail(seq);
 	} 
 	catch (Exception e) { 
 		e.printStackTrace(); 
-	} 
+	}
+	if (bDTO == null) {
+        bDTO = new BoardDTO();
+     } else {
+        BoardFilter(bDTO);
+     }
+	
 	model.addAttribute("cList",	cList); 
 	model.addAttribute("bDTO", bDTO);
 	model.addAttribute("seq", seq);
@@ -249,10 +254,15 @@ public class BoardController {
 		pDTO.setBoard_seq(seq); 
 		log.info("seq : " +	seq);
 		
-		int res = BoardService.BoardDelete(pDTO); 
+		CommentDTO cDTO = new CommentDTO();
+		cDTO.setBoard_seq(seq);
+		
+		int res = BoardService.BoardDelete(pDTO);
+		int res2 = BoardService.BoardDeleteWithCommentDelete(cDTO);
 		log.info("res : " + res);
+		log.info("res2 : " + res2);
 	
-		if (res > 0) { 
+		if (res > 0 && res2 > 0) { 
 			model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1"); 
 			model.addAttribute("msg", "삭제되었습니다."); 
 		} else { 
@@ -428,8 +438,20 @@ public class BoardController {
 	
 	}
 	
-	
-	
+	//-----------------------
+	public BoardDTO BoardFilter(BoardDTO pDTO) {
+	      pDTO.setTitle(pDTO.getTitle().replaceAll("& lt;", "&lt;").replaceAll("& gt;", "&gt;"));
+	      pDTO.setTitle(pDTO.getTitle().replaceAll("& #40;", "\\(").replaceAll("& #41;", "\\)"));
+	      pDTO.setTitle(pDTO.getTitle().replaceAll("& #39;", "'"));
+	      pDTO.setTitle(pDTO.getTitle().replaceAll("& #256;", "script"));
+	      if (pDTO.getContent() != null) {
+	         pDTO.setContent(pDTO.getContent().replaceAll("& lt;", "<").replaceAll("& gt;", ">"));
+	         pDTO.setContent(pDTO.getContent().replaceAll("& #40;", "\\(").replaceAll("& #41;", "\\)"));
+	         pDTO.setContent(pDTO.getContent().replaceAll("& #39;", "'"));
+	         pDTO.setContent(pDTO.getContent().replaceAll("& #256;", "script"));
+	      }
+	      return pDTO;
+	   }
 
 	/*
 	 * 

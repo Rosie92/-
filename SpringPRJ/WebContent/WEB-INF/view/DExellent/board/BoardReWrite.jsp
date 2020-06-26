@@ -23,11 +23,10 @@ String content = CmmUtil.nvl(pDTO.getContent());
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<!-- include summernote css/js -->
+<!-- 
     <script src="/summernote/summernote-lite.js"></script>
 	<script src="/summernote/lang/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
-    <!-- include summernote-ko-KR -->
     <script src="/summernote/js/summernote-ko-KR.js"></script>
     <script>
     
@@ -60,12 +59,12 @@ String content = CmmUtil.nvl(pDTO.getContent());
             }
         });
 
-    </script> 
+    </script>  -->
 <link href="/css/styles.css" rel="stylesheet" />
 </head>
 <header>
 	<%
-		String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
+	String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
 	String user_name = CmmUtil.nvl((String) session.getAttribute("user_name"));
 	/* 	String upd_date = CmmUtil.nvl((String)request.getAttribute("upd_date")); */
 	%>
@@ -78,10 +77,10 @@ String content = CmmUtil.nvl(pDTO.getContent());
 		<div>
 			<div style="font-size: 20px; font-weight: 550; width: 370px;">
 				<div
-					style="text-align: center; display: inline-block; padding: 10px 20px 10px 20px;">제
+					style="text-align: center; display: inline-block; padding: 10px 0px 10px 20px;">제
 					목</div>
 				<div
-					style="display: inline-block; padding: 20px 5px 10px 20px; width: 250px;">
+					style="display: inline-block; padding: 20px 5px 10px 20px; width: 230px;">
 					<div>
 						<input type="text" name="title" id="title" maxlength="100"
 							style="width: 250px" placeholder="제목을 입력해주세요"
@@ -90,12 +89,12 @@ String content = CmmUtil.nvl(pDTO.getContent());
 				</div>
 			</div>
 			<div>
-				<textarea id="summernote" name="content"
-					style="width: 360px; height: 520px; margin-left: 5px; resize: none;" value="<%=content%>"></textarea>
+				<textarea id="contentCheck" name="content"
+					style="width: 330px; height: 455px; margin-left: 10px; resize: none;" value="<%=content%>"></textarea>
 			</div>
 
 			<div
-				style="text-align: center; margin-left: 10px; width: 345px; padding-top: 5px;">
+				style="text-align: center; margin-left: 23px; width: 300px; padding-top: 5px;">
 				<div class="form-group" id="submit">
 					<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
 					<input type="submit" id="subBtn" class="btn btn-primary btn-block"
@@ -104,13 +103,14 @@ String content = CmmUtil.nvl(pDTO.getContent());
 			</div>
 		</div>
 	</form>
+	<div style="margin-left: 55px;">
 	<form name="DDelete" id="DDelete" method="post"
 		action="/DExellent/board/BoardDelete.do?Seq=<%=seq%>"
 		style="display: inline-block;">
 		<input value="<%=seq%>" name="seq" hidden="hidden">
 		<div
 			style="margin-left: 10px; text-align: center; display: inline-block;">
-			<input type="button" id="" value="게시글 삭제" onclick="removeCheck3()">
+			<input type="button" id="" value="게시글 삭제" onclick="removeCheck3()" style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
 		</div>
 	</form>
 
@@ -120,17 +120,17 @@ String content = CmmUtil.nvl(pDTO.getContent());
 		style="display: inline-block;">
 		<div
 			style="margin-left: 10px; text-align: center; display: inline-block;">
-			<input type="button" value="글 수정 종료" onclick="removeCheck2()">
+			<input type="button" value="글 수정 종료" onclick="removeCheck2()" style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
 		</div>
 	</form>
-
+	</div>
 
 
 
 	<script>
     $('#subBtn').click(function () {
         var title = $('#title').val();
-        var content = $('#summernote').val();
+        var content = $('#contentCheck').val();
 
 
         if(title==""){

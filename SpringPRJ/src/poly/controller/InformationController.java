@@ -50,43 +50,48 @@ public class InformationController {
 		
 		//골든리트리버
 		List<InformationDTO> aList = InformationCrawlingService.getGoldenRetrieverJspGo();
-		//골든리트리버
+		//래브라도 리트리버
+		List<InformationDTO> bList = InformationCrawlingService.getLabradorRetrieverJspGo();
+		// 말티즈
+		List<InformationDTO> cList = InformationCrawlingService.getMalteseJspGo();
+		// 보더콜리
+		List<InformationDTO> dList = InformationCrawlingService.getBorderCollieJspGo();
+		// 비숑프리제
+		List<InformationDTO> eList = InformationCrawlingService.getBichonfrezeJspGo();
+		// 사모예드
+		List<InformationDTO> fList = InformationCrawlingService.getSamoyedJspGo();
+		// 셔틀랜드
+		List<InformationDTO> gList = InformationCrawlingService.getShertlandJspGo();
+		// 요크셔테리어
+		List<InformationDTO> hList = InformationCrawlingService.getYorkshireterrierJspGo();
+		// 스피츠
+		List<InformationDTO> iList = InformationCrawlingService.getJaffaneseSpitzJspGo();
+		// 치와와
+		List<InformationDTO> jList = InformationCrawlingService.getChihuahuaJspGo();
+
+		// 골든리트리버
 		model.addAttribute("aList", aList);
+		// 래브라도 리트리버
+		model.addAttribute("bList", bList);
+		// 말티즈
+		model.addAttribute("cList", cList);
+		// 보더콜리
+		model.addAttribute("dList", dList);
+		// 비숑프리제
+		model.addAttribute("eList", eList);
+		// 사모예드
+		model.addAttribute("fList", fList);
+		// 셔틀랜드
+		model.addAttribute("gList", gList);
+		// 요크셔테리어
+		model.addAttribute("hList", hList);
+		// 스피츠
+		model.addAttribute("iList", iList);
+		// 치와와
+		model.addAttribute("jList", jList);
 		
 		log.info(this.getClass().getName() + ".Information 컨트롤러 (JSP출력) 종료");
 		return "/DExellent/Information";
 	}
-	/*
-	 * //==================================견종백과================================== //
-	 * 골든리트리버
-	 * 
-	 * @RequestMapping(value = "/DExellent/getGoldenRetriever") public
-	 * List<InformationDTO> getGoldenRetriever(HttpServletRequest request,
-	 * HttpServletResponse response) throws Exception {
-	 * log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 컨트롤러 시작");
-	 * 
-	 * List<InformationDTO> aList =
-	 * InformationCrawlingService.getGoldenRetrieverJspGo();
-	 * 
-	 * System.out.
-	 * println("List<InformationDTO> rList = InformationCrawlingService.getInformation(); 실행됨"
-	 * );
-	 * 
-	 * if (aList == null) { aList = new ArrayList<InformationDTO>(); }
-	 * log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 컨트롤러 종료"); return
-	 * aList; }
-	 * 
-	 * // 데이터 가져와 jsp와 연결
-	 * 
-	 * @RequestMapping(value = "/DExellent/Information") public String
-	 * GoldenRetriever(HttpServletRequest requset, HttpServletResponse response,
-	 * ModelMap model) throws Exception { log.info(this.getClass().getName() +
-	 * ".GoldenRetriever 컨트롤러 (JSP출력) 시작"); List<InformationDTO> aList =
-	 * InformationCrawlingService.getGoldenRetrieverJspGo();
-	 * 
-	 * model.addAttribute("aList", aList);
-	 * 
-	 * log.info(this.getClass().getName() + ".GoldenRetriever 컨트롤러 (JSP출력) 종료");
-	 * return "/DExellent/Information"; }
-	 */
+
 }

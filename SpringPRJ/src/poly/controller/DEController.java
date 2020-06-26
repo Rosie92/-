@@ -36,17 +36,16 @@ public class DEController {
 			informationcrawlingService.collectInformationCrawling();
 			
 			informationcrawlingService.GoldenRetriever();
-			/*
-			 * informationcrawlingService.collectInformationCrawling2();
-			 * informationcrawlingService.collectInformationCrawling3();
-			 * informationcrawlingService.collectInformationCrawling4();
-			 * informationcrawlingService.collectInformationCrawling5();
-			 * informationcrawlingService.collectInformationCrawling6();
-			 * informationcrawlingService.collectInformationCrawling7();
-			 * informationcrawlingService.collectInformationCrawling8();
-			 * informationcrawlingService.collectInformationCrawling9();
-			 * informationcrawlingService.collectInformationCrawling10();
-			 */
+			informationcrawlingService.LabradorRetriever();
+			informationcrawlingService.Maltese();
+			informationcrawlingService.BorderCollie();
+			informationcrawlingService.Bichonfreze();
+			informationcrawlingService.Samoyed();
+			informationcrawlingService.Shertland();
+			informationcrawlingService.Yorkshireterrier();
+			informationcrawlingService.JaffaneseSpitz();
+			informationcrawlingService.Chihuahua();
+			
 		}
 		return "/DExellent/index";
 	}

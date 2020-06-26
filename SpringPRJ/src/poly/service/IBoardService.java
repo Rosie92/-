@@ -27,6 +27,8 @@ public interface IBoardService {
 	int BoardReWriteTry(BoardDTO pDTO) throws Exception;	
 	// 게시판 글 삭제 실행하기
 	int BoardDelete(BoardDTO pDTO) throws Exception;
+	// 게시글 삭제하며 해당 게시글에 달린 댓글 모두 삭제
+	int BoardDeleteWithCommentDelete(CommentDTO cDTO) throws Exception; 
 	
 	//-----------------------------댓글--------------------------
 	// 댓글 리스트 불러오기
@@ -41,6 +43,7 @@ public interface IBoardService {
 	CommentDTO CommentUpdate(CommentDTO pDTO) throws Exception;
 	// 댓글 수정 실행하기
 	int CommentUpdateTry(CommentDTO pDTO) throws Exception;
+	
 
 
 

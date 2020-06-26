@@ -28,7 +28,6 @@
 <header>
 	<%
 	%>
-
 </header>
 <body style="overflow-x: hidden">
 	<form method="post"

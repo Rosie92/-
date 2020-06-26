@@ -4,122 +4,157 @@
 <%@page import="poly.dto.BoardDTO"%>
 <%@page import="poly.dto.CommentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%
-    BoardDTO bDTO = (BoardDTO)request.getAttribute("bDTO");
-    List<CommentDTO> cList = (List<CommentDTO>) request.getAttribute("cList");
-    if(bDTO ==null){
-    	bDTO = new BoardDTO();
-    }
-    %>
+	pageEncoding="UTF-8"%>
+<%
+	BoardDTO bDTO = (BoardDTO) request.getAttribute("bDTO");
+List<CommentDTO> cList = (List<CommentDTO>) request.getAttribute("cList");
+if (bDTO == null) {
+	bDTO = new BoardDTO();
+}
+%>
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>게시판디테일</title>
 <head>
 <link href="/css/styles.css" rel="stylesheet" />
+<!--     <script src="/summernote/summernote-lite.js"></script>
+	<link rel="stylesheet" href="/summernote/summernote-lite.css">
+    <script src="/summernote/lang/summernote-ko-KR.js"></script>
+     -->
 
 <style>
-
 </style>
 </head>
 
 <header>
-<%
-	//CmmUtil 붙이기 수정
-	String session_id = CmmUtil.nvl((String)session.getAttribute("SS_USER_ID"));
-	String seq = CmmUtil.nvl((String)request.getAttribute("seq"));
-%>
+	<%
+		//CmmUtil 붙이기 수정
+	String session_id = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+	String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
+	%>
 </header>
 <body style="overflow-x: hidden">
-	<div style="font-size: 20px; font-weight: 550; width:760px;">
-	<div style="text-align:center;display: inline-block; padding: 10px 10px 10px 20px;">제 목</div>
-	<div style="display: inline-block; padding: 10px 0px 10px 10px; width: 245px;">
-	<div><input type="text" readonly="readonly" name="title" maxlength="100" style="width: 520px; border:none;" value='<%=bDTO.getTitle()%>'></div>
-	</div>
-	</div>
-	<div>
-	<div name="content" style="overflow: auto; width: 330px; height: 520px; margin-left: 10px; resize: none; border: 1px solid black; padding:5px 5px 5px 5px"><%=bDTO.getContent() %></div>
-	</div>
-	
-	<!-- ===================== 댓글리스트 ============================= -->
-    <% for(CommentDTO cDTO : cList) { %>
-    <div style="background-color: lightyellow; width: 330px; margin-left: 10px; margin-top: 5px;">
-             <span>
-             	<input type="hidden" value="<%=CmmUtil.nvl(cDTO.getBoard_seq()) %>">
-                <input type="hidden" value="<%=CmmUtil.nvl(cDTO.getRno()) %>">
-            </span>
-            <span>
-            <div style=" width:50px; text-align:center; display:inline-block; word-break: break-all;">
-            <%=CmmUtil.nvl(cDTO.getWriter()) %>
-            </div>            
-            </span>
-            <span>
-            <div style="width:170px; text-align:center; display:inline-block; word-break: break-all;">
-            <%=CmmUtil.nvl(cDTO.getContent()).replaceAll("<","&lt;").replaceAll(">","&gt;") %>
-            </div>
-            </span>
-            
-            <form name="CommentUpdate" id="CommentUpdate" method="post" action="/DExellent/board/CommentUpdate.do?rno=<%=cDTO.getRno() %>" style="display: inline-block;">
-            <div style="margin-left:2px; text-align:center; display: inline-block; width:45px;">
-            <input type="button" value="수정" onclick="removeCheck4()" style="background-color: #ecdc1d; border:0px;">
-            </div>
-            </form>
-            
-            <form name="CommentDelete" id="CommentDelete" method="post" action="/DExellent/board/CommentDelete.do?rno=<%=cDTO.getRno() %>" style="display: inline-block;">
-            <div style="margin-left:2px; text-align:center; display: inline-block; width:45px;">
-            <input type="button" value="삭제" onclick="removeCheck()" style="background-color: #ecdc1d; border:0px;">
-            </div>
-            </form>
- <!--        	<div class="dropdown">
- 			<button onclick="myFunction()" class="dropbtn">관리</button>
-  			<div id="myDropdown" class="dropdown-content">
-    			<textarea id="commentReWrite" name="commentReWrite" style="width: 235px; height: 30px; margin-left: 10px; margin-top:10px; resize:none;" placeholder="댓글을 입력해주세요"></textarea>
-    			<a href="#" style="display: inline-block;">수정</a>
-    			<a href="#" style="display: inline-block;">삭제</a>
-  			</div>
-			</div> -->
+	<div style="font-size: 20px; font-weight: 550; width: 760px;">
+		<div
+			style="text-align: center; display: inline-block; padding: 10px 10px 10px 20px;">제
+			목</div>
+		<div
+			style="display: inline-block; padding: 10px 0px 10px 10px; width: 245px;">
+			<div>
+				<input type="text" name="title" maxlength="100" readonly="readonly" 
+					style="width: 245px; border: none;"
+					value='<%=bDTO.getTitle().replaceAll("<", "&lt;").replaceAll(">", "&gt;")%>'>
+			</div>
 		</div>
-          <% } %>
+	</div>
+	<div>
+		<div name="content" readonly="readonly"
+			style=" color: black; word-break: break-all; overflow: auto; width: 330px; height: 450px; margin-left: 10px; resize: none; border: 1px solid black; padding: 5px 5px 5px 5px"><%=CmmUtil.nvl(bDTO.getContent()).replaceAll("<", "&lt;").replaceAll(">", "&gt;")%></div>
+	</div>
 
-    <div style="overflow-x: hidden">
-    <div style="width: 740px; margin: left;">
-        <div class="row">
-            <div class="col-md-12">
-	<!-- 댓글 작성 -->
-    <div style="width: 750px; margin: auto;">
-	<form id="gogo" name="gogo" method="post" action="/DExellent/board/CommentProc.do?seq=<%=CmmUtil.nvl(bDTO.getBoard_seq()) %>">
-	<div>
-	<textarea id="content" name="content" style="width: 325px; height: 50px; margin-left: 10px; margin-top:10px; resize:none;" placeholder="댓글을 입력해주세요"></textarea>
+	<!-- ===================== 댓글리스트 ============================= -->
+	<%
+		for (int a = 0; a < cList.size(); a++)/* (CommentDTO cDTO : cList) */ {
+	%>
+	<div
+		style="background-color: #f5f5f3; width: 330px; margin-left: 10px; margin-top: 5px;">
+		<span> <input type="hidden"
+			value="<%=CmmUtil.nvl(cList.get(a).getBoard_seq())%>"> <input
+			type="hidden" value="<%=CmmUtil.nvl(cList.get(a).getRno())%>">
+		</span> <span>
+			<div
+				style="width: 50px; text-align: center; display: inline-block; word-break: break-all;">
+				<%=CmmUtil.nvl(cList.get(a).getWriter())%>
+			</div>
+		</span> <span>
+			<div
+				style="color: black; width: 170px; text-align: center; display: inline-block; word-break: break-all;">
+				<%=CmmUtil.nvl(cList.get(a).getContent()).replaceAll("<", "&lt;").replaceAll(">", "&gt;")%>
+			</div>
+		</span>
+		<script type="text/javascript">
+				function removeCheck2<%=CmmUtil.nvl(cList.get(a).getRno())%>(){
+				   if (confirm("글을 삭제하시겠습니까?") == true) {   
+					      document.location.href ="/DExellent/board/CommentDelete.do?rno=" + <%=cList.get(a).getRno()%>
+					      return true;
+					   } else {
+					      return false;
+					   }
+				 }
+				function removeCheck<%=CmmUtil.nvl(cList.get(a).getRno())%>(){
+					   if (confirm("댓글 수정창으로 이동합니다.") == true) {   
+						      document.location.href ="/DExellent/board/CommentUpdate.do?rno=" + <%=cList.get(a).getRno()%>
+						      return true;
+						   } else {
+						      return false;
+						   }
+					 }
+			</script>
+
+		<div
+			style="margin-left: 2px; text-align: center; display: inline-block; width: 45px;">
+			<input type="button" value="수정"
+				onclick="removeCheck<%=CmmUtil.nvl(cList.get(a).getRno())%>()"
+				style="background-color: #ecdc1d; border: 0px;">
+		</div>
+		<div
+			style="margin-left: 2px; text-align: center; display: inline-block; width: 45px;">
+			<input type="button" value="삭제"
+				onclick="removeCheck2<%=CmmUtil.nvl(cList.get(a).getRno())%>()"
+				style="background-color: #ecdc1d; border: 0px;">
+		</div>
 	</div>
-	<div class="form-group" style="width:155px; padding-top: 5px;">
-	<div>
-    <input type="button" id="submitA" class="btn btn-primary btn-block" readonly="readonly" style="cursor:pointer; margin-left:140px;" value="댓글쓰기"></div>
+	<%
+		}
+	%>
+
+	<div style="overflow-x: hidden">
+		<div style="width: 740px; margin: left;">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- 댓글 작성 -->
+					<div style="width: 750px; margin: auto;">
+						<form id="gogo" name="gogo" method="post"
+							action="/DExellent/board/CommentProc.do?seq=<%=CmmUtil.nvl(bDTO.getBoard_seq())%>">
+							<div>
+								<textarea id="content" name="content"
+									style="width: 325px; height: 50px; margin-left: 12.5px; margin-top: 10px; resize: none;"
+									placeholder="댓글을 입력해주세요"></textarea>
+							</div>
+							<div class="form-group" style="width: 155px; padding-top: 5px;">
+								<div>
+									<input type="button" id="submitA"
+										class="btn btn-primary btn-block" readonly="readonly"
+										style="cursor: pointer; margin-left: 95px;" value="댓글쓰기">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	</form>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div> 
 	<!-- ================================================== -->
 	<hr>
-	<div style="text-align:center;width:300px; padding-top: 5px;">
-	<div>
-	<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
-	<% if (session.getAttribute("user_name").equals("조정규")) { %>
-	<input type="button" onclick="location.href='/DExellent/board/BoardReWrite.do?seq=<%=seq%>'" class="btn btn-primary btn-block" value="관리자 수정/삭제하기"><br>
-	<%} else {%>
-	<input type="button" onclick="location.href='/DExellent/board/BoardReWrite.do?seq=<%=seq%>'" class="btn btn-primary btn-block" value="수정/삭제하기"><br>
-	<%} %>
-	<a href="/DExellent/board/BoardList.do?Pno=1">돌아가기</a>
-	</div>
+	<div style="text-align: center; width: 300px; padding-top: 5px;display:inline; vertical-align: middle;">
+		<div style="margin-left: 40px; display:inline;">
+			<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
+			<input type="button"
+				onclick="location.href='/DExellent/board/BoardReWrite.do?seq=<%=seq%>'"
+				class="btn btn-primary btn-block" value="수정/삭제하기"  style="width:130px; display:inline;">
+			
+			<input type="button"
+				onclick="location.href='/DExellent/board/BoardList.do?Pno=1'"
+				class="btn btn-primary btn-block" value="돌아가기" style="width:130px; display:inline; margin-bottom:6px;"><hr>
+		</div>
 	</div>
 
-<!--     <script src="/js/Board/jquery.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- 	<script type="text/javascript">
+	<!--     <script src="/js/Board/jquery.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
 	$(function(){ //window.onload
 		var submit = 0;
 		console.log(submit);
@@ -147,39 +182,5 @@
 	});
 
 </script>
-<script type="text/javascript">
-function removeCheck() {
-	 if (confirm("정말 삭제하시겠습니까??") == true){ //확인
-		 $('#CommentDelete').submit()
-	 }else{ //취소
-	     return false;
-	 }
-	}
-	
-function removeCheck4() {
-	 if (confirm("댓글 수정창으로 이동합니다") == true){ //확인
-		 $('#CommentUpdate').submit()
-	 }else{ //취소
-	     return false;
-	 }
-	}
-</script>
-<!-- function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} -->
 </body>
 </html>

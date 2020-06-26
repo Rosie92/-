@@ -41,7 +41,7 @@ public final class UrlFilter extends HttpServletRequestWrapper {
         return cleanXSS(value);
  
     }
- 
+    
     private String cleanXSS(String value) {
                 //You'll need to remove the spaces from the html entities below
         value = value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");

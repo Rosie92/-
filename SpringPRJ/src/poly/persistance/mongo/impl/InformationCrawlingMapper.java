@@ -38,7 +38,8 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
 		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
-		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Information", 1), "Information");
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Information", 1),
+				"Information");
 
 		res = true;
 
@@ -76,7 +77,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
 		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
 		List<InformationDTO> rList = new ArrayList<InformationDTO>();
-		
+
 		InformationDTO rDTO = null;
 
 		while (cursor.hasNext()) {
@@ -88,7 +89,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
 			System.out.println("########### Crawling_data에 current.get('Information') 실행완료 ###############");
 			rDTO.setInformation(Crawling_Data);
-			
+
 			System.out.println("rDTO에 저장 완료");
 
 			rList.add(rDTO); // List에 저장
@@ -104,9 +105,8 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 		return rList;
 
 	}
-	
-	
-	//==========================견종백과===========================
+
+	// ==========================견종백과===========================
 	// 골든리트리버
 	@Override
 	public boolean createCollectionGoldenRetriever(String colNm) throws Exception {
@@ -121,7 +121,8 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
 		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
-		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("GoldenRetriever", 1), "GoldenRetriever");
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("GoldenRetriever", 1),
+				"GoldenRetriever");
 
 		res = true;
 
@@ -129,6 +130,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 		return res;
 	}
+
 	@Override
 	public int insertInformationGoldenRetriever(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationGoldenRetriever Start!");
@@ -144,6 +146,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 		return 1;
 	}
+
 	@Override
 	public List<InformationDTO> getGoldenRetriever(String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 매퍼 시작");
@@ -155,7 +158,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
 		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
 		List<InformationDTO> aList = new ArrayList<InformationDTO>();
-		
+
 		InformationDTO rDTO = null;
 
 		while (cursor.hasNext()) {
@@ -168,7 +171,7 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
 			System.out.println("########### Crawling_data에 current.get('GoldenRetriever') 실행완료 ###############");
 			rDTO.setInformation(Crawling_Data);
-			
+
 			System.out.println("rDTO에 저장 완료");
 
 			aList.add(rDTO); // List에 저장
@@ -185,4 +188,732 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 	}
 
+	// 래브라도 리트리버
+	@Override
+	public boolean createCollectionLabradorRetriever(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionLabradorRetriever Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("LabradorRetriever", 1),
+				"LabradorRetriever");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionLabradorRetriever End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationLabradorRetriever(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationLabradorRetriever Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 LabradorRetriever 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 LabradorRetriever 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getLabradorRetriever(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".LabradorRetriever 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> bList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('LabradorRetriever') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			bList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + bList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".LabradorRetriever 셀렉트 매퍼 종료");
+
+		return bList;
+
+	}
+
+	// 말티즈
+	@Override
+	public boolean createCollectionMaltese(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionMaltese Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Maltese", 1),
+				"Maltese");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionMaltese End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationMaltese(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationMaltese Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Maltese 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Maltese 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getMaltese(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Maltese 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> cList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Maltese') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			cList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + cList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Maltese 셀렉트 매퍼 종료");
+
+		return cList;
+
+	}
+
+	// 보더콜리
+	@Override
+	public boolean createCollectionBorderCollie(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionBorderCollie Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("BorderCollie", 1),
+				"BorderCollie");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionBorderCollie End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationBorderCollie(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationBorderCollie Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 BorderCollie 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 BorderCollie 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getBorderCollie(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".BorderCollie 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> dList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('BorderCollie') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			dList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + dList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".BorderCollie 셀렉트 매퍼 종료");
+
+		return dList;
+
+	}
+
+	// 비숑 프란체
+	@Override
+	public boolean createCollectionBichonfreze(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionBichonfreze Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Bichonfreze", 1),
+				"Bichonfreze");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionBichonfreze End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationBichonfreze(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationBichonfreze Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Bichonfreze 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Bichonfreze 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getBichonfreze(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Bichonfreze 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> eList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Bichonfreze') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			eList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + eList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Bichonfreze 셀렉트 매퍼 종료");
+
+		return eList;
+
+	}
+
+	// 사모예드
+	@Override
+	public boolean createCollectionSamoyed(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionSamoyed Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Samoyed", 1),
+				"Samoyed");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionSamoyed End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationSamoyed(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationSamoyed Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Samoyed 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Samoyed 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getSamoyed(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Samoyed 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> fList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Samoyed') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			fList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + fList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Samoyed 셀렉트 매퍼 종료");
+
+		return fList;
+
+	}
+
+	// 셔틀랜드
+	@Override
+	public boolean createCollectionShertland(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionShertland Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Shertland", 1),
+				"Shertland");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionShertland End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationShertland(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationShertland Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Shertland 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Shertland 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getShertland(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Shertland 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> gList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Shertland') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			gList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + gList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Shertland 셀렉트 매퍼 종료");
+
+		return gList;
+
+	}
+
+	// 요크셔테리어
+	@Override
+	public boolean createCollectionYorkshireterrier(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionYorkshireterrier Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Yorkshireterrier", 1),
+				"Yorkshireterrier");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionYorkshireterrier End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationYorkshireterrier(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationYorkshireterrier Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Yorkshireterrier 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Yorkshireterrier 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getYorkshireterrier(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Yorkshireterrier 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> hList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Yorkshireterrier') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			hList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + hList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Yorkshireterrier 셀렉트 매퍼 종료");
+
+		return hList;
+
+	}
+
+	// 재패니즈 스피츠
+	@Override
+	public boolean createCollectionJaffaneseSpitz(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionJaffaneseSpitz Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("JaffaneseSpitz", 1),
+				"JaffaneseSpitz");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionJaffaneseSpitz End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationJaffaneseSpitz(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationJaffaneseSpitz Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 JaffaneseSpitz 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 JaffaneseSpitz 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getJaffaneseSpitz(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".JaffaneseSpitz 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> iList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('JaffaneseSpitz') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			iList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + iList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".JaffaneseSpitz 셀렉트 매퍼 종료");
+
+		return iList;
+
+	}
+
+	// 치와와
+	@Override
+	public boolean createCollectionChihuahua(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Information createCollectionChihuahua Start!");
+
+		boolean res = false;
+
+		// 기존에 등록된 컬렉션 이름이 존재하는지 체크하고, 존재하면 기존 컬렉션 삭제함
+		if (mongodb.collectionExists(colNm)) {
+			mongodb.dropCollection(colNm); // 기존 컬렉션 삭제
+		}
+
+		// 컬렉션 생성 및 인덱스 생성, MongoDB에서 데이터 가져오는 방식에 맞게 인덱스는 반드시 생성하자!
+		// 데이터 양이 많지 않으면 문제되지 않으나, 최소 10만건 이상 데이터 저장시 속도가 약 10배 이상 발생함
+		mongodb.createCollection(colNm).createIndex(new BasicDBObject("collect_time", 1).append("Chihuahua", 1),
+				"Chihuahua");
+
+		res = true;
+
+		log.info(this.getClass().getName() + ".Information createCollectionChihuahua End!");
+
+		return res;
+	}
+
+	@Override
+	public int insertInformationChihuahua(List<InformationDTO> pList, String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".insertInformationChihuahua Start!");
+
+		log.info("colNm : " + colNm);
+		log.info("pList : " + pList);
+
+		log.info("몽고디비 Chihuahua 인서트 실행 시작");
+
+		mongodb.insert(pList, colNm);
+
+		log.info("몽고디비 Chihuahua 인서트 실행 완료");
+
+		return 1;
+	}
+
+	@Override
+	public List<InformationDTO> getChihuahua(String colNm) throws Exception {
+		log.info(this.getClass().getName() + ".Chihuahua 셀렉트 매퍼 시작");
+		// 데이터를 가져올 컬렉션 선택
+		DBCollection rCol = mongodb.getCollection(colNm);
+		System.out.println("##################데이터를 가져올 컬렉션 선택##############");
+		// 컬렉션으로부터 전체 데이터 가져오기
+		Iterator<DBObject> cursor = rCol.find();
+		System.out.println("########컬렉션으로부터 전체 데이터 가져오기 ###########");
+		// 컬렉션으로부터 전체 데이터 가져온 것을 List 형태로 저장하기 위한 변수 선언
+		List<InformationDTO> jList = new ArrayList<InformationDTO>();
+
+		InformationDTO rDTO = null;
+
+		while (cursor.hasNext()) {
+
+			rDTO = new InformationDTO();
+
+			int i = 0;
+			final DBObject current = cursor.next();
+			System.out.println("#################### current에 cursor.next실행 #######################");
+			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
+			System.out.println("########### Crawling_data에 current.get('Chihuahua') 실행완료 ###############");
+			rDTO.setInformation(Crawling_Data);
+
+			System.out.println("rDTO에 저장 완료");
+
+			jList.add(rDTO); // List에 저장
+
+			System.out.println("aList에 저장완료 : " + jList.get(i).getInformation());
+
+			rDTO = null;
+			i++;
+		}
+
+		log.info(this.getClass().getName() + ".Chihuahua 셀렉트 매퍼 종료");
+
+		return jList;
+
+	}
 }

@@ -22,11 +22,9 @@
     <title>자유게시판 작성</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-
-	<!-- include summernote css/js -->
+<!-- 
     <script src="/summernote/summernote-lite.js"></script>
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
-    <!-- include summernote-ko-KR -->
     <script src="/summernote/lang/summernote-ko-KR.js"></script>
     
     
@@ -39,8 +37,10 @@
                 maxHeight: null,
                 focus: true,
                 lang: 'ko-KR',
-                onImageUpload : function(files) {
-                    uploadSummernoteImageFile(files[0],this);
+                onImageUpload : function(files, editor, welEditable) {
+                	for (var i = files.length -1; i >= 0; i--) {
+                    uploadSummernoteImageFile(files[i],this);
+                	}
                 }
             });
 
@@ -52,15 +52,16 @@
                     type : "POST",
                     url : "/uploadSummernoteImageFile",
                     contentType : false,
+                    enctype: "multipart/form-data",
                     processData : false,
                     success : function(data) {
-                        //항상 업로드된 파일의 url이 있어야 한다.
+                        /* $(el).summernote("editor.insertImage", url); */
                         $(editor).summernote('insertImage', data.url);
                     }
                 });
             }
         });
-    </script> 
+    </script>  -->
 </head>
 
 <body style="overflow-x: hidden">
@@ -73,9 +74,9 @@
 	</div>
 	</div>
 	<div>
-	<textarea id="summernote" name="content" style="width: 337px; height: 520px; margin-left: 5px; resize:none;"></textarea>
+	<textarea id="contentCheck" name="content" style="width: 337px; height: 470px; margin-left: 5px; resize:none;"></textarea>
 	</div>
-	<div style="text-align:center;width:255px; padding-top: 5px;">
+	<div style="text-align:center;width:255px; padding-top: 5px;margin-left: 45px;">
 	<div class="form-group" id="submit"> <!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
         <input type="submit" id="subBtn" class="btn btn-primary btn-block" readonly="readonly" style="cursor:pointer;" value="작성완료"></div>
         <a class="forgot" href="/DExellent/board/BoardList.do?Pno=1" >돌아가기</a>
@@ -87,7 +88,7 @@
 <script>
     $('#subBtn').click(function () {
         var title = $('#title').val();
-        var content = $('#summernote').val();
+        var content = $('#contentCheck').val();
 
         if(title==""){
             alert("제목을 입력해 주세요.");

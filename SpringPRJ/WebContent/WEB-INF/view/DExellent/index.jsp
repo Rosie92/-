@@ -501,7 +501,7 @@
 					</h3>
 				</div>
 				
-				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%" height="766px"
+				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%" height="630px"
 				name="Board" id="Board" frameborder="1" scrolling="yes"
 				style="overflow-x: hidden" /></iframe>
 				

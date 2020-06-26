@@ -61,7 +61,11 @@ public class BoardService implements IBoardService {
 	public int BoardDelete(BoardDTO pDTO) throws Exception {
 		return BoardMapper.BoardDelete(pDTO);
 	}
-	
+	// 게시글 삭제하며 해당 게시글에 달린 댓글 모두 삭제
+	@Override
+	public int BoardDeleteWithCommentDelete(CommentDTO cDTO) throws Exception {
+		return BoardMapper.BoardDeleteWithCommentDelete(cDTO);
+	}
 	
 	//------------------------댓글--------------------------
 	
@@ -92,6 +96,7 @@ public class BoardService implements IBoardService {
 	public int CommentUpdateTry(CommentDTO pDTO) throws Exception {
 		return BoardMapper.CommentUpdateTry(pDTO);
 	}
+
 
 
 	
