@@ -24,23 +24,44 @@
 		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
     </head>
-    <body id="page-top">
+    <body id="page-top" style="background-image: URL(../../assets/img/DEIMG/kakaofriends.png);">
 
         <!-- Masthead2-->
       <header class="masthead2">
             <div class="container">
-                <div class="masthead2-heading text-uppercase">&emsp;&emsp;&nbsp;Kakao<br>Member&emsp;&emsp;<br>Information </div>
-                <div>
+                <div style="margin-top: 200px;">
                 	<img src="<%=session.getAttribute("user_thumbnail_image") %>" width="70px" height="70px">
-                    <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px; margin-top: 20px;"><%=session.getAttribute("user_name") %></div>
-                    <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px;"><%=session.getAttribute("user_mail") %></div>
-                    <div style="font-size: 20px; color:rgb(116, 116, 116); text-align: center; padding-bottom: 10px;"><%=session.getAttribute("user_range") %></div>
+                    <div style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_name") %></div>
+                    <div style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_mail") %></div>
+                    <div style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_range") %></div>
                     <img src="<%=session.getAttribute("user_profile_image") %>" width="200px" height="200px">
-                    
                 </div>
-                <div>
-                <a class="btn btn-primary btn-xl2 text-uppercase js-scroll-trigger" href="https://accounts.kakao.com/weblogin/account/info">카&nbsp카&nbsp오&nbsp&nbsp계&nbsp정&nbsp&nbsp관&nbsp리</a>
-                </div>
+                	<div style='display: inline-block; width: 100%;'>
+			<button class="btn btn-primary2 btn-xl2 text-uppercase js-scroll-trigger" data-toggle='modal' data-target='#intro'
+				style="display: inline-block; font-size: 15px; width: 200px; vertical-align: middle;">카카오 계정 관리</button>
+		</div>
+
+
+
+
+		<div class="modal fade" id="intro" role="dialog"
+			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content" style="height: 650px;">
+					<div class="modal-header">
+						<h4 class="modal-title" style="height: 20px; width: 300px; display: inline;">카카오 계정 관리</h4>
+						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 50px;">Ⅹ</button>
+					</div>
+					<div class="modal-body" style="height: 550px;">
+						<iframe src="https://accounts.kakao.com/weblogin/account/info" width="100%"
+							height="530px" name="Title" id="Title" frameborder="1"
+							scrolling="yes" style="overflow-x: hidden" /></iframe>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
             </div>
         </header>
         <!-- Bootstrap core JS-->

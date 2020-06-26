@@ -7,10 +7,10 @@
 <%
 	CommentDTO pDTO = (CommentDTO) request.getAttribute("pDTO");
 
-	String content = CmmUtil.nvl(pDTO.getContent());
-	String rno = CmmUtil.nvl((String) request.getAttribute("rno"));
-	String writer = CmmUtil.nvl(pDTO.getWriter());
-	String seq = CmmUtil.nvl(pDTO.getBoard_seq());
+String content = CmmUtil.nvl(pDTO.getContent());
+String rno = CmmUtil.nvl((String) request.getAttribute("rno"));
+String writer = CmmUtil.nvl(pDTO.getWriter());
+String seq = CmmUtil.nvl(pDTO.getBoard_seq());
 %>
 <html>
 
@@ -27,27 +27,32 @@
 </head>
 <header>
 	<%
+		
 	%>
 </header>
-<body style="overflow-x: hidden">
+<body
+	style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
 	<form method="post"
 		action="/DExellent/board/CommentUpdateTry.do?rno=<%=rno%>">
-		<input value="<%=rno%>" name="rno" hidden="hidden">
-		<input value="<%=writer%>" name="writer" hidden="hidden">
-		<input value="<%=seq%>" name="board_seq" hidden="hidden">
+		<input value="<%=rno%>" name="rno" hidden="hidden"> <input
+			value="<%=writer%>" name="writer" hidden="hidden"> <input
+			value="<%=seq%>" name="board_seq" hidden="hidden">
 		<div>
-		
+
 			<div>
-				<textarea id="content" name="content" style="width: 325px; height: 50px; margin-left: 10px; margin-top:10px; resize:none;" placeholder="<%=content%>"></textarea>
+				<textarea id="content" name="content"
+					style="width: 325px; height: 50px; margin-left: 10px; margin-top: 10px; resize: none;"
+					placeholder="<%=content%>"></textarea>
 			</div>
 
 			<div
-				style="text-align: center; margin-left: 10px; width: 345px; padding-top: 5px;">
+				style="text-align: center; margin-left: 48px; width: 250px; padding-top: 10px;">
 				<div class="form-group" id="submit">
 					<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
 					<input type="submit" id="subBtn" class="btn btn-primary btn-block"
 						readonly="readonly" style="cursor: pointer;" value="작성완료">
 				</div>
+
 			</div>
 		</div>
 	</form>
@@ -56,10 +61,15 @@
 		action="/DExellent/board/BoardList.do?Pno=1"
 		style="display: inline-block;">
 		<div
-			style="margin-left: 10px; text-align: center; display: inline-block;">
-			<input type="button" value="수정 종료" onclick="removeCheck2()">
+			style="margin-left: 205px; text-align: center; display: inline-block;">
+			<input class="btn btn-primary btn-block" type="button" value="수정 종료"
+				onclick="removeCheck2()" readonly="readonly"
+				style="cursor: pointer;">
 		</div>
 	</form>
+
+
+
 
 	<script type="text/javascript">
 		function removeCheck2() {
@@ -69,6 +79,23 @@
 				return false;
 			}
 		}
+	</script>
+
+	<script>
+		$('#subBtn').click(function() {
+			var content = $('#content').val();
+
+			if (content == "") {
+				alert("내용을 입력해 주세요.");
+				return false;
+				$('#content').focus();
+			}
+			/*         else if(board_pw==""){
+			 alert("비밀번호를 입력해 주세요.");
+			 return false;
+			 $('#board_pw').focus();
+			 } */
+		});
 	</script>
 </body>
 </html>

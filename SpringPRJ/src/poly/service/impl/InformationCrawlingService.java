@@ -693,7 +693,6 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 			Yorkshireterrier = Yorkshireterrier.replaceAll("2129","0");
 			Yorkshireterrier = Yorkshireterrier.replaceAll("1500","0");
 			Yorkshireterrier = Yorkshireterrier.replaceAll("2251","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("","0");
 			
 			CrawlingData = null;
 

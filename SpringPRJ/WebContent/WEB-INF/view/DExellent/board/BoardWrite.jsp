@@ -64,7 +64,7 @@
     </script>  -->
 </head>
 
-<body style="overflow-x: hidden">
+<body style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
 	<form method="post" action="/DExellent/board/BoardWriteProc.do">
 	<div>
 	<div style="font-size: 20px; font-weight: 550; width:760px;">

@@ -57,154 +57,70 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body style="width: 347px;">
+<body style="width: 347px; background-image: URL(../../assets/img/DEIMG/infor_back.jpg)" >
 	<div style="overflow-x: hidden">
 		<br>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ 버튼 @@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- 골든리트리버 -->
-		<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro0'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a0.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					골든 리트리버
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 래브라도 리트리버 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro1'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a1.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					래브라도 리트리버
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 말티즈 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro2'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a2.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					말티즈
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 보더콜리 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro3'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a3.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					보더콜리
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 비숑 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro4'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a4.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					비숑 프리체
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 사모예드 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro5'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a5.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					사모예드
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 셔틀랜드 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro6'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a6.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					셔틀랜드 쉽독
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 요크셔테리어 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro7'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a7.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					요크 셔테리어
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 스피츠 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro8'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a8.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					재패니즈 스피츠
-				</div>
-				<hr>
-			</button>
-		</div>
-		<!-- 치와와 -->
-			<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro9'
-				style="background-color: white; border: 0px;">
-				<img src='../../assets/img/DEIMG/dog/a9.jpg' width='330px'
-					height='210px'
-					style='display: inline-block; vertical-align: middle;'>
-				<div
-					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
-					치와와
-				</div>
-				<hr>
-			</button>
-		</div>
+		<% 
+		String a0 = "골든 리트리버"; 
 		
+		for (int i = 0; i < 10; i++) {
+		%>
+		<div style='display: inline-block; width: 90%; line-height: 10px; margin-left: 17px;'>
+			<button data-toggle='modal' data-target='#intro<%=i %>'
+				style="background-color: white; border: 0px;">
+				<img src='../../assets/img/DEIMG/dog/a<%=i %>.jpg' width='300px'
+					height='190px'
+					style='display: inline-block; vertical-align: middle;'>
+				<div
+					style="display: inline-block; font-size: 20px; font-weight: bolder; line-height: 40px; width: 235px; vertical-align: middle;">
+					<%
+					if (i == 0){
+					 %>
+					 골든 리트리버
+					 <%} else if (i == 1) {%>
+					 래브라도 리트리버
+					 <%} else if (i == 2) {%>
+					 말티즈
+					 <%} else if (i == 3) {%>
+					 보더콜리
+					 <%} else if (i == 4) {%>
+					 비숑프리제
+					 <%} else if (i == 5) {%>
+					 사모예드
+					 <%} else if (i == 6) {%>
+					 셔틀랜드 쉽독
+					 <%} else if (i == 7) {%>
+					 요크셔테리어
+					 <%} else if (i == 8) {%>
+					 재패니스 스피츠
+					 <%} else if (i == 9) {%>
+					 치와와
+					 <%} %>
+				</div>
+			</button>
+			<br><br>
+		</div>
+	
+		<%} %>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@ 팝업 @@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- 골든 리트리버 -->
-		<div class="modal fade" id="intro0" role="dialog"
+		<%
+		int a = aList.size();
+		int b = bList.size();
+		int c = cList.size();
+		int d = dList.size();
+		int e = eList.size();
+		int f = fList.size();
+		int g = gList.size();
+		int h = hList.size();
+		int i = iList.size();
+		int j = jList.size();
+		
+		for (int w = 0; w < 10; w++) {
+		 %>
+		<div class="modal fade" id="intro<%=w %>" role="dialog"
 			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content" style="height: 650px;">
@@ -213,228 +129,59 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
 					</div>
 					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a0.jpg' width='293px'
+						<img src='../../assets/img/DEIMG/dog/a<%=w %>.jpg' width='293px'
 							height='200px'
 							style='display: inline-block; vertical-align: middle;'>
 						<hr>
 						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < aList.size(); a++) {%>
-							<%=aList.get(a).getInformation()%><hr>
-							<%} %>
+							<%
+							if (w == 0) {
+							for (int q = 0; q < a; q++) {%>
+							<%=aList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 1) { 
+							for (int q = 0; q < b; q++) {%>
+							<%=bList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 2) { 
+							for (int q = 0; q < c; q++) {%>
+							<%=cList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 3) { 
+							for (int q = 0; q < d; q++) {%>
+							<%=dList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 4) { 
+							for (int q = 0; q < e; q++) {%>
+							<%=eList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 5) { 
+							for (int q = 0; q < f; q++) {%>
+							<%=fList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 6) { 
+							for (int q = 0; q < g; q++) {%>
+							<%=gList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 7) { 
+							for (int q = 0; q < h; q++) {%>
+							<%=hList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 8) { 
+							for (int q = 0; q < i; q++) {%>
+							<%=iList.get(q).getInformation()%><hr>
+							
+							<%}} else if (w == 9) { 
+							for (int q = 0; q < j; q++) {%>
+							<%=jList.get(q).getInformation()%><hr>
+							
+							<%}} %>
 						</div>
-					</div>		
+					</div>	
 				</div>
 			</div>
 		</div>
-		<!-- 래브라도 리트리버 -->
-				<div class="modal fade" id="intro1" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a1.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < bList.size(); a++) {%>
-							<%=bList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 말티즈 -->
-				<div class="modal fade" id="intro2" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a2.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < cList.size(); a++) {%>
-							<%=cList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 보더콜리 -->
-				<div class="modal fade" id="intro3" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a3.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < dList.size(); a++) {%>
-							<%=dList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 비숑 -->
-				<div class="modal fade" id="intro4" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a4.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < eList.size(); a++) {%>
-							<%=eList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 사모예드 -->
-				<div class="modal fade" id="intro5" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a5.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < fList.size(); a++) {%>
-							<%=fList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 셔틀랜드 -->
-				<div class="modal fade" id="intro6" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a6.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < gList.size(); a++) {%>
-							<%=gList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 요크셔테리어 -->
-				<div class="modal fade" id="intro7" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a7.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < hList.size(); a++) {%>
-							<%=hList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 스피츠 -->
-				<div class="modal fade" id="intro8" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a8.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < iList.size(); a++) {%>
-							<%=iList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<!-- 치와와 -->
-				<div class="modal fade" id="intro9" role="dialog"
-			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content" style="height: 650px;">
-					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px; display: inline;">견종백과</h4>
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
-					</div>
-					<div class="modal-body" style="height: 550px;">
-						<img src='../../assets/img/DEIMG/dog/a9.jpg' width='293px'
-							height='200px'
-							style='display: inline-block; vertical-align: middle;'>
-						<hr>
-						<div style="overflow: scroll; height: 310px; background-attachment:fixed; background-image: URL(../../assets/img/DEIMG/title2.jpg);">
-							<%for (int a = 0; a < jList.size(); a++) {%>
-							<%=jList.get(a).getInformation()%><hr>
-							<%} %>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-
-
+		<%} %>		
 
 	</div>
 </body>

@@ -36,7 +36,7 @@ if (bDTO == null) {
 	String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
 	%>
 </header>
-<body style="overflow-x: hidden">
+<body style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');"">
 	<div style="font-size: 20px; font-weight: 550; width: 760px;">
 		<div
 			style="text-align: center; display: inline-block; padding: 10px 10px 10px 20px;">제
@@ -60,7 +60,7 @@ if (bDTO == null) {
 		for (int a = 0; a < cList.size(); a++)/* (CommentDTO cDTO : cList) */ {
 	%>
 	<div
-		style="background-color: #f5f5f3; width: 330px; margin-left: 10px; margin-top: 5px;">
+		style="background-color: #ffffffcc; width: 330px; margin-left: 10px; margin-top: 5px;">
 		<span> <input type="hidden"
 			value="<%=CmmUtil.nvl(cList.get(a).getBoard_seq())%>"> <input
 			type="hidden" value="<%=CmmUtil.nvl(cList.get(a).getRno())%>">
@@ -93,18 +93,17 @@ if (bDTO == null) {
 						   }
 					 }
 			</script>
-
 		<div
 			style="margin-left: 2px; text-align: center; display: inline-block; width: 45px;">
 			<input type="button" value="수정"
 				onclick="removeCheck<%=CmmUtil.nvl(cList.get(a).getRno())%>()"
-				style="background-color: #ecdc1d; border: 0px;">
+				style="background-color: #fff46e73; border: 0px;">
 		</div>
 		<div
 			style="margin-left: 2px; text-align: center; display: inline-block; width: 45px;">
 			<input type="button" value="삭제"
 				onclick="removeCheck2<%=CmmUtil.nvl(cList.get(a).getRno())%>()"
-				style="background-color: #ecdc1d; border: 0px;">
+				style="background-color: #fff46e73; border: 0px;">
 		</div>
 	</div>
 	<%
