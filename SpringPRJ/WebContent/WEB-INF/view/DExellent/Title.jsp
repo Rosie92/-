@@ -73,10 +73,11 @@ List<TitleDTO> rList = (List<TitleDTO>) request.getAttribute("rList");
 	<div style="overflow-x: hidden">
 		<br>
 		<%
-			for (int a = 0; a < eList.size(); a++) {
+			int j = eList.size();		
+			for (int a = 0; a < j; a++) {
 		%>
 		<div style='display: inline-block; width: 100%; line-height: 10px;'>
-			<button data-toggle='modal' data-target='#intro'
+			<button data-toggle='modal' data-target='#intro<%=a %>'
 				style="background-color: white; border: 0px;">
 				<img src='../../assets/img/DEIMG/PP<%=a%>.jpg' width='80px'
 					height='80px'
@@ -85,26 +86,27 @@ List<TitleDTO> rList = (List<TitleDTO>) request.getAttribute("rList");
 					style="display: inline-block; font-size: 13px; line-height: 40px; width: 235px; vertical-align: middle;"><%=eList.get(a).getTitle()%></div>
 				<hr>
 			</button>
+<%-- 			<%int Q = 0; %> --%>
 		</div>
 		<%
 			}
 		%>
 
-
-
-		<div class="modal fade" id="intro" role="dialog"
+		
+		<% 
+		int k = rList.size();
+		for (int b = 0; b < k; b++ ) {%>
+		<div class="modal fade" id="intro<%=b %>" role="dialog"
 			aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content" style="height: 650px;">
 					<div class="modal-header">
-						<h4 class="modal-title" style="height: 10px;">N E W S</h4>
+						<h4 class="modal-title" style="height: 10px; display: inline;">N E W S</h4>
+						<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 170px;">Ⅹ</button>
 					</div>
 					<div class="modal-body" style="height: 550px;">
-						<%
-							for (int i = 0; i < rList.size(); i++) {
-						%>
-						<iframe src="<%=rList.get(i).getContent()%>" width="100%"
-							height="530px" <%}%> name="Title" id="Title" frameborder="1"
+						<iframe src="<%=rList.get(b).getContent()%>" width="100%"
+							height="530px" name="Title" id="Title" frameborder="1"
 							scrolling="yes" style="overflow-x: hidden" /></iframe>
 					</div>
 					<div class="modal-footer">
@@ -113,19 +115,9 @@ List<TitleDTO> rList = (List<TitleDTO>) request.getAttribute("rList");
 				</div>
 			</div>
 		</div>
-
+		<%} %>
 
 
 	</div>
 </body>
-<!-- <script>
-	// 모달 버튼에 이벤트를 건다.
-	$('#openModalBtn').on('click', function() {
-		$('#modalBox').modal('show');
-	});
-	// 모달 안의 취소 버튼에 이벤트를 건다.
-	$('#closeModalBtn').on('click', function() {
-		$('#modalBox').modal('hide');
-	});
-</script> -->
 </html>
