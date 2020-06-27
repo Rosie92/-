@@ -68,6 +68,8 @@
 						<img src="/assets/img/DEIMG/kakaologin.png"
 						style="width: 260px; margin-left: 40px; margin-top: 10px;">
 					</a>
+
+
 					<%
 						} else {
 					%>
@@ -85,6 +87,7 @@
 						href="#portfolio">YOUTUBE</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="/kakaologout.do">LOGOUT</a></li>
+
 					<%
 						}
 					%>
@@ -337,6 +340,7 @@
 			</div>
 		</div>
 	</footer>
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -40,16 +40,39 @@
 	<header class="masthead2">
 		<div class="container">
 			<div style="margin-top: 200px;">
+				<%
+					if (session.getAttribute("user_thumbnail_image").equals("썸네일 이미지가 없습니다.")) {
+				%>
+				<img src="../../assets/img/DEIMG/user_image.jpg" width="70px"
+					height="70px">
+				<%
+					} else {
+				%>
 				<img src="<%=session.getAttribute("user_thumbnail_image")%>"
 					width="70px" height="70px">
+				<%
+					}
+				%>
 				<div
 					style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_name")%></div>
 				<div
 					style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_mail")%></div>
 				<div
 					style="font-size: 20px; font-weight: bolder; color: rgb(116, 116, 116); text-align: center;"><%=session.getAttribute("user_range")%></div>
+				<%
+					if (session.getAttribute("user_profile_image").equals("프로필 이미지가 없습니다.")) {
+				%>
+				<img src="../../assets/img/DEIMG/user_image.jpg" width="200px"
+					height="200px">
+				<%
+					} else {
+				%>
 				<img src="<%=session.getAttribute("user_profile_image")%>"
 					width="200px" height="200px">
+				<%
+					}
+				%>
+
 			</div>
 			<div style='display: inline-block; width: 100%;'>
 				<button

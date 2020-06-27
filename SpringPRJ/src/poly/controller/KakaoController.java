@@ -48,8 +48,16 @@ public class KakaoController {
 			session.setAttribute("user_name", userInfo.get("nickname"));
 			session.setAttribute("user_mail", userInfo.get("email"));
 			session.setAttribute("user_range", userInfo.get("age_range"));
-			session.setAttribute("user_profile_image", userInfo.get("profile_image"));
-			session.setAttribute("user_thumbnail_image", userInfo.get("thumbnail_image"));
+			if (userInfo.get("profile_image") == null) {
+				session.setAttribute("user_profile_image", "프로필 이미지가 없습니다.");
+			} else {
+				session.setAttribute("user_profile_image", userInfo.get("profile_image"));
+			}
+			if (userInfo.get("thumbnail_image") == null) {
+				session.setAttribute("user_thumbnail_image", "썸네일 이미지가 없습니다.");
+			} else {
+				session.setAttribute("user_thumbnail_image", userInfo.get("thumbnail_image"));
+			}
 
 			System.out.println("카카오에서 받아온 정보 세션에 넣은 값");
 			System.out.println("user_name : " + session.getAttribute("user_name"));
