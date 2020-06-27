@@ -36,7 +36,8 @@ if (bDTO == null) {
 	String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
 	%>
 </header>
-<body style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');"">
+<body
+	style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');"">
 	<div style="font-size: 20px; font-weight: 550; width: 760px;">
 		<div
 			style="text-align: center; display: inline-block; padding: 10px 10px 10px 20px;">제
@@ -44,7 +45,7 @@ if (bDTO == null) {
 		<div
 			style="display: inline-block; padding: 10px 0px 10px 10px; width: 245px;">
 			<div>
-				<input type="text" name="title" maxlength="100" readonly="readonly" 
+				<input type="text" name="title" maxlength="100" readonly="readonly"
 					style="width: 245px; border: none;"
 					value='<%=bDTO.getTitle().replaceAll("<", "&lt;").replaceAll(">", "&gt;")%>'>
 			</div>
@@ -52,12 +53,13 @@ if (bDTO == null) {
 	</div>
 	<div>
 		<div name="content" readonly="readonly"
-			style=" color: black; word-break: break-all; overflow: auto; width: 330px; height: 450px; margin-left: 10px; resize: none; border: 1px solid black; padding: 5px 5px 5px 5px"><%=CmmUtil.nvl(bDTO.getContent()).replaceAll("<", "&lt;").replaceAll(">", "&gt;")%></div>
+			style="color: black; word-break: break-all; overflow: auto; width: 330px; height: 450px; margin-left: 10px; resize: none; border: 1px solid black; padding: 5px 5px 5px 5px"><%=CmmUtil.nvl(bDTO.getContent()).replaceAll("<", "&lt;").replaceAll(">", "&gt;")%></div>
 	</div>
 
 	<!-- ===================== 댓글리스트 ============================= -->
 	<%
-		for (int a = 0; a < cList.size(); a++)/* (CommentDTO cDTO : cList) */ {
+		int o = cList.size();
+	for (int a = 0; a < o; a++)/* (CommentDTO cDTO : cList) */ {
 	%>
 	<div
 		style="background-color: #ffffffcc; width: 330px; margin-left: 10px; margin-top: 5px;">
@@ -138,16 +140,18 @@ if (bDTO == null) {
 	</div>
 	<!-- ================================================== -->
 	<hr>
-	<div style="text-align: center; width: 300px; padding-top: 5px;display:inline; vertical-align: middle;">
-		<div style="margin-left: 40px; display:inline;">
+	<div
+		style="text-align: center; width: 300px; padding-top: 5px; display: inline; vertical-align: middle;">
+		<div style="margin-left: 40px; display: inline;">
 			<!-- submit이 input에 들어가면 유효성 검사가 실행이X -->
 			<input type="button"
 				onclick="location.href='/DExellent/board/BoardReWrite.do?seq=<%=seq%>'"
-				class="btn btn-primary btn-block" value="수정/삭제하기"  style="width:130px; display:inline;">
-			
-			<input type="button"
+				class="btn btn-primary btn-block" value="수정/삭제하기"
+				style="width: 130px; display: inline;"> <input type="button"
 				onclick="location.href='/DExellent/board/BoardList.do?Pno=1'"
-				class="btn btn-primary btn-block" value="돌아가기" style="width:130px; display:inline; margin-bottom:6px;"><hr>
+				class="btn btn-primary btn-block" value="돌아가기"
+				style="width: 130px; display: inline; margin-bottom: 6px;">
+			<hr>
 		</div>
 	</div>
 

@@ -58,6 +58,9 @@ public class EmpathyController {
 		model.addAttribute("eList", eList);
 		model.addAttribute("rList", rList);
 
+		eList = null;
+		rList = null;
+
 		log.info(this.getClass().getName() + ".뉴스 셀렉트 컨트롤러 (JSP출력) 종료");
 
 		return "/DExellent/Title";

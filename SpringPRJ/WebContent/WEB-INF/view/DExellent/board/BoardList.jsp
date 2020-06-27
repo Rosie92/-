@@ -24,7 +24,10 @@ System.out.println("bList.size :" + bList.size());
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>자유게시판</title>
 <link href="/css/styles.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+	integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+	crossorigin="anonymous">
 </head>
 
 <body
@@ -62,16 +65,19 @@ System.out.println("bList.size :" + bList.size());
 				}
 			%>
 			<div>
-			<div class="nav nav-tabs" style="margin-top: 25px; margin-bottom: 15px;">
-				<div class="nav-item">
-				<button type="button" class="btn btn-primay" onclick="location.href='/DExellent/board/BoardWrite.do'"
-					style="font-weight: bold; vertical-align: middle;">글작성
-				<i class="fas fa-pen-square" style="color: green; font-size: 22px; vertical-align: middle;"></i>
-				</button>
-						
+				<div class="nav nav-tabs"
+					style="margin-top: 25px; margin-bottom: 15px;">
+					<div class="nav-item">
+						<button type="button" class="btn btn-primay"
+							onclick="location.href='/DExellent/board/BoardWrite.do'"
+							style="font-weight: bold; vertical-align: middle;">
+							글작성 <i class="fas fa-pen-square"
+								style="color: green; font-size: 22px; vertical-align: middle;"></i>
+						</button>
+
+					</div>
 				</div>
 			</div>
-		</div>
 			<div class="tab-pane active" role="tabpanel" id="tab-1">
 				<div class="thread-list-head">
 					<nav class="thread-pages">
@@ -114,7 +120,7 @@ System.out.println("bList.size :" + bList.size());
 			</div>
 		</div>
 
-		
+
 	</div>
 	<script src="/js/Board/jquery.min.js"></script>
 </body>

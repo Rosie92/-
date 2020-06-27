@@ -21,7 +21,8 @@
 		UPD_DATE
 		FROM
 		board
-		ORDER BY BOARD_SEQ DESC
+		ORDER
+		BY BOARD_SEQ DESC
 		LIMIT #{startlist}, #{listsize}
 	</select>
 	<!-- 게시판 글 작성 실행하기 -->
@@ -85,11 +86,13 @@
 		UPDATE
 		board
 		SET
-		TITLE = #{title},
+		TITLE =
+		#{title},
 		CONTENT = #{content},
 		UPD_DATE = SYSDATE()
 		WHERE
-		BOARD_SEQ = #{board_seq}
+		BOARD_SEQ =
+		#{board_seq}
 	</update>
 	<!-- 게시판 글 삭제 실행 -->
 	<delete id="BoardDelete" parameterType="BoardDTO">
@@ -100,7 +103,8 @@
 		BOARD_SEQ = #{board_seq}
 	</delete>
 	<!-- 게시글 삭제하며 해당 글에 달린 댓글 모두 삭제 -->
-	<delete id="BoardDeleteWithCommentDelete" parameterType="CommentDTO">
+	<delete id="BoardDeleteWithCommentDelete"
+		parameterType="CommentDTO">
 		DELETE
 		FROM
 		myreply
@@ -181,34 +185,4 @@
 		WRITER = #{writer}
 	</update>
 
-
-	<!-- <select id="ModifyCertify2" parameterType="BMFBDTO" resultType="BMFBDTO"> 
-		SELECT BOARD_PW AS board_pw FROM FBTABLE WHERE BOARD_PW = #{board_pw} AND 
-		BOARD_SEQ = #{board_seq} </select> <select id="GUI2" parameterType="BMFBDTO" 
-		resultType="BMFBDTO"> SELECT TITLE AS title, CONTENT AS content, UPD_DATE 
-		AS upd_date, USER_ID AS user_id, BOARD_PW AS board_pw, BOARD_SEQ AS board_seq 
-		FROM FBTABLE WHERE BOARD_PW = #{board_pw} AND BOARD_SEQ = #{board_seq} </select> 
-		<select id="GUI3" parameterType="BMFBDTO" resultType="BMFBDTO"> SELECT TITLE 
-		AS title, CONTENT AS content, UPD_DATE AS upd_date, USER_ID AS user_id, BOARD_PW 
-		AS board_pw, BOARD_SEQ AS board_seq FROM FBTABLE WHERE BOARD_SEQ = #{board_seq} 
-		</select> <select id="GUI4" parameterType="BMFBDTO" resultType="BMFBDTO"> 
-		SELECT TITLE AS title, CONTENT AS content, UPD_DATE AS upd_date, BOARD_PW 
-		AS board_pw, BOARD_SEQ AS board_seq FROM FBTABLE WHERE BOARD_SEQ = #{board_seq} 
-		</select> <select id="BMFreeBDModify" parameterType="BMFBDTO" resultType="BMFBDTO"> 
-		SELECT TITLE AS title, CONTENT AS content, UPD_DATE AS upd_date, USER_ID 
-		AS user_id, BOARD_PW AS board_pw, BOARD_SEQ AS seq FROM FBTABLE WHERE BOARD_SEQ 
-		= #{seq} </select> <select id="TotalCountUserInfo" resultType="int"> SELECT 
-		COUNT(*) FROM USERTABLE </select> <select id="ModifyCertify3" resultType="int"> 
-		SELECT COUNT(*) FROM USERTABLE WHERE USER_PW = #{user_pw} AND USER_ID = #{user_id} 
-		</select> <select id="CommentModifyTry" parameterType="COMMENTDTO" resultType="COMMENTDTO"> 
-		SELECT RNO AS rno FROM MYREPLY WHERE RNO = #{rno} </select> <select id="CommentCertify" 
-		parameterType="COMMENTDTO" resultType="int"> SELECT COUNT(*) FROM MYREPLY 
-		WHERE RNO = #{rno} AND PW = #{pw} </select> <select id="CommentCertify2" 
-		parameterType="COMMENTDTO" resultType="COMMENTDTO"> SELECT BOARD_SEQ AS board_seq, 
-		RNO AS rno, CONTENT AS content, WRITER AS writer, PW AS pw FROM MYREPLY WHERE 
-		RNO = #{rno} AND PW = #{pw} </select> <update id="CommentUpdate" parameterType="COMMENTDTO"> 
-		UPDATE MYREPLY SET CONTENT = #{content}, PW = #{pw}, WRITER = #{writer} WHERE 
-		RNO = #{rno} </update> <select id="selectRe" parameterType="COMMENTDTO" resultType="COMMENTDTO"> 
-		SELECT BOARD_SEQ AS board_seq, CONTENT AS content, WRITER AS writer FROM 
-		MYREPLY WHERE RNO = #{rno} </select> -->
 </mapper>

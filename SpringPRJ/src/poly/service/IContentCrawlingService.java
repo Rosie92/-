@@ -12,6 +12,4 @@ public interface IContentCrawlingService {
 	// jsp로 넘길 값 가져오기
 	public List<TitleDTO> getContentJspGo() throws Exception;
 
-
-
 }

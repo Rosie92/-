@@ -51,9 +51,6 @@ public class TitleCrawlingMapper implements ITitleCrawlingMapper {
 	public int insertTitle(List<TitleDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertTitle Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 타이틀 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -90,14 +87,10 @@ public class TitleCrawlingMapper implements ITitleCrawlingMapper {
 
 			rDTO.setTitle(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			rList.add(rDTO); // List에 저장
 
-			System.out.println("rList에 저장완료 : " + rList.get(i).getTitle());
-
 			rDTO = null;
-			
+
 			i++;
 
 		}

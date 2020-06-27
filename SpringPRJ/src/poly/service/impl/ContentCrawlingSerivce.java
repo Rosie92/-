@@ -98,5 +98,3 @@ public class ContentCrawlingSerivce implements IContentCrawlingService {
 		return rList;
 	}
 }
-
-

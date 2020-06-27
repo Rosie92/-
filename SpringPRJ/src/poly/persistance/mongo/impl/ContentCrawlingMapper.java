@@ -52,9 +52,6 @@ public class ContentCrawlingMapper implements IContentCrawlingMapper {
 	public int insertContent(List<TitleDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertContent Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 콘텐트 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -91,14 +88,10 @@ public class ContentCrawlingMapper implements IContentCrawlingMapper {
 
 			rDTO.setContent(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료 : " + rDTO);
-
 			rList.add(rDTO); // List에 저장
 
-			System.out.println("rList에 저장완료 : " + rList.get(i).getContent());
-
 			rDTO = null;
-			
+
 			i++;
 
 		}

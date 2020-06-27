@@ -26,7 +26,8 @@ public class InformationController {
 	// 데이터 가져오기
 	@RequestMapping(value = "/DExellent/getInformation")
 	@ResponseBody
-	public List<InformationDTO> getInformation(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public List<InformationDTO> getInformation(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 
 		log.info(this.getClass().getName() + ".Information 셀렉트 컨트롤러 시작");
 
@@ -45,12 +46,13 @@ public class InformationController {
 
 	// 데이터 가져와 jsp와 연결
 	@RequestMapping(value = "/DExellent/Information")
-	public String Information(HttpServletRequest requset, HttpServletResponse response, ModelMap model) throws Exception {
+	public String Information(HttpServletRequest requset, HttpServletResponse response, ModelMap model)
+			throws Exception {
 		log.info(this.getClass().getName() + ".Information 컨트롤러 (JSP출력) 시작");
-		
-		//골든리트리버
+
+		// 골든리트리버
 		List<InformationDTO> aList = InformationCrawlingService.getGoldenRetrieverJspGo();
-		//래브라도 리트리버
+		// 래브라도 리트리버
 		List<InformationDTO> bList = InformationCrawlingService.getLabradorRetrieverJspGo();
 		// 말티즈
 		List<InformationDTO> cList = InformationCrawlingService.getMalteseJspGo();
@@ -89,7 +91,18 @@ public class InformationController {
 		model.addAttribute("iList", iList);
 		// 치와와
 		model.addAttribute("jList", jList);
-		
+
+		aList = null;
+		bList = null;
+		cList = null;
+		dList = null;
+		eList = null;
+		fList = null;
+		gList = null;
+		hList = null;
+		iList = null;
+		jList = null;
+
 		log.info(this.getClass().getName() + ".Information 컨트롤러 (JSP출력) 종료");
 		return "/DExellent/Information";
 	}

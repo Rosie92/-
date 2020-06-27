@@ -11,5 +11,5 @@ public class InformationDTO {
 	public void setInformation(String information) {
 		this.information = information;
 	}
-	
+
 }

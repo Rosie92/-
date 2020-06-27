@@ -43,51 +43,37 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("div#content");
-		
-		/*
-		 * for (Element e : element.select("div")) { if
-		 * (e.className().equals("thumbimage")) { continue; } } // 이미지 태그는 빼고 크롤링
-		 */
-		
+
 		Iterator<Element> Crawling = element.select("div.elementor-post__card").iterator();
-		
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Information = CrawlingData.html();
-			
-			
-			
-			/*font-family: 'Nanum Brush Script', serif;
-			 * @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-			 * 
-			 * font-family: 'Nanum Pen Script', serif;
-			 * @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-			 */
-			// Iframe안에서의 링크 이동 허용을 위해.						
-			/*
-			 * Information = Information.replaceAll("<a "
-			 * ,"<div style='display: inline-block; width: 100%; line-height: 10px;'><button data-toggle='modal' data-target='#intro' style='background-color: white; border: 0px'"
-			 * );
-			 */
+
 			int i = 0;
-			/* nformation = Information.replaceAll("</a>","</button></div>"); */
 			Information = Information.replaceAll("<img width='300'", "<img width='330'");
-			Information = Information.replaceAll("height='200'", "height='230' src='../../assets/img/DEIMG/dog/a" + i + ".jpg'");
-			Information = Information.replaceAll("더 보기 » </a>", "더 보기 » </a><hr style='width: 70%; margin-top: 15px; margin-bottom: 25px;'>");
+			Information = Information.replaceAll("height='200'",
+					"height='230' src='../../assets/img/DEIMG/dog/a" + i + ".jpg'");
+			Information = Information.replaceAll("더 보기 » </a>",
+					"더 보기 » </a><hr style='width: 70%; margin-top: 15px; margin-bottom: 25px;'>");
 			Information = Information.replaceAll("<h3", "<h3 style='font-weight: bolder;'");
-			
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Information);
 
+			Information = null;
+
 			pList.add(pDTO);
-			
+
+			pDTO = null;
+
 			i++;
 		}
 
@@ -122,8 +108,8 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return rList;
 	}
-	
-	//======================견종백과 Content=============================
+
+	// ======================견종백과 Content=============================
 	// 골든리트리버
 	@Override
 	public int GoldenRetriever() throws Exception {
@@ -139,32 +125,35 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String GoldenRetriever = CrawlingData.html();
 
-			GoldenRetriever = GoldenRetriever.replaceAll("1280","0");
-			GoldenRetriever = GoldenRetriever.replaceAll("853","0");
-			GoldenRetriever = GoldenRetriever.replaceAll("856","0");
-			GoldenRetriever = GoldenRetriever.replaceAll("960","0");
-			GoldenRetriever = GoldenRetriever.replaceAll("924","0");
-			GoldenRetriever = GoldenRetriever.replaceAll("844","0");
-			
+			GoldenRetriever = GoldenRetriever.replaceAll("1280", "0");
+			GoldenRetriever = GoldenRetriever.replaceAll("853", "0");
+			GoldenRetriever = GoldenRetriever.replaceAll("856", "0");
+			GoldenRetriever = GoldenRetriever.replaceAll("960", "0");
+			GoldenRetriever = GoldenRetriever.replaceAll("924", "0");
+			GoldenRetriever = GoldenRetriever.replaceAll("844", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(GoldenRetriever);
 
+			GoldenRetriever = null;
+
 			pList.add(pDTO);
 
+			pDTO = null;
 		}
 
 		String colNm = "GoldenRetriever"; // 생성할 컬렉션명
@@ -180,6 +169,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getGoldenRetrieverJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".GoldenRetriever 셀렉트 서비스 시작");
@@ -197,6 +187,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return aList;
 	}
+
 	// 래브라도 리트리버
 	@Override
 	public int LabradorRetriever() throws Exception {
@@ -212,36 +203,40 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String LabradorRetriever = CrawlingData.html();
 
-			LabradorRetriever = LabradorRetriever.replaceAll("1280","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("853","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("856","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("960","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("924","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("844","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("540","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("560","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("315","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("640","0");
-			LabradorRetriever = LabradorRetriever.replaceAll("694","0");
-			
+			LabradorRetriever = LabradorRetriever.replaceAll("1280", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("853", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("856", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("960", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("924", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("844", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("540", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("560", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("315", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("640", "0");
+			LabradorRetriever = LabradorRetriever.replaceAll("694", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(LabradorRetriever);
 
+			LabradorRetriever = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -258,6 +253,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getLabradorRetrieverJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".LabradorRetriever 셀렉트 서비스 시작");
@@ -275,6 +271,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return bList;
 	}
+
 	// 말티즈
 	@Override
 	public int Maltese() throws Exception {
@@ -290,37 +287,39 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Maltese = CrawlingData.html();
 
-			Maltese = Maltese.replaceAll("1280","0");
-			Maltese = Maltese.replaceAll("853","0");
-			Maltese = Maltese.replaceAll("856","0");
-			Maltese = Maltese.replaceAll("960","0");
-			Maltese = Maltese.replaceAll("924","0");
-			Maltese = Maltese.replaceAll("844","0");
-			Maltese = Maltese.replaceAll("1920","0");
-			Maltese = Maltese.replaceAll("600","0");
-			Maltese = Maltese.replaceAll("338","0");
-			Maltese = Maltese.replaceAll("1275","0");
-			
-			
-			
+			Maltese = Maltese.replaceAll("1280", "0");
+			Maltese = Maltese.replaceAll("853", "0");
+			Maltese = Maltese.replaceAll("856", "0");
+			Maltese = Maltese.replaceAll("960", "0");
+			Maltese = Maltese.replaceAll("924", "0");
+			Maltese = Maltese.replaceAll("844", "0");
+			Maltese = Maltese.replaceAll("1920", "0");
+			Maltese = Maltese.replaceAll("600", "0");
+			Maltese = Maltese.replaceAll("338", "0");
+			Maltese = Maltese.replaceAll("1275", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Maltese);
 
+			Maltese = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -337,6 +336,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getMalteseJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Maltese 셀렉트 서비스 시작");
@@ -354,6 +354,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return cList;
 	}
+
 	// 보더콜리
 	@Override
 	public int BorderCollie() throws Exception {
@@ -369,33 +370,37 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String BorderCollie = CrawlingData.html();
 
-			BorderCollie = BorderCollie.replaceAll("1280","0");
-			BorderCollie = BorderCollie.replaceAll("853","0");
-			BorderCollie = BorderCollie.replaceAll("856","0");
-			BorderCollie = BorderCollie.replaceAll("960","0");
-			BorderCollie = BorderCollie.replaceAll("924","0");
-			BorderCollie = BorderCollie.replaceAll("844","0");
-			BorderCollie = BorderCollie.replaceAll("635","0");
-			BorderCollie = BorderCollie.replaceAll("640","0");
-			
+			BorderCollie = BorderCollie.replaceAll("1280", "0");
+			BorderCollie = BorderCollie.replaceAll("853", "0");
+			BorderCollie = BorderCollie.replaceAll("856", "0");
+			BorderCollie = BorderCollie.replaceAll("960", "0");
+			BorderCollie = BorderCollie.replaceAll("924", "0");
+			BorderCollie = BorderCollie.replaceAll("844", "0");
+			BorderCollie = BorderCollie.replaceAll("635", "0");
+			BorderCollie = BorderCollie.replaceAll("640", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(BorderCollie);
 
+			BorderCollie = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -412,6 +417,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getBorderCollieJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".BorderCollie 셀렉트 서비스 시작");
@@ -429,6 +435,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return dList;
 	}
+
 	// 비숑
 	@Override
 	public int Bichonfreze() throws Exception {
@@ -444,34 +451,37 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Bichonfreze = CrawlingData.html();
 
-			Bichonfreze = Bichonfreze.replaceAll("1280","0");
-			Bichonfreze = Bichonfreze.replaceAll("853","0");
-			Bichonfreze = Bichonfreze.replaceAll("856","0");
-			Bichonfreze = Bichonfreze.replaceAll("960","0");
-			Bichonfreze = Bichonfreze.replaceAll("924","0");
-			Bichonfreze = Bichonfreze.replaceAll("844","0");
-			Bichonfreze = Bichonfreze.replaceAll("1024","0");
-			Bichonfreze = Bichonfreze.replaceAll("819","0");
-			
-			
+			Bichonfreze = Bichonfreze.replaceAll("1280", "0");
+			Bichonfreze = Bichonfreze.replaceAll("853", "0");
+			Bichonfreze = Bichonfreze.replaceAll("856", "0");
+			Bichonfreze = Bichonfreze.replaceAll("960", "0");
+			Bichonfreze = Bichonfreze.replaceAll("924", "0");
+			Bichonfreze = Bichonfreze.replaceAll("844", "0");
+			Bichonfreze = Bichonfreze.replaceAll("1024", "0");
+			Bichonfreze = Bichonfreze.replaceAll("819", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Bichonfreze);
 
+			Bichonfreze = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -488,6 +498,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getBichonfrezeJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Bichonfreze 셀렉트 서비스 시작");
@@ -505,6 +516,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return eList;
 	}
+
 	// 사모예드
 	@Override
 	public int Samoyed() throws Exception {
@@ -520,35 +532,39 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Samoyed = CrawlingData.html();
 
-			Samoyed = Samoyed.replaceAll("1280","0");
-			Samoyed = Samoyed.replaceAll("853","0");
-			Samoyed = Samoyed.replaceAll("856","0");
-			Samoyed = Samoyed.replaceAll("960","0");
-			Samoyed = Samoyed.replaceAll("924","0");
-			Samoyed = Samoyed.replaceAll("844","0");
-			Samoyed = Samoyed.replaceAll("740","0");
-			Samoyed = Samoyed.replaceAll("494","0");
-			Samoyed = Samoyed.replaceAll("869","0");
-			Samoyed = Samoyed.replaceAll("720","0");
-			
+			Samoyed = Samoyed.replaceAll("1280", "0");
+			Samoyed = Samoyed.replaceAll("853", "0");
+			Samoyed = Samoyed.replaceAll("856", "0");
+			Samoyed = Samoyed.replaceAll("960", "0");
+			Samoyed = Samoyed.replaceAll("924", "0");
+			Samoyed = Samoyed.replaceAll("844", "0");
+			Samoyed = Samoyed.replaceAll("740", "0");
+			Samoyed = Samoyed.replaceAll("494", "0");
+			Samoyed = Samoyed.replaceAll("869", "0");
+			Samoyed = Samoyed.replaceAll("720", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Samoyed);
 
+			Samoyed = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -565,6 +581,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getSamoyedJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Samoyed 셀렉트 서비스 시작");
@@ -582,6 +599,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return fList;
 	}
+
 	// 셔틀랜드
 	@Override
 	public int Shertland() throws Exception {
@@ -597,34 +615,38 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Shertland = CrawlingData.html();
 
-			Shertland = Shertland.replaceAll("1280","0");
-			Shertland = Shertland.replaceAll("853","0");
-			Shertland = Shertland.replaceAll("856","0");
-			Shertland = Shertland.replaceAll("960","0");
-			Shertland = Shertland.replaceAll("924","0");
-			Shertland = Shertland.replaceAll("844","0");
-			Shertland = Shertland.replaceAll("657","0");
-			Shertland = Shertland.replaceAll("637","0");
-			Shertland = Shertland.replaceAll("640","0");
-			
+			Shertland = Shertland.replaceAll("1280", "0");
+			Shertland = Shertland.replaceAll("853", "0");
+			Shertland = Shertland.replaceAll("856", "0");
+			Shertland = Shertland.replaceAll("960", "0");
+			Shertland = Shertland.replaceAll("924", "0");
+			Shertland = Shertland.replaceAll("844", "0");
+			Shertland = Shertland.replaceAll("657", "0");
+			Shertland = Shertland.replaceAll("637", "0");
+			Shertland = Shertland.replaceAll("640", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Shertland);
 
+			Shertland = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -641,6 +663,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getShertlandJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Shertland 셀렉트 서비스 시작");
@@ -658,6 +681,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return gList;
 	}
+
 	// 요크셔테리어
 	@Override
 	public int Yorkshireterrier() throws Exception {
@@ -673,34 +697,38 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Yorkshireterrier = CrawlingData.html();
 
-			Yorkshireterrier = Yorkshireterrier.replaceAll("1280","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("853","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("856","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("960","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("924","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("844","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("2129","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("1500","0");
-			Yorkshireterrier = Yorkshireterrier.replaceAll("2251","0");
-			
+			Yorkshireterrier = Yorkshireterrier.replaceAll("1280", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("853", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("856", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("960", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("924", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("844", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("2129", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("1500", "0");
+			Yorkshireterrier = Yorkshireterrier.replaceAll("2251", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Yorkshireterrier);
 
+			Yorkshireterrier = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -717,6 +745,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getYorkshireterrierJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Yorkshireterrier 셀렉트 서비스 시작");
@@ -734,6 +763,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return hList;
 	}
+
 	// 스피츠
 	@Override
 	public int JaffaneseSpitz() throws Exception {
@@ -749,40 +779,42 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String JaffaneseSpitz = CrawlingData.html();
 
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("1280","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("853","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("856","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("960","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("924","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("844","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("560","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("314","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("3024","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("480","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("720","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("708","0");
-			JaffaneseSpitz = JaffaneseSpitz.replaceAll("398","0");
-			
-			
-			
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("1280", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("853", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("856", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("960", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("924", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("844", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("560", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("314", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("3024", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("480", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("720", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("708", "0");
+			JaffaneseSpitz = JaffaneseSpitz.replaceAll("398", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(JaffaneseSpitz);
 
+			JaffaneseSpitz = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -799,6 +831,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getJaffaneseSpitzJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".JaffaneseSpitz 셀렉트 서비스 시작");
@@ -816,6 +849,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return iList;
 	}
+
 	// 치와와
 	@Override
 	public int Chihuahua() throws Exception {
@@ -831,36 +865,39 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 		// JSOUP 라이브러리를 통해 사이트 접속되면, 그 사이트의 전체 HTML소스 저장할 변수
 		Document doc = null;
 		doc = Jsoup.connect(url).get();
-		
+
 		Elements element = doc.select("article#the-post");
 
-		Iterator<Element> Crawling = element. select("p").iterator();
-		
+		Iterator<Element> Crawling = element.select("p").iterator();
+
 		while (Crawling.hasNext()) {
 
 			Element CrawlingData = Crawling.next();
-			
+
 			String Chihuahua = CrawlingData.html();
 
-			Chihuahua = Chihuahua.replaceAll("1280","0");
-			Chihuahua = Chihuahua.replaceAll("853","0");
-			Chihuahua = Chihuahua.replaceAll("856","0");
-			Chihuahua = Chihuahua.replaceAll("960","0");
-			Chihuahua = Chihuahua.replaceAll("924","0");
-			Chihuahua = Chihuahua.replaceAll("844","0");
-			Chihuahua = Chihuahua.replaceAll("1024","0");
-			Chihuahua = Chihuahua.replaceAll("682","0");
-			Chihuahua = Chihuahua.replaceAll("681","0");
-			Chihuahua = Chihuahua.replaceAll("683","0");
-			
-			
+			Chihuahua = Chihuahua.replaceAll("1280", "0");
+			Chihuahua = Chihuahua.replaceAll("853", "0");
+			Chihuahua = Chihuahua.replaceAll("856", "0");
+			Chihuahua = Chihuahua.replaceAll("960", "0");
+			Chihuahua = Chihuahua.replaceAll("924", "0");
+			Chihuahua = Chihuahua.replaceAll("844", "0");
+			Chihuahua = Chihuahua.replaceAll("1024", "0");
+			Chihuahua = Chihuahua.replaceAll("682", "0");
+			Chihuahua = Chihuahua.replaceAll("681", "0");
+			Chihuahua = Chihuahua.replaceAll("683", "0");
+
 			CrawlingData = null;
 
 			InformationDTO pDTO = new InformationDTO();
 
 			pDTO.setInformation(Chihuahua);
 
+			Chihuahua = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 
@@ -877,6 +914,7 @@ public class InformationCrawlingService implements IInformationCrawlingService {
 
 		return res;
 	}
+
 	@Override
 	public List<InformationDTO> getChihuahuaJspGo() throws Exception {
 		log.info(this.getClass().getName() + ".Chihuahua 셀렉트 서비스 시작");

@@ -44,11 +44,7 @@ public class TitleCrawlingService implements ITitleCrawlingService {
 
 		doc = Jsoup.connect(url).get();
 
-		/* log.info(doc); */
-
 		Elements element = doc.select("section.user-snb");// or article-list-content
-		/* post-area */
-		/* System.out.println("element : " + element); */
 
 		Iterator<Element> Crawling = element.select("div.list-block").iterator();
 
@@ -64,7 +60,11 @@ public class TitleCrawlingService implements ITitleCrawlingService {
 
 			pDTO.setTitle(title);
 
+			title = null;
+
 			pList.add(pDTO);
+
+			pDTO = null;
 
 		}
 

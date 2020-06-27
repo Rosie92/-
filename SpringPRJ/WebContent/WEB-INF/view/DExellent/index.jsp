@@ -28,7 +28,9 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/styles.css" rel="stylesheet" />
-<link href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css" rel="stylesheet" type="text/css">
+<link
+	href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css"
+	rel="stylesheet" type="text/css">
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -41,7 +43,8 @@
 			<a class="navbar-brand js-scroll-trigger" href="#page-top"
 				style="margin-left: 10px;"> <img
 				src="/assets/img/DEIMG/title.png" width="50" height="50" />
-				<div class="title" style="display: inline; font-family: 'Nanum Brush Script', serif; margin-left: 5px;">
+				<div class="title"
+					style="display: inline; font-family: 'Nanum Brush Script', serif; margin-left: 5px;">
 					강아지는 훌륭하다</div>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -112,22 +115,36 @@
 		if (session.getAttribute("user_name") == null) {
 	%>
 	<hr>
+	<span style="color: black; font-size: 12px; text-align: center;">※
+		해당 페이지는 모바일 환경 (375x812)에 적합하게 구성되어있습니다</span>
 	<!-- Footer-->
 	<footer class="footer py-4">
 		<div class="container">
 			<div class="row align-items-center">
+
 				<div class="col-lg-4 text-lg-left">Copyright © Your Website
 					2020</div>
 				<div class="col-lg-4 my-3 my-lg-0">
-					<a class="btn btn-dark btn-social mx-2" href="#!"><i
-						class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2"
-						href="#!"><i class="fab fa-facebook-f"></i></a><a
-						class="btn btn-dark btn-social mx-2" href="#!"><i
-						class="fab fa-linkedin-in"></i></a>
+
+					<a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Twitter) 준비중입니다.')"> <i
+						class="fab fa-twitter" style="color: white;"></i>
+					</a> <a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Facebook) 준비중입니다.')"> <i
+						class="fab fa-facebook-f" style="color: white;"></i>
+					</a> <a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Instagram) 준비중입니다.')"> <i
+						class="fab fa-linkedin-in" style="color: white;"></i>
+					</a>
+
 				</div>
 				<div class="col-lg-4 text-lg-right">
-					<a class="mr-3" href="#!">Privacy Policy</a><a href="#!">Terms
-						of Use</a>
+
+					<a class="mr-3"
+						onclick="alert('강아지는 훌륭하다의 개인보호 정책은 카카오 로그인에 기반을 둡니다.')"
+						style="color: black;">Privacy Policy</a> <a class="mr-3"
+						onclick="alert('Terms of Use : 강아지를 사용하는 모든 분들입니다.'))"
+						style="color: black;">Terms of Use</a>
 				</div>
 			</div>
 		</div>
@@ -151,6 +168,8 @@
 	%>
 	<!-- Services-->
 	<hr style="margin-top: 50px;">
+	<span style="color: black; font-size: 12px; text-align: center;">※
+		해당 페이지는 모바일 환경 (375x812)에 적합하게 구성되어있습니다</span>
 	<section class="page-section" id="services">
 		<div class="container">
 			<div class="text-center">
@@ -175,7 +194,7 @@
 				style="overflow-x: hidden" /></iframe>
 		</div>
 	</section>
-	
+
 	<!-- About-->
 	<section class="page-section" id="about">
 		<div class="container">
@@ -222,21 +241,22 @@
 			</div>
 		</div>
 	</section>
-	
-		<!-- mypage-->
+
+	<!-- mypage-->
 	<section class="page-section" id="mypage">
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">MYPAGE</h2>
 				<h3 class="section-subheading text-muted2">
-				회원님의 카카오 정보를 제공합니다.<br>정보 확인 및 정보 수정이 가능합니다.</h3>
+					회원님의 카카오 정보를 제공합니다.<br>정보 확인 및 정보 수정이 가능합니다.
+				</h3>
 			</div>
 			<iframe src="/DExellent/mypage.do" width="100%" height="670px"
 				name="mypage1" id="mypage1"></iframe>
 		</div>
 	</section>
-	
-	
+
+
 	<!-- Contact-->
 	<section class="page-section" id="contact">
 		<div class="container">
@@ -249,18 +269,17 @@
 				</p>
 				<div class="portfolio-caption">
 					<h3 class="section-subheading text-muted2"
-						style="text-align: center; line-height: 30px; ">
+						style="text-align: center; line-height: 30px;">
 						자유롭게 의견을 나눌 수 있는 <br> 자유게시판 입니다.
 					</h3>
 				</div>
-				
-				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%" height="630px"
-				name="Board" id="Board" frameborder="1" scrolling="yes"
-				style="overflow-x: hidden" /></iframe>
-				
+
+				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%"
+					height="630px" name="Board" id="Board" frameborder="1"
+					scrolling="yes" style="overflow-x: hidden" /></iframe>
 	</section>
 
-	
+
 	<!-- Portfolio Grid-->
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
@@ -284,24 +303,36 @@
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<!-- Footer-->
 	<footer class="footer py-4">
 		<div class="container">
 			<div class="row align-items-center">
+
 				<div class="col-lg-4 text-lg-left">Copyright © Your Website
 					2020</div>
 				<div class="col-lg-4 my-3 my-lg-0">
-					<a class="btn btn-dark btn-social mx-2" href="#!"><i
-						class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2"
-						href="#!"><i class="fab fa-facebook-f"></i></a><a
-						class="btn btn-dark btn-social mx-2" href="#!"><i
-						class="fab fa-linkedin-in"></i></a>
+
+					<a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Twitter) 준비중입니다.')"> <i
+						class="fab fa-twitter" style="color: white;"></i>
+					</a> <a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Facebook) 준비중입니다.')"> <i
+						class="fab fa-facebook-f" style="color: white;"></i>
+					</a> <a class="btn btn-dark btn-social mx-2"
+						onclick="alert('(Instagram) 준비중입니다.')"> <i
+						class="fab fa-linkedin-in" style="color: white;"></i>
+					</a>
+
 				</div>
 				<div class="col-lg-4 text-lg-right">
-					<a class="mr-3" href="#!">Privacy Policy</a><a href="#!">Terms
-						of Use</a>
+
+					<a class="mr-3"
+						onclick="alert('강아지는 훌륭하다의 개인보호 정책은 카카오 로그인에 기반을 둡니다.')"
+						style="color: black;">Privacy Policy</a> <a class="mr-3"
+						onclick="alert('Terms of Use : 강아지를 사용하는 모든 분들입니다.'))"
+						style="color: black;">Terms of Use</a>
 				</div>
 			</div>
 		</div>

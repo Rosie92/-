@@ -52,9 +52,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformation(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformation Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Information 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -85,16 +82,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 			rDTO = new InformationDTO();
 
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Information') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			rList.add(rDTO); // List에 저장
-
-			System.out.println("rList에 저장완료");
 
 			rDTO = null;
 
@@ -134,10 +127,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	@Override
 	public int insertInformationGoldenRetriever(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationGoldenRetriever Start!");
-
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 GoldenRetriever 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -167,17 +156,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('GoldenRetriever') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			aList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + aList.get(i).getInformation());
-
 			rDTO = null;
 			i++;
 		}
@@ -215,10 +199,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	@Override
 	public int insertInformationLabradorRetriever(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationLabradorRetriever Start!");
-
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 LabradorRetriever 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -248,16 +228,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('LabradorRetriever') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			bList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + bList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -297,9 +273,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationMaltese(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationMaltese Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Maltese 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -329,16 +302,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Maltese') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			cList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + cList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -378,9 +347,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationBorderCollie(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationBorderCollie Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 BorderCollie 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -410,16 +376,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('BorderCollie') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			dList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + dList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -459,9 +421,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationBichonfreze(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationBichonfreze Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Bichonfreze 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -491,16 +450,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Bichonfreze') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			eList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + eList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -540,9 +495,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationSamoyed(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationSamoyed Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Samoyed 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -572,16 +524,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Samoyed') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			fList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + fList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -621,9 +569,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationShertland(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationShertland Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Shertland 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -653,16 +598,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Shertland') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			gList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + gList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -702,9 +643,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationYorkshireterrier(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationYorkshireterrier Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Yorkshireterrier 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -734,16 +672,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Yorkshireterrier') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			hList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + hList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -783,9 +717,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationJaffaneseSpitz(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationJaffaneseSpitz Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 JaffaneseSpitz 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -815,16 +746,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('JaffaneseSpitz') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			iList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + iList.get(i).getInformation());
 
 			rDTO = null;
 			i++;
@@ -864,9 +791,6 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 	public int insertInformationChihuahua(List<InformationDTO> pList, String colNm) throws Exception {
 		log.info(this.getClass().getName() + ".insertInformationChihuahua Start!");
 
-		log.info("colNm : " + colNm);
-		log.info("pList : " + pList);
-
 		log.info("몽고디비 Chihuahua 인서트 실행 시작");
 
 		mongodb.insert(pList, colNm);
@@ -896,16 +820,12 @@ public class InformationCrawlingMapper implements IInformationCrawlingMapper {
 
 			int i = 0;
 			final DBObject current = cursor.next();
-			System.out.println("#################### current에 cursor.next실행 #######################");
+
 			String Crawling_Data = CmmUtil.nvl((String) current.get("information")); // 크롤링데이터
-			System.out.println("########### Crawling_data에 current.get('Chihuahua') 실행완료 ###############");
+
 			rDTO.setInformation(Crawling_Data);
 
-			System.out.println("rDTO에 저장 완료");
-
 			jList.add(rDTO); // List에 저장
-
-			System.out.println("aList에 저장완료 : " + jList.get(i).getInformation());
 
 			rDTO = null;
 			i++;

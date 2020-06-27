@@ -64,13 +64,14 @@ String content = CmmUtil.nvl(pDTO.getContent());
 </head>
 <header>
 	<%
-	String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
+		String seq = CmmUtil.nvl((String) request.getAttribute("seq"));
 	String user_name = CmmUtil.nvl((String) session.getAttribute("user_name"));
 	/* 	String upd_date = CmmUtil.nvl((String)request.getAttribute("upd_date")); */
 	%>
 
 </header>
-<body style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
+<body
+	style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
 	<form method="post"
 		action="/DExellent/board/BoardReWriteTry.do?seq=<%=seq%>">
 		<input value="<%=seq%>" name="seq" hidden="hidden">
@@ -83,14 +84,15 @@ String content = CmmUtil.nvl(pDTO.getContent());
 					style="display: inline-block; padding: 20px 5px 10px 20px; width: 230px;">
 					<div>
 						<input type="text" name="title" id="title" maxlength="100"
-							style="width: 250px" placeholder="제목을 입력해주세요"
-							value='<%=CmmUtil.nvl(pDTO.getTitle())%>'>
+							style="width: 250px" placeholder='제목을 입력해주세요'
+							value="<%=CmmUtil.nvl(pDTO.getTitle())%>">
 					</div>
 				</div>
 			</div>
 			<div>
 				<textarea id="contentCheck" name="content"
-					style="width: 330px; height: 455px; margin-left: 10px; resize: none;" value="<%=content%>"></textarea>
+					style="width: 330px; height: 455px; margin-left: 10px; resize: none;"
+					placeholder="내용을 입력해주세요"><%=CmmUtil.nvl(pDTO.getContent())%></textarea>
 			</div>
 
 			<div
@@ -104,48 +106,48 @@ String content = CmmUtil.nvl(pDTO.getContent());
 		</div>
 	</form>
 	<div style="margin-left: 55px;">
-	<form name="DDelete" id="DDelete" method="post"
-		action="/DExellent/board/BoardDelete.do?Seq=<%=seq%>"
-		style="display: inline-block;">
-		<input value="<%=seq%>" name="seq" hidden="hidden">
-		<div
-			style="margin-left: 10px; text-align: center; display: inline-block;">
-			<input type="button" id="" value="게시글 삭제" onclick="removeCheck3()" style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
-		</div>
-	</form>
+		<form name="DDelete" id="DDelete" method="post"
+			action="/DExellent/board/BoardDelete.do?Seq=<%=seq%>"
+			style="display: inline-block;">
+			<input value="<%=seq%>" name="seq" hidden="hidden">
+			<div
+				style="margin-left: 10px; text-align: center; display: inline-block;">
+				<input type="button" id="" value="게시글 삭제" onclick="removeCheck3()"
+					style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
+			</div>
+		</form>
 
 
-	<form name="BackMove" id="BackMove" method="post"
-		action="/DExellent/board/BoardList.do?Pno=1"
-		style="display: inline-block;">
-		<div
-			style="margin-left: 10px; text-align: center; display: inline-block;">
-			<input type="button" value="글 수정 종료" onclick="removeCheck2()" style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
-		</div>
-	</form>
+		<form name="BackMove" id="BackMove" method="post"
+			action="/DExellent/board/BoardList.do?Pno=1"
+			style="display: inline-block;">
+			<div
+				style="margin-left: 10px; text-align: center; display: inline-block;">
+				<input type="button" value="글 수정 종료" onclick="removeCheck2()"
+					style="cursor: pointer; color: white; border: 0px; background-color: #fed136;">
+			</div>
+		</form>
 	</div>
 
 
 
 	<script>
-    $('#subBtn').click(function () {
-        var title = $('#title').val();
-        var content = $('#contentCheck').val();
+		$('#subBtn').click(function() {
+			var title = $('#title').val();
+			var content = $('#contentCheck').val();
 
+			if (title == "") {
+				alert("제목을 입력해 주세요.");
+				return false;
+				$('#title').focus();
+			} else if (content == "") {
+				alert("내용을 입력해 주세요.");
+				return false;
+				$('#content').focus();
+			}
 
-        if(title==""){
-            alert("제목을 입력해 주세요.");
-            return false;
-            $('#title').focus();
-        }
-        else if(content==""){
-            alert("내용을 입력해 주세요.");
-            return false;
-            $('#content').focus();
-        }
-
-    });
-</script>
+		});
+	</script>
 	<script type="text/javascript">
 		function removeCheck3() {
 			if (confirm("이 게시글을 정말 삭제하시겠습니까??") == true) { //확인

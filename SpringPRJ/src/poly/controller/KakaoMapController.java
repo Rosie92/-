@@ -14,7 +14,7 @@ public class KakaoMapController {
 	@RequestMapping(value = "/DExellent/Kindergarten")
 	public String index(HttpSession session) throws Exception {
 		log.info(this.getClass().getName() + "######## 카카오 맵 컨트롤러 실행 ########");
-		
+
 		return "/DExellent/Kindergarten";
 	}
 
