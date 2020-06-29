@@ -23,7 +23,7 @@ public interface IBoardService {
 	BoardDTO getBoardDetail(String seq) throws Exception;
 
 	// 게시판 글 수정/삭제 이동 전 권한 확인하기
-	List<BoardDTO> UserCheck(String board_seq) throws Exception;
+	BoardDTO UserCheck(String board_seq) throws Exception;
 
 	// 게시판 글 수정/삭제 창으로 이동하기
 	BoardDTO BoardReWrite(BoardDTO pDTO) throws Exception;
@@ -45,7 +45,7 @@ public interface IBoardService {
 	int InsertComment(CommentDTO bDTO) throws Exception;
 
 	// 댓글 수정/삭제 이동 전 권한 확인하기
-	List<CommentDTO> UserCheck2(String rno) throws Exception;
+	CommentDTO UserCheck2(String rno) throws Exception;
 
 	// 댓글 삭제 실행하기
 	int CommentDelete(CommentDTO pDTO) throws Exception;

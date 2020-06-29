@@ -46,7 +46,7 @@ public class BoardService implements IBoardService {
 
 	// 게시판 글 수정/삭제 이동 전 권한 확인
 	@Override
-	public List<BoardDTO> UserCheck(String board_seq) throws Exception {
+	public BoardDTO UserCheck(String board_seq) throws Exception {
 		return BoardMapper.UserCheck(board_seq);
 	}
 
@@ -90,7 +90,7 @@ public class BoardService implements IBoardService {
 
 	// 댓글 수정/삭제 이동 전 권한 확인
 	@Override
-	public List<CommentDTO> UserCheck2(String rno) throws Exception {
+	public CommentDTO UserCheck2(String rno) throws Exception {
 		return BoardMapper.UserCheck2(rno);
 	}
 

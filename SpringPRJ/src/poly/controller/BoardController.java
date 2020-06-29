@@ -176,11 +176,15 @@ public class BoardController {
 
 		String board_seq = request.getParameter("seq");
 		String User = (String) session.getAttribute("user_name");
-
-		List<BoardDTO> bList = new ArrayList<>();
-		bList = BoardService.UserCheck(board_seq);
-		String UserCheck = bList.get(0).toString();
-
+		/*
+		 * List<BoardDTO> bList = new ArrayList<>(); bList =
+		 * BoardService.UserCheck(board_seq);
+		 */
+		BoardDTO cDTO = new BoardDTO(); 
+		cDTO = BoardService.UserCheck(board_seq);
+		
+		String UserCheck = cDTO.getUser_name();
+		
 		BoardDTO pDTO = new BoardDTO();
 		if (User.equals("조정규") || UserCheck.equals(User)) {
 			try {
@@ -197,7 +201,7 @@ public class BoardController {
 			board_seq = null;
 			User = null;
 			UserCheck = null;
-			bList = null;
+			cDTO = null;
 
 			return "/DExellent/board/BoardReWrite";
 
@@ -209,7 +213,7 @@ public class BoardController {
 			board_seq = null;
 			User = null;
 			UserCheck = null;
-			bList = null;
+			cDTO = null;
 		}
 		return "/Redirect";
 	}
@@ -281,7 +285,7 @@ public class BoardController {
 			log.info("res : " + res);
 			log.info("res2 : " + res2);
 
-			if (res > 0 && res2 > 0) {
+			if (res > 0) {
 				model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
 				model.addAttribute("msg", "삭제되었습니다.");
 			} else {
@@ -355,9 +359,13 @@ public class BoardController {
 		String rno = request.getParameter("rno");
 		String User = (String) session.getAttribute("user_name");
 
-		List<CommentDTO> bList = new ArrayList<>();
-		bList = BoardService.UserCheck2(rno);
-		String UserCheck2 = bList.get(0).toString();
+		/*
+		 * List<CommentDTO> bList = new ArrayList<>(); bList =
+		 * BoardService.UserCheck2(rno);
+		 */
+		CommentDTO cDTO = new CommentDTO();
+		cDTO = BoardService.UserCheck2(rno);
+		String UserCheck2 = cDTO.getWriter();
 
 		CommentDTO pDTO = new CommentDTO();
 		if (User.equals("조정규") || UserCheck2.equals(User)) {
@@ -373,12 +381,15 @@ public class BoardController {
 				e.printStackTrace();
 			}
 			pDTO = null;
+			cDTO = null;
+			
 			return "/DExellent/board/CommentUpdate";
 		} else {
 			model.addAttribute("url", "/DExellent/board/BoardList.do?Pno=1");
 			model.addAttribute("msg", "권한이 없습니다. 게시판 리스트로 이동합니다.");
 
 			pDTO = null;
+			cDTO = null;
 		}
 		return "/Redirect";
 	}
@@ -392,9 +403,14 @@ public class BoardController {
 		String rno = request.getParameter("rno");
 		String User = (String) session.getAttribute("user_name");
 
-		List<CommentDTO> bList = new ArrayList<>();
-		bList = BoardService.UserCheck2(rno);
-		String UserCheck2 = bList.get(0).toString();
+		/*
+		 * List<CommentDTO> bList = new ArrayList<>(); bList =
+		 * BoardService.UserCheck2(rno); String UserCheck2 = bList.get(0).toString();
+		 */
+		
+		CommentDTO cDTO = new CommentDTO();
+		cDTO = BoardService.UserCheck2(rno);
+		String UserCheck2 = cDTO.getWriter();
 
 		CommentDTO pDTO = new CommentDTO();
 		if (User.equals("조정규") || UserCheck2.equals(User)) {
@@ -414,7 +430,7 @@ public class BoardController {
 					model.addAttribute("msg", "삭제에 실패했습니다. 다시 시도해주세요.");
 				}
 				pDTO = null;
-				bList = null;
+				cDTO = null;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -424,7 +440,7 @@ public class BoardController {
 			model.addAttribute("msg", "권한이 없습니다. 게시판 리스트로 이동합니다.");
 
 			pDTO = null;
-			bList = null;
+			cDTO = null;
 		}
 		return "/Redirect";
 	}

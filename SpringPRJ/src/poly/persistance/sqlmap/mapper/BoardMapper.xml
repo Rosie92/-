@@ -141,7 +141,7 @@
 		#{writer}
 		)
 	</insert>
-	<!-- 댓글 삭제 이동 전 권한 확인하기 -->
+	<!-- 댓글 수정/삭제 이동 전 권한 확인하기 -->
 	<select id="UserCheck2" resultType="CommentDTO"
 		parameterType="CommentDTO">
 		SELECT
