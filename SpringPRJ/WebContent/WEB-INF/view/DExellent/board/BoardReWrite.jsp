@@ -71,7 +71,7 @@ String content = CmmUtil.nvl(pDTO.getContent());
 
 </header>
 <body
-	style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
+	style="overflow-x: hidden; width: 350px;background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
 	<form method="post"
 		action="/DExellent/board/BoardReWriteTry.do?seq=<%=seq%>">
 		<input value="<%=seq%>" name="seq" hidden="hidden">

@@ -110,7 +110,7 @@ List<TitleDTO> rList = (List<TitleDTO>) request.getAttribute("rList");
 							style="margin-left: 170px;">Ⅹ</button>
 					</div>
 					<div class="modal-body" style="height: 550px;">
-						<iframe src="<%=rList.get(b).getContent()%>" width="100%"
+						<iframe src="<%=rList.get(b).getContent()%>" width="295px"
 							height="530px" name="Title" id="Title" frameborder="1"
 							scrolling="yes" style="overflow-x: hidden" /></iframe>
 					</div>

@@ -62,7 +62,11 @@ public class ContentCrawlingSerivce implements IContentCrawlingService {
 
 			pDTO.setContent("http://www.happypet.co.kr" + Content_url);
 
+			Content_url = null;
+			
 			pList.add(pDTO);
+			
+			pDTO = null;
 
 		}
 

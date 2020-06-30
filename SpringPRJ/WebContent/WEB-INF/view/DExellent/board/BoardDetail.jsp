@@ -37,7 +37,7 @@ if (bDTO == null) {
 	%>
 </header>
 <body
-	style="overflow-x: hidden; background-image: url('../../assets/img/DEIMG/BoardList.jpg');"">
+	style="overflow-x: hidden; width: 350px; background-image: url('../../assets/img/DEIMG/BoardList.jpg');">
 	<div style="font-size: 20px; font-weight: 550; width: 760px;">
 		<div
 			style="text-align: center; display: inline-block; padding: 10px 10px 10px 20px;">제

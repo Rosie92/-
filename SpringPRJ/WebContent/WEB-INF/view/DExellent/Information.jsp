@@ -57,7 +57,7 @@ List<InformationDTO> jList = (List<InformationDTO>) request.getAttribute("jList"
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body
-	style="width: 347px; background-image: URL(../../assets/img/DEIMG/infor_back.jpg)">
+	style="width: 347px; background-image: URL(../../assets/img/DEIMG/infor_back.jpg); overflow-x: hidden">
 	<div style="overflow-x: hidden">
 		<br>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ 버튼 @@@@@@@@@@@@@@@@@@@@@ -->

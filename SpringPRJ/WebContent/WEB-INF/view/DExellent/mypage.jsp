@@ -98,7 +98,7 @@
 						</div>
 						<div class="modal-body" style="height: 550px;">
 							<iframe src="https://accounts.kakao.com/weblogin/account/info"
-								width="100%" height="530px" name="Title" id="Title"
+								width="295px" height="500px" name="Title" id="Title"
 								frameborder="1" scrolling="yes" style="overflow-x: hidden" /></iframe>
 						</div>
 						<div class="modal-footer"></div>

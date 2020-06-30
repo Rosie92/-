@@ -36,9 +36,9 @@
 
 
 </head>
-<body id="page-top">
+<body id="page-top" style="width: 375px;">
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="width: 375px;">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="#page-top"
 				style="margin-left: 10px;"> <img
@@ -64,9 +64,11 @@
 
 
 					<a
-						href="https://kauth.kakao.com/oauth/authorize?client_id=928bbb3f0e2b7934f85c85beaa13b7ea&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
-						<img src="/assets/img/DEIMG/kakaologin.png"
-						style="width: 260px; margin-left: 40px; margin-top: 10px;">
+						href="https://kauth.kakao.com/oauth/authorize?client_id=928bbb3f0e2b7934f85c85beaa13b7ea&redirect_uri=http://52.79.54.76:8080/kakaologin.do&response_type=code">
+						<div style="">
+						<img src="/assets/img/DEIMG/kakaologin3.png"
+						style="width: 350px; "><!-- margin-left: 40px; margin-top: 10px; -->
+						</div>
 					</a>
 
 
@@ -192,7 +194,7 @@
 			</div>
 
 
-			<iframe src="/DExellent/Title.do" width="100%" height="680px"
+			<iframe src="/DExellent/Title.do" width="351px" height="680px"
 				name="Title" id="Title" frameborder="1" scrolling="yes"
 				style="overflow-x: hidden" /></iframe>
 		</div>
@@ -215,7 +217,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Information.do" width="100%" height="680px"
+				<iframe src="/DExellent/Information.do" width="351px" height="680px"
 					name="Information" id="Information" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" target="" /></iframe>
 			</div>
@@ -238,7 +240,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Kindergarten.do" width="100%" height="600px"
+				<iframe src="/DExellent/Kindergarten.do" width="351px" height="600px"
 					name="Kindergarten" id="Kindergarten" frameborder="1"
 					scrolling="yes" style="overflow-x: hidden" target="" /></iframe>
 			</div>
@@ -254,7 +256,7 @@
 					회원님의 카카오 정보를 제공합니다.<br>정보 확인 및 정보 수정이 가능합니다.
 				</h3>
 			</div>
-			<iframe src="/DExellent/mypage.do" width="100%" height="670px"
+			<iframe src="/DExellent/mypage.do" width="351px" height="670px"
 				name="mypage1" id="mypage1"></iframe>
 		</div>
 	</section>
@@ -277,7 +279,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="100%"
+				<iframe src="/DExellent/board/BoardList.do?Pno=1" width="355px"
 					height="630px" name="Board" id="Board" frameborder="1"
 					scrolling="yes" style="overflow-x: hidden" /></iframe>
 	</section>
@@ -300,7 +302,7 @@
 					</h3>
 				</div>
 
-				<iframe src="/DExellent/Youtube.do" width="100%" height="600px"
+				<iframe src="/DExellent/Youtube.do" width="351px" height="600px"
 					name="Youtube" id="Youtube" frameborder="1" scrolling="yes"
 					style="overflow-x: hidden" /></iframe>
 			</div>
