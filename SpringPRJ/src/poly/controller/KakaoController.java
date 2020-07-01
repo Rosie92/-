@@ -36,28 +36,44 @@ public class KakaoController {
 
 		System.out.println("kakaologin controller : " + userInfo);
 
-		if (userInfo.get("nickname") == null || userInfo.get("email") == null || userInfo.get("age_range") == null
-		/*
-		 * userInfo.get("profile_image")==null || userInfo.get("thumbnail_image")==null
-		 */) {
+		if (userInfo.get("nickname") == null) {
 
 			model.addAttribute("msg", "로그인에 실패하였습니다. kakao에서 개인정보활용에 동의해주세요.");
 			model.addAttribute("url", "/DExellent/index.do");
 
 		} else/* if (userInfo.get("nickname") != null) */ {
 			session.setAttribute("user_name", userInfo.get("nickname"));
-			session.setAttribute("user_mail", userInfo.get("email"));
-			session.setAttribute("user_range", userInfo.get("age_range"));
+			//-------------------------------------------------------------------------------------
+			if (userInfo.get("email") == null) {
+				session.setAttribute("user_mail", "비공개");
+			} else {
+				session.setAttribute("user_mail", userInfo.get("email"));
+			}
+			//------------------------------------------------------------------------------------			
+			if (userInfo.get("age_range") == null) {
+				session.setAttribute("user_range", "비공개");
+			} else {
+				session.setAttribute("user_range", userInfo.get("age_range"));
+			}
+			//-----------------------------------------------------------------------------------
 			if (userInfo.get("profile_image") == null) {
 				session.setAttribute("user_profile_image", "프로필 이미지가 없습니다.");
 			} else {
 				session.setAttribute("user_profile_image", userInfo.get("profile_image"));
 			}
-			if (userInfo.get("thumbnail_image") == null) {
-				session.setAttribute("user_thumbnail_image", "썸네일 이미지가 없습니다.");
+			//-------------------------------------------------------------------------------------
+			if (userInfo.get("birthday") == null) {
+				session.setAttribute("birthday", "비공개");
 			} else {
-				session.setAttribute("user_thumbnail_image", userInfo.get("thumbnail_image"));
+				session.setAttribute("birthday", userInfo.get("birthday"));
 			}
+			//-------------------------------------------------------------------------------------
+			if (userInfo.get("gender") == null) {
+				session.setAttribute("gender", "비공개");
+			} else {
+				session.setAttribute("gender", userInfo.get("gender"));
+			}
+			//-------------------------------------------------------------------------------------
 
 			System.out.println("카카오에서 받아온 정보 세션에 넣은 값");
 			System.out.println("user_name : " + session.getAttribute("user_name"));

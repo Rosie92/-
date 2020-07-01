@@ -120,14 +120,19 @@ public class KakaoService {
 				userInfo.put("age_range", age_range);
 			}
 			// ------------------------------------------------------
+			if (kakao_account.getString("birthday") != null) {
+				String birthday = kakao_account.getString("birthday");
+				userInfo.put("birthday", birthday);
+			}
+			// ------------------------------------------------------
+			if (kakao_account.getString("gender") != null) {
+				String gender = kakao_account.getString("gender");
+				userInfo.put("gender", gender);
+			}
+			// ------------------------------------------------------
 			if (properties.getString("profile_image") != null) {
 				String profile_image = properties.getString("profile_image");
 				userInfo.put("profile_image", profile_image);
-			}
-			// ------------------------------------------------------
-			if (properties.getString("thumbnail_image") != null) {
-				String thumbnail_image = properties.getString("thumbnail_image");
-				userInfo.put("thumbnail_image", thumbnail_image);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
