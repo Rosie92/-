@@ -64,7 +64,7 @@
 
 
 					<a
-						href="https://kauth.kakao.com/oauth/authorize?client_id=928bbb3f0e2b7934f85c85beaa13b7ea&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
+						href="https://kauth.kakao.com/oauth/authorize?client_id=928bbb3f0e2b7934f85c85beaa13b7ea&redirect_uri=http://52.79.54.76:8080/kakaologin.do&response_type=code">
 						<div style="">
 						<img src="/assets/img/DEIMG/kakaologin3.png"
 						style="width: 350px; "><!-- margin-left: 40px; margin-top: 10px; -->
