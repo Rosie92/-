@@ -13,7 +13,7 @@
   <dependency>
   	<groupId>org.mongodb</groupId>
   	<artifactId>mongo-java-driver</artifactId>
-  	<version>3.11.1</version>
+  	<version>3.11.3</version>
   </dependency>
   
   <!-- 하둡의 핵심 기술 연동을 위한 라이브러리 다운로드 -->
